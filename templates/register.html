@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup - Create an Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/static/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='6375875.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Quiz Application
+            </a>
+        </div>
+        <div>
+            <a href="{{ url_for('auth.login') }}"><button class="navbar-login-button">Login</button></a>
+        </div>
+    </nav>
+    <main>
+        <section id="main-signup-container">
+            <div id="main-signup-box">
+                <span id="signupbox-login-link">
+                    <p>Already have an account?</p>
+                    <a href="{{ url_for('auth.login') }}" title="Already have an account? Login Now!">Log in</a>
+                </span>
+                <span id="signupbox-head-text">
+                    <p>Create an account</p>
+                </span>
+                <span id="signup">
+                    <form method="POST" action="{{ url_for('auth.register') }}">
+                        {{ form.hidden_tag() }}  <!-- ✅ This is required for CSRF protection -->
+                    
+                        <span id="username-input">
+                            {{ form.username.label }} 
+                            {{ form.username(id="username-input-box", class="form-control") }}
+                        </span>
+                        <span id="email-input">
+                            {{ form.email.label }} 
+                            {{ form.email(id="email-input-box", class="form-control") }}
+                        </span>
+                        <span id="password-input">
+                            {{ form.password.label }} 
+                            {{ form.password(id="password-input-box", class="form-control", placeholder="Must contain at least 8 characters") }}
+                        </span>
+                        <!-- ✅ Added Confirm Password Field -->
+                        <span id="confirm-password-input">
+                            {{ form.confirm_password.label }} 
+                            {{ form.confirm_password(id="confirm-password-input-box", class="form-control", placeholder="Re-enter password") }}
+                        </span>
+
+                        <span id="terms-condition-checkbox-container">
+                            <input type="checkbox" name="terms-checkbox" id="terms-input" required>
+                            <label id="label-terms-checkbox" for="terms-checkbox">You agree to the Terms of Use and Privacy Notice.</label>
+                        </span>
+                        <span id="create-account-button-container">
+                            <button id="submit-button" type="submit">Create Account</button>
+                        </span>
+                    </form>
+                </span>
+
+                {% for field, errors in form.errors.items() %}
+                    {% for error in errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endfor %}
+
+                <span id="other-methods-container">
+                    <p>Or sign up with:</p>
+                    <span id="signup-method-blocks-container">
+                        <a class="signup-links" href="{{ url_for('auth.login') }}" title="Signup with Google">
+                            <i class="fa-brands fa-google fa-lg"></i>
+                            <label>Google</label>
+                        </a>
+                        <a class="signup-links" href="{{ url_for('auth.login') }}" title="Signup with Microsoft">
+                            <i class="fa-brands fa-microsoft fa-lg"></i>
+                            <label>Microsoft</label>
+                        </a>
+                        <a class="signup-links" href="{{ url_for('auth.login') }}" title="Signup with LinkedIn">
+                            <i class="fa-brands fa-linkedin-in fa-lg"></i>
+                            <label>LinkedIn</label>
+                        </a>
+                        <a class="signup-links" href="{{ url_for('auth.login') }}" title="Signup with Apple">
+                            <i class="fa-brands fa-apple fa-lg"></i>
+                            <label>Apple</label>
+                        </a>
+                    </span>
+                </span>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

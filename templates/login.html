@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - Already Have an Account?</title>
+        <link rel="icon" href="{{ url_for('static', filename='Minimalist Line Business Logo (1).png') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    </head>
+<body>
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='6375875.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Quiz Application
+            </a>
+        </div>
+        <div>
+            <a href="{{ url_for('auth.register') }}"><button class="navbar-login-button">Signup</button></a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="main-login-container">
+            <div id="main-login-box">
+
+                <span id="loginbox-login-link">
+                    <p>Don't have an account?</p>
+                    <a href="{{ url_for('auth.register') }}" title="Don't have an account? Signup Now!">Sign up</a>
+                </span>
+
+                <span id="loginbox-head-text">
+                    <p>Login</p>
+                </span>
+
+                <span id="login">
+                    <form action="{{ url_for('auth.login') }}" method="POST">
+                        {{ form.hidden_tag() }}  <!-- ✅ CSRF protection -->
+                    
+                        <span id="email-input">
+                            {{ form.email.label }}
+                            {{ form.email(id="email-input-box", class="form-control", required=True) }}
+                        </span>
+                    
+                        <span id="password-input">
+                            {{ form.password.label }}
+                            {{ form.password(id="password-input-box", class="form-control", required=True) }}
+                        </span>
+                    
+                        <span id="forgot-password-container">
+                            <a href="{{ url_for('auth.register') }}" id="forgot-password-text">Forgot Password?</a>
+                        </span>
+                    
+                        <span id="login-button-container">
+                            <button id="submit-button" type="submit">Login</button>
+                        </span>
+                    </form>
+                    
+                </span> 
+
+                <span id="other-methods-container">
+                    <p>Or Log in with:</p>
+                    <span id="login-method-blocks-container">
+                        <a href="{{ url_for('auth.login') }}" class="login-links" title="Login with Google">
+                            <i class="fa-brands fa-google fa-lg"></i>
+                            <label>Google</label>
+                        </a>
+                        <a href="{{ url_for('auth.login') }}" class="login-links" title="Login with Microsoft">
+                            <i class="fa-brands fa-microsoft fa-lg"></i>
+                            <label>Microsoft</label>
+                        </a>
+                        <a href="{{ url_for('auth.login') }}" class="login-links" title="Login with LinkedIn">
+                            <i class="fa-brands fa-linkedin-in fa-lg"></i>
+                            <label>LinkedIn</label>
+                        </a>
+                        <a href="{{ url_for('auth.login') }}" class="login-links" title="Login with Apple">
+                            <i class="fa-brands fa-apple fa-lg"></i>
+                            <label>Apple</label>
+                        </a>
+                    </span>
+                </span>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

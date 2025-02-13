@@ -72,8 +72,4 @@ def logout():
 @auth.route("/dashboard")
 @login_required
 def dashboard():
-    if not current_user.is_admin:  # Restrict access to only admins
-        flash("Unauthorized access!", "danger")
-        return redirect(url_for("auth.login"))
-
     return render_template("dashboard.html")

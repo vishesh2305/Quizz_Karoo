@@ -8,6 +8,10 @@ from models import User
 
 app = Flask(__name__)
 
+
+from config import Config
+app.config.from_object(Config)
+
 # Database Configuration
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

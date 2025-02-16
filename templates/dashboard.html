@@ -1,290 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard-Quiz Application</title>
-    <link rel="stylesheet" href="/static/dashboard.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="{{ url_for('static', filename='/static/dashboard.css') }}?v=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard-Quiz Application</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ url_for('static', filename='/static/dashboard.css') }}?v=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
 <body>
 
-    <header id="header">
-        <nav id="navbar">
+  <header id="header">
+    <nav id="navbar">
 
-            <div id="logo-container">
-                <figure>
-                    <img src="/static/logo.jpg" alt="Logo_img">
-                </figure>
-            </div>
+      <div id="logo-container">
+        <figure>
+          <img src="/static/logo.jpg" alt="Logo_img">
+        </figure>
+      </div>
 
-            <div id="searchbar-container">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="search-btn" type="submit">Search</button>
-                  </form>
-            </div>
+      <div id="searchbar-container">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 
-            <div id="buttons-container">
-                <button type="button" class="btn btn-secondary">Create</button>
-                <span id="profile-section">
-                    <figure>
-                        <img src="/static/logo.jpg" alt="image">
-                    </figure>
-                </span>
-            </div>
+        </form>
+      </div>
 
-        </nav>
-    </header>
+      <div id="buttons-container">
+        {% if current_user.is_admin %}
 
-
-    <main id="main">
-        <section id="sidebar-main">
-            <span id="sidebar-upper">
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
+        <button type="button" class="btn btn-secondary"
+          onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
+        {% endif %}
+        <button type="button" class="btn btn-secondary"
+          onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
+      <span id="profile-section">
+          <figure>
+            <img src="/static/logo.jpg" alt="image">
+          </figure>
         </span>
-        <span id="sidebar-lower">
-            <button type="button" class="btns-sidebar-main">Home</button>
+      </div>
+
+    </nav>
+  </header>
+
+
+  <main id="main">
+    <section id="sidebar-main">
+      <span id="sidebar-upper">
+        <button type="button" class="btns-sidebar-main">Home</button>
+        <button type="button" class="btns-sidebar-main">Discover</button>
+        <button type="button" class="btns-sidebar-main">Library</button>
+        <button type="button" class="btns-sidebar-main">Groups</button>
+        <button type="button" class="btns-sidebar-main">Marketplace</button>
+        <button type="button" class="btns-sidebar-main">What's New?</button>
+
+        {% if current_user.is_admin %}
+        <button type="button" class="btns-sidebar-main"
+          onclick="window.location.href='{{ url_for('auth.create_quiz') }}'">Create Quiz</button>
+        {% endif %}
+        <button type="button" class="btns-sidebar-main"
+          onclick="window.location.href='{{ url_for('auth.quizzes') }}'">Find Quizzes</button>
+
+
+        <button type="button" class="btns-sidebar-main">Find Quizzes</button>
+      </span>
+      <span id="sidebar-lower">
+        <button type="button" class="btns-sidebar-main">Home</button>
+      </span>
+    </section>
+
+
+    <section id="content-section-main">
+
+
+      <div id="cards-1-row">
+
+
+        <div class="card w-25">
+          <div class="card-body">
+            <h5 class="card-title">Create Quiz</h5>
+            <p class="card-text">Create A Quiz According to Your Need.</p>
+
+            {% if current_user.is_admin %}
+            <button class="search-btn p-2" type="button"
+              onclick="window.location.href='{{ url_for('auth.create_quiz') }}'">Create Now</button>
+            {% else %}
+            <p class="text-danger">Only Admins can create quizzes.</p>
+            {% endif %}
+
+
+          </div>
+        </div>
+
+
+        <div class="card w-25">
+          <div class="card-body">
+            <h5 class="card-title">Use Templates</h5>
+            <p class="card-text">Use templates for easy and quick Quiz Creation.</p>
+            <button class="search-btn p-2" type="submit">Choose Templates</button>
+          </div>
+        </div>
+
+
+        <div class="card w-25">
+          <div class="card-body">
+            <h5 class="card-title">Ai Tools</h5>
+            <p class="card-text">Use Ai Tools for Quiz. Chat with Our Chatbot.</p>
+            <button class="search-btn p-2" type="submit">Use Now!</button>
+          </div>
+        </div>
+
+
+
+        <div class="card w-25">
+          <div class="card-body">
+            <h5 class="card-title">Join Challenges</h5>
+            <p class="card-text">Join the Ongoing Quiz Challenges</p>
+            <button class="search-btn p-2" type="submit">Join Now</button>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="cards-2-row">
+
+        <div class="slide-container swiper">
+          <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
+
+
+
+              <div class="card swiper-slide" style="width: 18rem;">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="/static/cube_giphy.gif" alt="..." class="card-img-top">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                </div>
+              </div>
+
+              <div class="card swiper-slide" style="width: 18rem;">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="/static/quiztime_giphy.gif" alt="..." class="card-img-top">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                </div>
+              </div>
+
+              <div class="card swiper-slide" style="width: 18rem;">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="/static/penguin_giphy.gif" alt="..." class="card-img-top">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                </div>
+              </div>
+
+              <div class="card swiper-slide" style="width: 18rem;">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="/static/sliding_pandas_giphy.gif" alt="..." class="card-img-top">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next swiper-navBtn"></div>
+          <div class="swiper-button-prev swiper-navBtn"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+
+
+      </div>
+
+
+      <div id="cards-3-row">
+
+        <h4>What's New</h4>
+
+
+        <div id="main-first-section">
+          <span id="main-gif-video-first-section">
+            <img id="main-gif-image-first-section"
+              src="/static/use-cases-online-quiz-create-high-quality-quizzes-our-easy-to-use-quiz-maker.webp" alt="">
+          </span>
+
+          <span id="main-gif-first-section-text">
+            <h1>Create high-quality quizzes with our easy-to-use quiz maker</h1>
+            <p>Pollzy makes it quick and easy to ask the right questions the right way, and get fast and powerful
+              insights that help you delight your customers, build a happy and productive workforce, and win in your
+              market.</p>
+          </span>
+        </div>
+
+
+        <div id="main-first-section">
+
+          <span id="main-gif-first-section-text">
+            <h1>Make quizzes more interactive and engaging</h1>
+            <p>Keep quiz takers engaged with custom feedback on individual questions or the entire quiz. Share a
+              congratulatory message for high scores, provide encouraging feedback after a wrong answer, and so much
+              more—all automatically.</p>
+          </span>
+          <span id="main-gif-video-first-section">
+            <img id="main-gif-image-first-section"
+              src="/static/use-cases-online-quiz-make-quizzes-more-interactive-engaging.webp" alt="">
+          </span>
+        </div>
+
+
+
+
+
+
+        <div id="main-first-section">
+          <span id="main-gif-video-first-section">
+            <img id="main-gif-image-first-section"
+              src="/static/use-cases-online-quiz-save-time-with-automatic-scoring.webp" alt="">
+          </span>
+
+          <span id="main-gif-first-section-text">
+            <h1>Save time with automatic scoring</h1>
+            <p>Easily auto-score quizzes by marking answer choices as right or wrong, and assigning any score-weighting
+              values. Quiz takers can then see their scores immediately after completing the quiz.</p>
+          </span>
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+
+      <footer id="footer">
+        <div id="footer-links-container">
+          <span class="links-section">
+            <h4>Popular Templates</h4>
+            <span class="footer-links-container">
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Product Testing</a>
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">All Templates</a>
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Surveys</a>
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Overview</a>
+            </span>
+          </span>
+
+          <span class="links-section">
+            <h4>Resources</h4>
+            <span class="footer-links-container">
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Blog</a>
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Resource center</a>
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Support</a>
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Contact sales</a>
+            </span>
+          </span>
+
+          <span class="links-section">
+            <h4>About</h4>
+            <span class="footer-links-container">
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">How to create surveys</a>
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Log in</a>
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Sign up</a>
+              <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Survey best practices</a>
+            </span>
+          </span>
+        </div>
+
+        <span id="footer-social-links-container">
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-linkedin fa-lg"></i></span>
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-youtube fa-lg"></i></span>
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-instagram fa-lg"></i></span>
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-facebook fa-lg"></i></span>
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-x-twitter fa-lg"></i></span>
         </span>
-        </section>
 
+      </footer>
 
-        <section id="content-section-main">
-
-
-            <div id="cards-1-row">
-
-
-                <div class="card w-25">
-                    <div class="card-body">
-                      <h5 class="card-title">Create Quiz</h5>
-                      <p class="card-text">Create A Quiz According to Your Need.</p>
-                      <button class="search-btn p-2" type="submit">Create Now</button>
-                    </div>
-                  </div>
-
-
-                  <div class="card w-25">
-                    <div class="card-body">
-                      <h5 class="card-title">Create Quiz</h5>
-                      <p class="card-text">Create A Quiz According to Your Need.</p>
-                      <button class="search-btn p-2" type="submit">Create Now</button>
-                    </div>
-                  </div>
-
-
-                  <div class="card w-25">
-                    <div class="card-body">
-                      <h5 class="card-title">Create Quiz</h5>
-                      <p class="card-text">Create A Quiz According to Your Need.</p>
-                      <button class="search-btn p-2" type="submit">Create Now</button>
-                    </div>
-                  </div>
+    </section>
 
 
 
-                  <div class="card w-25">
-                    <div class="card-body">
-                      <h5 class="card-title">Create Quiz</h5>
-                      <p class="card-text">Create A Quiz According to Your Need.</p>
-                      <button class="search-btn p-2" type="submit">Create Now</button>
-                    </div>
-                  </div>
 
-
-                 </div> 
-
-                 <div id="cards-2-row">
-
-                  <div class="slide-container swiper">
-                    <div class="slide-content">
-                      <div class="card-wrapper swiper-wrapper">
-
-
-
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          </div>
-                        </div>
-                
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          </div>
-                        </div>
-                
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          </div>
-                        </div>
-                
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-button-next swiper-navBtn"></div>
-                    <div class="swiper-button-prev swiper-navBtn"></div>
-                    <div class="swiper-pagination"></div>
-                  </div>
-                
-
-
-                 </div>
-
-
-                 <div id="cards-3-row">
-
-                  <h4>What's New</h4>
-
-
-                  <div id="main-first-section">
-                    <span id="main-gif-video-first-section">
-                      <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-create-high-quality-quizzes-our-easy-to-use-quiz-maker.webp" alt="">
-                    </span>
-            
-                    <span id="main-gif-first-section-text">
-                        <h1>Create high-quality quizzes with our easy-to-use quiz maker</h1>
-                        <p>Pollzy makes it quick and easy to ask the right questions the right way, and get fast and powerful insights that help you delight your customers, build a happy and productive workforce, and win in your market.</p>
-                    </span>
-                    </div>
-
-
-                    <div id="main-first-section">
-                      
-                      <span id="main-gif-first-section-text">
-                        <h1>Make quizzes more interactive and engaging</h1>
-                        <p>Keep quiz takers engaged with custom feedback on individual questions or the entire quiz. Share a congratulatory message for high scores, provide encouraging feedback after a wrong answer, and so much more—all automatically.</p>
-                      </span>
-                      <span id="main-gif-video-first-section">
-                        <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-make-quizzes-more-interactive-engaging.webp" alt="">
-                      </span>
-                      </div>
+  </main>
 
 
 
 
 
-
-                      <div id="main-first-section">
-                        <span id="main-gif-video-first-section">
-                          <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-save-time-with-automatic-scoring.webp" alt="">
-                        </span>
-                
-                        <span id="main-gif-first-section-text">
-                            <h1>Save time with automatic scoring</h1>
-                            <p>Easily auto-score quizzes by marking answer choices as right or wrong, and assigning any score-weighting values. Quiz takers can then see their scores immediately after completing the quiz.</p>
-                        </span>
-                        </div>
-
-
-
-
-
-
-
-
-                 </div>
-
-                 <footer id="footer">
-                   <div id="footer-links-container">
-                   <span class="links-section">
-                       <h4>Popular Templates</h4>
-                       <span class="footer-links-container">
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Product Testing</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">All Templates</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Surveys</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Overview</a>
-                       </span>
-                   </span>
-             
-                   <span class="links-section">
-                       <h4>Resources</h4>
-                       <span class="footer-links-container">
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Blog</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Resource center</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Support</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Contact sales</a>
-                       </span>
-                   </span>
-             
-                   <span class="links-section">
-                       <h4>About</h4>
-                       <span class="footer-links-container">
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">How to create surveys</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Log in</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Sign up</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Survey best practices</a>
-                       </span>
-                   </span>
-                   </div>
-             
-                   <span id="footer-social-links-container">
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-linkedin fa-lg"></i></span>
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-youtube fa-lg"></i></span>
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-instagram fa-lg"></i></span>
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-facebook fa-lg"></i></span>
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-x-twitter fa-lg"></i></span>
-                   </span>
-             
-               </footer>
-
-        </section>
-
-
-
-
-    </main>
-
-
-
-
-    
 
 
 
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </html>

@@ -90,12 +90,14 @@ header{
 
 
 
+
 #main{
     min-height: 100vh;
     max-height: max-content;
     display: flex;
     top: 5em;
     z-index: 0;
+    width: 100vw;
 
 }
 #sidebar-main{
@@ -105,28 +107,177 @@ header{
     align-items: center;
     justify-content: space-between;
     height: 89vh;
-    box-shadow: 0px 2px 1px rgba(0, 0,0,0.3);
     overflow: hidden;
     border-bottom:none;
     position: fixed;
     top: 5em;
     z-index: 2;
 }
+.row{
+    width: 15vw;
+    padding: 0px;
+    border-radius: 0px;
+
+}
+
+
+#col-4{
+    padding: 0px;
+    border-radius: 0px;
+}
+.list-group{
+    width: 100%;
+    width: 15vw;
+    padding: 0px;
+    border-radius: 0px;
+
+}
 .btns-sidebar-main{
     width: 100%;
+    border: 1px solid black;
     outline: none;
     border: 0px;
     height: 3em;
     background-color: white;
+    border-radius: 0px;
 }
 .btns-sidebar-main:hover{
     background-color: #f0f0f0;
 }
+.list-group-item.active {
+    background-color: #8722f2 !important;
+    color: white !important;
+    border-color: #8722f2 !important;
+}
 
-#sidebar-lower{
+
+
+
+#content-section-main{
+    width: 85vw;
+    height: max-content;
+    position: relative;
+    left: 15vw;
+    top: 5em;
+    z-index: 0;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    padding-top: 4em;
+}
+#quiz-heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 20vh;
+    width: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 10px;
+}
+
+#questions-container{
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    margin-top: 18vh;
+}
+
+
+.survey-questions{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+    width: 80%;
+    padding: 2%;
+    background-color: white;
+    margin-bottom: 10%;
+    animation: cardsappear linear 2s;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
     width: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.survey-questions>h2{
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 3px;
+}
+.survey-questions>ul{
+    list-style: none;
+    padding: 0px;
+    display: grid;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+}
+.survey-questions>ul>li{
+    margin: 1em 0em;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#start-quiz-btn{
+    width: 100%;
+    margin-top: 5em;
+    padding: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#start-quiz-text{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+.button-39 {
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  padding: 2em;
+}
+
+.button-39:hover {
+  background-color: #8722f2;
+  color: white;
+}
+
+.button-39:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.button-39:focus-visible {
+  box-shadow: none;
 }

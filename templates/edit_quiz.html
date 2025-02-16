@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Edit Quiz</title>
+</head>
+
+<body>
+    <h1>Edit Quiz</h1>
+    <form method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="{{ quiz.title }}" required>
+
+        <label for="description">Description:</label>
+        <textarea name="description">{{ quiz.description }}</textarea>
+
+        <button type="submit">Update Quiz</button>
+    </form>
+
+    <a href="{{ url_for('auth.quizzes') }}">Back to Quizzes</a>
+</body>
+
+</html>

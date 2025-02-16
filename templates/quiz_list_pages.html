@@ -15,33 +15,42 @@
 <body>
 
 
-    <header id="header">
-        <nav id="navbar">
+  <header id="header">
+    <nav id="navbar">
 
-            <div id="logo-container">
-                <figure>
-                    <img src="/static/logo.jpg" alt="Logo_img">
-                </figure>
-            </div>
+        <div id="logo-container" onclick="window.location.href='{{url_for('auth.dashboard')}}'">
+            <figure>
+                <img src="/static/logo.jpg" alt="Logo_img">
+            </figure>
+        </div>
 
-            <div id="searchbar-container">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="search-btn" type="submit">Search</button>
-                  </form>
-            </div>
+        <div id="searchbar-container">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
 
-            <div id="buttons-container">
-                <button type="button" class="btn btn-secondary">Create</button>
-                <span id="profile-section">
-                    <figure>
-                        <img src="/static/logo.jpg" alt="image">
+        <div id="buttons-container">
+            {% if current_user.is_admin %}
+            <button type="button" class="btn btn-secondary"
+                onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
+            {% endif %}
+            <button type="button" class="btn btn-secondary"
+                onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
+
+            <!-- Profile Section -->
+            <span id="profile-section">
+                <a href="{{ url_for('auth.profile') }}" style="display: block;">
+                    <figure style="margin: 0;">
+                        <img src="/static/logo.jpg" alt="Profile Icon">
                     </figure>
-                </span>
-            </div>
+                </a>
+            </span>
+        </div>
 
-        </nav>
-    </header>
+    </nav>
+</header>
+
 
 
     <main id="main">
@@ -74,12 +83,12 @@
                   
                     <div id="list-item-1" class="main-first-section">
                         <span id="main-gif-video-first-section">
-                          <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-create-high-quality-quizzes-our-easy-to-use-quiz-maker.webp" alt="">
+                          <img id="main-gif-image-first-section" src="/static/educational_pic_for_cards.png" alt="">
                         </span>
                 
                         <span id="main-gif-first-section-text">
-                            <h1>Create high-quality quizzes with our easy-to-use quiz maker</h1>
-                            <p>Pollzy makes it quick and easy to ask the right questions the right way, and get fast and powerful insights that help you delight your customers, build a happy and productive workforce, and win in your market.</p>
+                          <h1>Scholarly Pursuits: A Comprehensive Journey Through Modern Education</h1>
+                          <p>Explore the evolution of learning and technology in education. Challenge yourself with questions that span history, theory, and practice.</p>
                         </span>
                         </div>
 
@@ -88,11 +97,11 @@
 
                         <div id="list-item-2" class="main-first-section">                      
                             <span id="main-gif-first-section-text">
-                              <h1>Make quizzes more interactive and engaging</h1>
-                              <p>Keep quiz takers engaged with custom feedback on individual questions or the entire quiz. Share a congratulatory message for high scores, provide encouraging feedback after a wrong answer, and so much more—all automatically.</p>
+                              <h1>A Culinary Conundrum: Embark on the Ultimate Food Quiz Journey</h1>
+                              <p>Savor the rich flavors of the culinary world as you challenge your palate with intriguing food trivia and explore global cuisines one bite at a time.</p>
                             </span>
                             <span id="main-gif-video-first-section">
-                              <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-make-quizzes-more-interactive-engaging.webp" alt="">
+                              <img id="main-gif-image-first-section" src="/static/cullinary_quiz.png" alt="">
                             </span>
                             </div>
 
@@ -100,23 +109,23 @@
 
                             <div id="list-item-3" class="main-first-section">
                                 <span id="main-gif-video-first-section">
-                                  <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-create-high-quality-quizzes-our-easy-to-use-quiz-maker.webp" alt="">
+                                  <img id="main-gif-image-first-section" src="/static/politics_quiz_img.png" alt="">
                                 </span>
                         
                                 <span id="main-gif-first-section-text">
-                                    <h1>Create high-quality quizzes with our easy-to-use quiz maker</h1>
-                                    <p>Pollzy makes it quick and easy to ask the right questions the right way, and get fast and powerful insights that help you delight your customers, build a happy and productive workforce, and win in your market.</p>
+                                    <h1>Governance Unveiled: An In-Depth Expedition into Political Realms</h1>
+                                    <p>Unravel the mysteries of political systems and international relations. This quiz invites you to explore the nuances of leadership, diplomacy, and the forces driving global change.</p>
                                 </span>
                                 </div>
 
 
                                 <div id="list-item-4" class="main-first-section">                      
                                     <span id="main-gif-first-section-text">
-                                      <h1>Make quizzes more interactive and engaging</h1>
-                                      <p>Keep quiz takers engaged with custom feedback on individual questions or the entire quiz. Share a congratulatory message for high scores, provide encouraging feedback after a wrong answer, and so much more—all automatically.</p>
+                                      <h1>Mapping the Globe: A Deep Dive into Earth's Geography</h1>
+                                      <p>Navigate through mountains, rivers, deserts, and cities with every question. Test your ability to pinpoint locations and explore the dynamic tapestry of our world.</p>
                                     </span>
                                     <span id="main-gif-video-first-section">
-                                      <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-make-quizzes-more-interactive-engaging.webp" alt="">
+                                      <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-create-high-quality-quizzes-our-easy-to-use-quiz-maker.webp" alt="">
                                     </span>
                                     </div>
 
@@ -124,12 +133,13 @@
                                     
                             <div id="list-item-5" class="main-first-section">
                                 <span id="main-gif-video-first-section">
-                                  <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-create-high-quality-quizzes-our-easy-to-use-quiz-maker.webp" alt="">
+                                  <img id="main-gif-image-first-section" src="/static/current_affairs_img.png" alt="">
                                 </span>
                         
                                 <span id="main-gif-first-section-text">
-                                    <h1>Create high-quality quizzes with our easy-to-use quiz maker</h1>
-                                    <p>Pollzy makes it quick and easy to ask the right questions the right way, and get fast and powerful insights that help you delight your customers, build a happy and productive workforce, and win in your market.</p>
+                                    <h1>Navigating Today's Headlines: The Ultimate Current Affairs Quiz Challenge
+                                    </h1>
+                                    <p>Dive into the pressing issues and global events shaping our world today. Test your awareness and stay ahead of the news cycle with every question.</p>
                                 </span>
                                 </div>
 
@@ -137,32 +147,34 @@
                                 
                                 <div id="list-item-6" class="main-first-section">                      
                                     <span id="main-gif-first-section-text">
-                                      <h1>Make quizzes more interactive and engaging</h1>
-                                      <p>Keep quiz takers engaged with custom feedback on individual questions or the entire quiz. Share a congratulatory message for high scores, provide encouraging feedback after a wrong answer, and so much more—all automatically.</p>
+                                      <h1>History Uncovered: A Deep Dive into the Past's Greatest Moments
+                                      </h1>
+                                      <p>Explore pivotal events and iconic figures through a series of thought-provoking questions. Rediscover the stories that define our shared heritage.</p>
                                     </span>
                                     <span id="main-gif-video-first-section">
-                                      <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-make-quizzes-more-interactive-engaging.webp" alt="">
+                                      <img id="main-gif-image-first-section" src="/static/histocial_quiz_img.png" alt="">
                                     </span>
                                     </div>
 
                                     <div id="list-item-7" class="main-first-section">
                                         <span id="main-gif-video-first-section">
-                                          <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-create-high-quality-quizzes-our-easy-to-use-quiz-maker.webp" alt="">
+                                          <img id="main-gif-image-first-section" src="/static/health_quiz.png" alt="">
                                         </span>
                                 
                                         <span id="main-gif-first-section-text">
-                                            <h1>Create high-quality quizzes with our easy-to-use quiz maker</h1>
-                                            <p>Pollzy makes it quick and easy to ask the right questions the right way, and get fast and powerful insights that help you delight your customers, build a happy and productive workforce, and win in your market.</p>
+                                            <h1>Vital Signs: Mastering the Essentials of Health and Wellness</h1>
+                                            <p>Challenge your understanding of medical breakthroughs, healthy habits, and preventative care. Elevate your health IQ with every question.</p>
                                         </span>
                                         </div>
 
                                         <div id="list-item-8" class="main-first-section">                      
                                             <span id="main-gif-first-section-text">
-                                              <h1>Make quizzes more interactive and engaging</h1>
-                                              <p>Keep quiz takers engaged with custom feedback on individual questions or the entire quiz. Share a congratulatory message for high scores, provide encouraging feedback after a wrong answer, and so much more—all automatically.</p>
+                                              <h1>Science Spectrum: A Comprehensive Expedition Through Knowledge and Innovation
+                                              </h1>
+                                              <p>Challenge your grasp of the natural world with a quiz that spans everything from microscopic organisms to astronomical phenomena. Illuminate your path to scientific mastery.</p>
                                             </span>
                                             <span id="main-gif-video-first-section">
-                                              <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-make-quizzes-more-interactive-engaging.webp" alt="">
+                                              <img id="main-gif-image-first-section" src="/static/science_quiz_img.png" alt="">
                                             </span>
                                             </div>
 
@@ -171,23 +183,24 @@
 
                                             <div id="list-item-9" class="main-first-section">
                                                 <span id="main-gif-video-first-section">
-                                                  <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-create-high-quality-quizzes-our-easy-to-use-quiz-maker.webp" alt="">
+                                                  <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-make-quizzes-more-interactive-engaging.webp" alt="">
                                                 </span>
                                         
                                                 <span id="main-gif-first-section-text">
-                                                    <h1>Create high-quality quizzes with our easy-to-use quiz maker</h1>
-                                                    <p>Pollzy makes it quick and easy to ask the right questions the right way, and get fast and powerful insights that help you delight your customers, build a happy and productive workforce, and win in your market.</p>
+                                                    <h1>Household Happenings: A Deep Dive into Everyday Essentials</h1>
+                                                    <p>Step into a quiz that explores the origins, functions, and quirky facts of the items you use every day. Challenge yourself and uncover the hidden stories behind your home’s most familiar objects.</p>
                                                 </span>
                                                 </div>
 
                                                 
                                         <div id="list-item-10" class="main-first-section">                      
                                             <span id="main-gif-first-section-text">
-                                              <h1>Make quizzes more interactive and engaging</h1>
-                                              <p>Keep quiz takers engaged with custom feedback on individual questions or the entire quiz. Share a congratulatory message for high scores, provide encouraging feedback after a wrong answer, and so much more—all automatically.</p>
+                                              <h1>Unlock the Vault of Curiosity: The Comprehensive General Knowledge Quest
+                                              </h1>
+                                              <p>Dive into an eclectic mix of questions that range from everyday facts to extraordinary discoveries, and prove you have the answer to it all.</p>
                                             </span>
                                             <span id="main-gif-video-first-section">
-                                              <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-make-quizzes-more-interactive-engaging.webp" alt="">
+                                              <img id="main-gif-image-first-section" src="/static/gk_quiz_img.png" alt="">
                                             </span>
                                             </div>
 

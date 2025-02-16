@@ -4,6 +4,8 @@ from extensions import db, bcrypt
 from models import User
 from models import Quiz
 from forms import RegistrationForm, LoginForm
+from models import Quiz, User, Question, Option
+
 
 auth = Blueprint("auth", __name__)
 
@@ -62,6 +64,14 @@ def login():
     return render_template("login.html", form=form)
 
 
+
+# @auth.route('/quiz/<int:quiz_id>')
+# @login_required
+# def view_quiz(quiz_id):
+#     quiz = Quiz.query.get_or_404(quiz_id)
+#     return render_template('view_quiz.html', quiz=quiz)
+
+
 @auth.route("/logout")
 @login_required
 def logout():
@@ -77,26 +87,49 @@ def dashboard():
     return render_template("dashboard.html")
 
 
-
 @auth.route('/create-quiz', methods=['GET', 'POST'])
 @login_required
 def create_quiz():
     if not current_user.is_admin:
         flash("You are not authorized to create quizzes.", "danger")
         return redirect(url_for('auth.dashboard'))
-    
+
     if request.method == 'POST':
         title = request.form.get('title')
         description = request.form.get('description')
 
-        if title:
-            quiz = Quiz(title=title, description=description, created_by=current_user.id)
-            db.session.add(quiz)
+        # Create the Quiz
+        quiz = Quiz(title=title, description=description, created_by=current_user.id)
+        db.session.add(quiz)
+        db.session.commit()
+
+        # Handle Questions & Options
+        questions = request.form.getlist('questions[]')
+
+        for q_index, question_text in enumerate(questions):
+            question = Question(text=question_text, quiz_id=quiz.id)
+            db.session.add(question)
             db.session.commit()
-            flash('Quiz created successfully!', 'success')
-            return redirect(url_for('auth.quizzes'))  # ✅ Redirect here
+
+            # Get options and correct answer for this question
+            options = request.form.getlist(f'options_{q_index}[]')
+            correct_index = request.form.get(f'correct_{q_index}')  # This is a string
+
+            for i, option_text in enumerate(options):
+                is_correct = str(i) == correct_index
+                option = Option(text=option_text, is_correct=is_correct, question_id=question.id)
+                db.session.add(option)
+
+        db.session.commit()
+
+        flash('Quiz created successfully with questions and options!', 'success')
+        return redirect(url_for('auth.quizzes'))
 
     return render_template('quiz_create.html')
+
+
+
+
 
 
 @auth.route('/quizzes')
@@ -148,3 +181,69 @@ def delete_quiz(quiz_id):
     db.session.commit()
     flash('Quiz deleted successfully!', 'success')
     return redirect(url_for('auth.quizzes'))
+
+
+
+
+@auth.route('/submit-quiz/<int:quiz_id>', methods=['POST'])
+@login_required
+def submit_quiz(quiz_id):
+    quiz = Quiz.query.get_or_404(quiz_id)
+    questions = quiz.questions
+    score = 0
+
+    # Process each question
+    for question in questions:
+        selected_option_id = request.form.get(f'question_{question.id}')
+
+        # If no option is selected for a question, skip it
+        if not selected_option_id:
+            continue
+
+        selected_option = Option.query.get(int(selected_option_id))
+
+        # Check if the selected option is correct
+        if selected_option and selected_option.is_correct:
+            score += 1
+
+    # Fetch all quizzes for displaying the page
+    quizzes = Quiz.query.all()
+
+    return render_template(
+        'quizzes.html',
+        quizzes=quizzes,
+        quiz_result_id=quiz.id,
+        quiz_score=score,
+        quiz_total=len(questions)
+    )
+
+
+
+@auth.route('/profile')
+@login_required
+def profile():
+    user_quizzes = current_user.quizzes  # From the relationship in models.py
+    return render_template('profile_page.html', user_quizzes=user_quizzes)
+
+
+
+@auth.route('/quiz_list_pages')
+@login_required
+def edu_quiz_list():
+    return render_template('./quiz_list_pages.html')
+
+
+
+
+@auth.route('/update-profile', methods=['POST'])
+@login_required
+def update_profile():
+    new_username = request.form.get('username')
+
+    if new_username:
+        current_user.username = new_username
+        db.session.commit()
+        flash('Profile updated successfully!', 'success')
+
+    return redirect(url_for('auth.profile'))
+

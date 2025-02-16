@@ -1,51 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/profile_page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="{{ url_for('static', filename='/static/dashboard.css') }}?v=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>Quizz Karoo- Profile Page</title>
 </head>
+
 <body>
-    
-
-
-
-    
     <header id="header">
         <nav id="navbar">
-
-            <div id="logo-container">
+    
+            <div id="logo-container" onclick="window.location.href='{{url_for('auth.dashboard')}}'">
                 <figure>
                     <img src="/static/logo.jpg" alt="Logo_img">
                 </figure>
             </div>
-
+    
             <div id="searchbar-container">
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="search-btn" type="submit">Search</button>
-                  </form>
+                </form>
             </div>
-
+    
             <div id="buttons-container">
-                <button type="button" class="btn btn-secondary">Create</button>
+                {% if current_user.is_admin %}
+                <button type="button" class="btn btn-secondary"
+                    onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
+                {% endif %}
+                <button type="button" class="btn btn-secondary"
+                    onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
+    
+                <!-- Profile Section -->
                 <span id="profile-section">
-                    <figure>
-                        <img src="/static/logo.jpg" alt="image">
-                    </figure>
+                    <a href="{{ url_for('auth.profile') }}" style="display: block;">
+                        <figure style="margin: 0;">
+                            <img src="/static/logo.jpg" alt="Profile Icon">
+                        </figure>
+                    </a>
                 </span>
             </div>
-
+    
         </nav>
     </header>
+    
 
 
     <main>
@@ -61,7 +69,7 @@
                 <h2 id="account-details-title">Account Details</h2>
 
                 <div id="account-details-content-container">
-                    
+
                     <span id="account-plan-details">
                         <span id="account-plan-features">
                             <h6>Plan</h6>
@@ -72,7 +80,8 @@
                         </span>
 
                         <span id="account-plan-upgrade-btn">
-                            <button id="account-plan-upgrade-btn" onclick="window.location.href = '/pricingpage/pricingpage.html'">Upgrade Plan</button>
+                            <button id="account-plan-upgrade-btn" onclick="alert('Avaiable Soon!')"
+                                >Upgrade Plan</button>
                         </span>
 
                     </span>
@@ -82,39 +91,40 @@
             </span>
 
             <span id="profile-details-section">
-
                 <h2 id="profile-details-title">Profile</h2>
-
-                <div id="profile-details-content-container">
-
-                    <span id="username_password-profile-details-content-container">
-
-                        <span id="username-container">
-                        <label for="username">Name</label>
-                        <h6 id="username-text" name="username"></h6>
+            
+                <form action="{{ url_for('auth.update_profile') }}" method="POST">
+                    <div id="profile-details-content-container">
+            
+                        <span id="username_password-profile-details-content-container">
+            
+                            <span id="username-container">
+                                <label for="username">Name</label>
+                                <h6 id="username-text" name="username">{{ current_user.username }}</h6>
+                                <input type="text" id="username-input" name="username" value="{{ current_user.username }}" style="display:none;">
+                            </span>
+            
+                            <span id="password-container">
+                                <label for="password">Password (Hashed)</label>
+                                <h6 name="password" id="password-text">{{ current_user.password }}</h6>
+                            </span>
+            
+                            <span id="email-container">
+                                <label for="email">Email</label>
+                                <h6 id="email-text" name="email">{{ current_user.email }}</h6>
+                            </span>
+            
                         </span>
-
-                        <span id="password-container">
-                            <label for="password">password</label>
-                            <h6 name="password" id="password-text"></h6>
+            
+                        <span id="edit-btn-profile-details-container">
+                            <button id="profile-details-edit-btn" type="button" onclick="enableEdit()">Edit</button>
+                            <button id="save-profile-btn" type="submit" style="display:none;">Save</button>
                         </span>
-
-                        <span id="email-container">
-                            <label for="email">Email</label>
-                            <h6 id="email-text" name="email"></h6>
-                        </span>
-
-                    </span>
-
-                    <span id="edit-btn-profile-details-container">
-                        <button id="profile-details-edit-btn">Edit</button>
-                    </span>
-
-                    
-
-                </div>
-
+            
+                    </div>
+                </form>
             </span>
+            
 
             <span id="linked-accounts-section">
 
@@ -126,9 +136,8 @@
 
                         <span class="linked-accounts-name-container">
                             <label for="username">Apple</label>
-                            <a id="apple-id" class="connect-social-accounts"  name="username">Link account</a>
+                            <a id="apple-id" class="connect-social-accounts" name="username">Link account</a>
                         </span>
-
 
                         <span class="linked-accounts-name-container">
                             <label for="username">Google</label>
@@ -139,8 +148,6 @@
                             <label for="username">Linkedin</label>
                             <a id="linkedin-id" class="connect-social-accounts" name="username">Link account</a>
                         </span>
-
-
 
                         <span class="linked-accounts-name-container">
                             <label for="username">Facebook</label>
@@ -161,26 +168,29 @@
 
                     <p>Check Your Quizzes</p>
 
-                    <button id="my-surveys-btn" onclick="window.location.href = '/storedsurveys/storedsurveypage.html'">Click Here!</button>
+                    <button id="my-surveys-btn" onclick="window.location.href='{{url_for('auth.quizzes')}}'" >
+                        Click Here!
+                    </button>
 
                 </div>
 
             </span>
 
-            <button id="logout-btn">Logout</button>
-
+            <!-- Logout Button -->
+            <form action="{{ url_for('auth.logout') }}" method="GET">
+                <button id="logout-btn" type="submit">Logout</button>
+            </form>
 
         </section>
 
-        
         <aside id="aside-section">
 
             <span id="send-message-box">
                 <span id="message-box-text-container">
-                <h6>Send us a message</h6>
-                <p>We'll be back online later today</p>
+                    <h6>Send us a message</h6>
+                    <p>We'll be back online later today</p>
                 </span>
-                
+
                 <span id="message-icon-container">
                     <i id="thumbs-up-icon" class="fa-solid fa-thumbs-up fa-xl"></i>
                 </span>
@@ -201,40 +211,19 @@
 
         </aside>
 
-        <!-- <span id="opacity-box"></span> -->
-<!-- 
-
-        <span id="profile-details-edit-dialogue-box-container">
-
-            <h5>Edit Profile Details</h5>
-
-            <section id="input-boxes-container">
-
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Pollzy">
-                <label for="floatingInput">Change Name</label>
-            </div>
- 
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Change Password</label>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingEmail" placeholder="pollzy@gmail.com">
-                <label for="floatingEmail">Change Email</label>
-            </div>
-
-            </section>
-
-            <button id="save-edited-profile-details">Save Changes</button>
-
-        </span> -->
-
     </main>
 
-
-
-
 </body>
+
+
+<script>
+    function enableEdit() {
+        document.getElementById('username-text').style.display = 'none';
+        document.getElementById('username-input').style.display = 'block';
+        document.getElementById('profile-details-edit-btn').style.display = 'none';
+        document.getElementById('save-profile-btn').style.display = 'inline-block';
+    }
+</script>
+
+
 </html>

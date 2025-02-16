@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Signup - Create an Account</title>
+    <link rel="stylesheet" href="/static/register.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,17 +12,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url_for('home') }}">
-                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                QuizKaroo
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('auth.login') }}"><button class="navbar-login-button">Login</button></a>
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar ">
+            <div class="container-fluid" id="logo-container">
+                <a class="navbar-brand" href="{{ url_for('home') }}">
+                    <img id="logo-img" src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    <h6>Quizz Karoo</h6>
+                </a>
+            </div>
+            <div>
+                <a href="{{ url_for('auth.login') }}"><button class="navbar-login-button">Login</button></a>
+            </div>
+        </nav>
+    </header>
+
     <main>
         <section id="main-signup-container">
             <div id="main-signup-box">

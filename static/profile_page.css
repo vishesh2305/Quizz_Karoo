@@ -82,7 +82,7 @@ header{
     cursor: pointer;
     overflow: hidden;
 }
-#profile-section>figure>img{
+#profile-section>a>figure>img{
     height: 100%;
     width: 100%;
 }
@@ -252,6 +252,18 @@ cursor: pointer;
     align-self: flex-end;
 }
 #profile-details-edit-btn{
+    background-color: #8722f2;
+    color: white;
+    outline: none;
+    border: 0px;
+    padding: 10px;
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 4px;
+    width: 100%;
+}
+#save-profile-btn{
     background-color: #8722f2;
     color: white;
     outline: none;

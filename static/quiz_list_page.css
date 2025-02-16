@@ -83,7 +83,7 @@ header{
     cursor: pointer;
     overflow: hidden;
 }
-#profile-section>figure>img{
+#profile-section>a>figure>img{
     height: 100%;
     width: 100%;
 }
@@ -178,6 +178,8 @@ header{
   #main-gif-video-first-section{
     height: 70%;
     width: 40%;
+    border-radius: 10px;
+    overflow: hidden;
   }
   #main-gif-image-first-section{
     height: 100%;

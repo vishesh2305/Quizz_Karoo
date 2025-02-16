@@ -14,17 +14,19 @@
     </head>
 <body>
 
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url_for('home') }}">
-                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                QuizKaroo
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('auth.register') }}"><button class="navbar-login-button">Signup</button></a>
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar ">
+            <div class="container-fluid" id="logo-container">
+                <a class="navbar-brand" href="{{ url_for('home') }}">
+                    <img id="logo-img" src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    <h6>Quizz Karoo</h6>
+                </a>
+            </div>
+            <div>
+                <a href="{{ url_for('auth.login') }}"><button class="navbar-login-button">SignUp</button></a>
+            </div>
+        </nav>
+    </header>
 
     <main>
         <section id="main-login-container">

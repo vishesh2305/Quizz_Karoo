@@ -18,7 +18,7 @@
   <header id="header">
     <nav id="navbar">
 
-        <div id="logo-container" onclick="window.location.href='{{url_for('auth.dashboard')}}'">
+        <div id="logo-container" onclick="window.location.href='{{'auth.dashboard'}}'">
             <figure>
                 <img src="/static/logo.jpg" alt="Logo_img">
             </figure>
@@ -55,21 +55,27 @@
     <main>
 
 
-        <section id="sidebar-main">
-            <span id="sidebar-upper">
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-            <button type="button" class="btns-sidebar-main">Home</button>
-        </span>
-        <span id="sidebar-lower">
-            <button type="button" class="btns-sidebar-main">Home</button>
-        </span>
-        </section>
+      <section id="sidebar-main">
+
+        <div class="row">
+            <div class="col-4 w-full" id="col-4">
+              <div id="list-example" class="list-group">
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-1">Educational Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-2">Food Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-3">Political Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-4">Geographical Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-5">Current Affairs Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-6">Historical Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-7">Health Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-8">Scientific Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-9">Household Item Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-10">General Knowledge Quiz</a>
+              </div>
+            </div>
+
+            </div>
+
+    </section>
 
 
 
@@ -77,20 +83,17 @@
         <section id="content-section-main">
 
 
-
                  <div id="cards-2-row">
 
-
-
                         <div class="card swiper-slide" style="width: 18rem;">
                           <div class="image-content">
                             <span class="overlay"></span>
                             <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
+                              <img src="/static/cube_giphy.gif" alt="Quiz Image" class="card-img-top">
                             </div>
                           </div>
                           <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Test your math skills with our interactive quizzes designed to challenge your numerical prowess.</p>
                           </div>
                         </div>
                 
@@ -98,11 +101,11 @@
                           <div class="image-content">
                             <span class="overlay"></span>
                             <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
+                              <img src="/static/edu_quiz_list_images/science_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
                             </div>
                           </div>
                           <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Explore the wonders of science with quizzes that spark curiosity and encourage discovery.</p>
                           </div>
                         </div>
                 
@@ -110,11 +113,11 @@
                           <div class="image-content">
                             <span class="overlay"></span>
                             <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
+                              <img src="/static/edu_quiz_list_images/historical_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
                             </div>
                           </div>
                           <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Dive into history with engaging quizzes that bring the past to life.</p>
                           </div>
                         </div>
                 
@@ -122,55 +125,59 @@
                           <div class="image-content">
                             <span class="overlay"></span>
                             <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
+                              <img src="/static/edu_quiz_list_images/language_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
                             </div>
                           </div>
                           <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Challenge your language skills with quizzes crafted to enhance vocabulary and grammar.</p>
                           </div>
                         </div>
+                        
                         <div class="card swiper-slide" style="width: 18rem;">
                           <div class="image-content">
                             <span class="overlay"></span>
                             <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
+                              <img src="/static/edu_quiz_list_images/geographical_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
                             </div>
                           </div>
                           <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Explore geography with quizzes that test your knowledge of world maps and cultures.</p>
                           </div>
                         </div>
+                        
                         <div class="card swiper-slide" style="width: 18rem;">
                           <div class="image-content">
                             <span class="overlay"></span>
                             <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
+                              <img src="/static/edu_quiz_list_images/generalKnowledge_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
                             </div>
                           </div>
                           <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Boost your general knowledge with quizzes that cover a range of fascinating topics.</p>
                           </div>
                         </div>
+                        
                         <div class="card swiper-slide" style="width: 18rem;">
                           <div class="image-content">
                             <span class="overlay"></span>
                             <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
+                              <img src="/static/edu_quiz_list_images/criticialThinking_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
                             </div>
                           </div>
                           <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Sharpen your critical thinking with puzzles and quizzes designed for every learner.</p>
                           </div>
                         </div>
+                        
                         <div class="card swiper-slide" style="width: 18rem;">
                           <div class="image-content">
                             <span class="overlay"></span>
                             <div class="card-image">
-                              <img src="/static/logo.jpg" alt="..." class="card-img-top">
+                              <img src="/static/edu_quiz_list_images/funLearning_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
                             </div>
                           </div>
                           <div class="card-content">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Find the perfect quiz for you and embark on a journey of fun, interactive learning.</p>
                           </div>
                         </div>
 
@@ -184,47 +191,49 @@
 
 
                  <footer id="footer">
-                   <div id="footer-links-container">
-                   <span class="links-section">
-                       <h4>Popular Templates</h4>
-                       <span class="footer-links-container">
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Product Testing</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">All Templates</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Surveys</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Overview</a>
-                       </span>
-                   </span>
-             
-                   <span class="links-section">
-                       <h4>Resources</h4>
-                       <span class="footer-links-container">
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Blog</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Resource center</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Support</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Contact sales</a>
-                       </span>
-                   </span>
-             
-                   <span class="links-section">
-                       <h4>About</h4>
-                       <span class="footer-links-container">
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">How to create surveys</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Log in</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Sign up</a>
-                           <a href="#" onclick="window.location.href = '/signuppage/signup.html'">Survey best practices</a>
-                       </span>
-                   </span>
-                   </div>
-             
-                   <span id="footer-social-links-container">
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-linkedin fa-lg"></i></span>
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-youtube fa-lg"></i></span>
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-instagram fa-lg"></i></span>
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-facebook fa-lg"></i></span>
-                       <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-x-twitter fa-lg"></i></span>
-                   </span>
-             
-               </footer>
+                  <div id="footer-links-container">
+                    <span class="links-section">
+                      <h4>Popular Templates</h4>
+                      <span class="footer-links-container">
+                        <a href="#" onclick="alert('This Option will be available Soon!')">Best Quizzes</a>
+                        <a href="#" onclick="alert('This Option will be available Soon!')">All Templates</a>
+                        <a href="#" onclick="alert('This Option will be available Soon!')">Overview</a>
+                      </span>
+                    </span>
+          
+                    <span class="links-section">
+                      <h4>Resources</h4>
+                      <span class="footer-links-container">
+                        <a href="#" onclick="alert('This Option will be available Soon!')">Blog</a>
+                        <a href="#" onclick="alert('This Option will be available Soon!')">Resource center</a>
+                        <a href="#" onclick="alert('This Option will be available Soon!')">Support</a>
+                      </span>
+                    </span>
+          
+                    <span class="links-section">
+                      <h4>About</h4>
+                      <span class="footer-links-container">
+                        <a href="#" onclick="alert('This Option will be available Soon!')">How to play Quiz</a>
+                        <a href="#" onclick="window.location.href='{{url_for('auth.login')}}'">Log in</a>
+                        <a href="#" onclick="window.location.href='{{url_for('auth.register')}}'">Sign up</a>
+                      </span>
+                    </span>
+                  </div>
+          
+                  <span id="footer-social-links-container">
+                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+                        class="fa-brands fa-linkedin fa-lg"></i></span>
+                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+                        class="fa-brands fa-youtube fa-lg"></i></span>
+                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+                        class="fa-brands fa-instagram fa-lg"></i></span>
+                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+                        class="fa-brands fa-facebook fa-lg"></i></span>
+                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+                        class="fa-brands fa-x-twitter fa-lg"></i></span>
+                  </span>
+          
+                </footer>
 
         </section>
 

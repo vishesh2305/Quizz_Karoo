@@ -1,0 +1,278 @@
+.bebas-neue-regular {
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  *{
+      padding: 0px;
+      margin: 0px;
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  
+  
+  body{
+      width: 100vw;
+  }
+  ::-webkit-scrollbar{
+      display: none;
+  }
+  
+  header{
+      display: flex;
+      align-items: center;
+      width: 100vw;
+      position: fixed;
+      background-color: white;
+      z-index: 2;
+  }
+  #navbar{
+      width: 100%;
+      height: 5em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0px 0px 2px rgba(0, 0,0,0.3);
+      padding: 0em 2em;
+  }
+  #logo-container{
+      margin: 0em 1.5em;
+      border-radius: 50%;
+      height: 4em;
+      width: 4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+  }
+  #logo-container>figure>img{
+      height: 100%;
+      width: 100%;
+  }
+  
+  
+  #searchbar-container{
+      width: 40%;
+  }
+  
+  .search-btn{
+      border: 1px solid rgb(135, 34, 242);
+      background-color: white;
+      padding: 0em 1em;
+      border-radius: 8px;
+  }
+  .search-btn:hover{
+      background-color: #8722f2;
+      transition: 100ms linear;
+      color: white;
+  }
+  
+  
+  #buttons-container{
+      width: max-content;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  #profile-section{
+      margin: 0em 1.5em;
+      border-radius: 50%;
+      height: 4em;
+      width: 4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+  }
+  #profile-section>a>figure>img{
+      height: 100%;
+      width: 100%;
+  }
+  
+
+
+  
+#main{
+    min-height: 100vh;
+    max-height: max-content;
+    display: flex;
+    top: 5em;
+    z-index: 0;
+
+}
+#sidebar-main{
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 89vh;
+    box-shadow: 0px 2px 1px rgba(0, 0,0,0.3);
+    overflow: hidden;
+    border-bottom:none;
+    position: fixed;
+    top: 5em;
+    z-index: 2;
+}
+#sidebar-upper{
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  width: 100%;
+}
+.btns-sidebar-main{
+    width: 100%;
+    outline: none;
+    border: 0px;
+    height: 3em;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+}
+.btns-sidebar-main:hover{
+    background-color: #f0f0f0;
+}
+
+#sidebar-lower{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+
+
+#content-section-main{
+    width: 85vw;
+    height: max-content;
+    position: relative;
+    left: 15vw;
+    top: 5em;
+    z-index: 0;
+    padding: 2em;
+}
+
+
+#web-detail{
+
+    border-radius: 10px;
+    padding: 1em;
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+
+#aboutteam{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 2em;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.h1aboutteam{
+    font-size: 2.5em;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#team{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 4em 0em;
+}
+#teamimage{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    height: 10em;
+    width: 10em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#teamimage>img{
+    height: 10em;
+    width: 10em;
+}
+
+#iconss>a{
+    color: black;
+}
+
+
+
+
+
+
+
+
+footer{
+    width: 100%;
+    margin: 5em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  #footer-links-container{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .links-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .footer-links-container{
+    display: flex;
+    flex-direction: column;
+  
+  }
+  .links-section>h4{
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 3px;
+  }
+  .footer-links-container>a{
+    text-decoration: none;
+    color: black;
+    font-family: serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 1em;
+  }
+  .footer-links-container>a:hover{
+    text-decoration: underline;
+  }
+  #footer-social-links-container{
+    margin-top: 5em;
+    width: 16em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .footer-social-links{
+    padding: 4%;
+    transition: 100ms linear;
+    border-radius: 10px;
+  }
+  .footer-social-links:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 8px;
+    transition: 100ms linear;
+  }

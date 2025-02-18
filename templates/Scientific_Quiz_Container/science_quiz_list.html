@@ -1,242 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Quizz-Karoo - Scientific Quizzes</title>
-        <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_list.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="{{ url_for('static', filename='/static/dashboard.css') }}?v=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    </head>
-<body>
+{% extends "base.html" %}
+{% block title %}Quizz-Karoo - Scientific Quizzes{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_list.css">
+  <div id="cards-2-row">
     
-  <header id="header">
-    <nav id="navbar">
-      <div id="logo-container" onclick="window.location.href='{{ url_for('auth.dashboard') }}'">
-        <figure>
-          <img src="/static/logo.jpg" alt="Logo_img">
-        </figure>
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for scientific quiz -->
+          <img src="/static/science_quiz_list_images/science_card_1.gif" alt="Scientific Quiz Image" class="card-img-top">
+        </div>
       </div>
-      <div id="searchbar-container">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
+      <div class="card-content">
+        <p class="card-text">Test your overall science knowledge with quizzes covering various scientific disciplines.</p>
       </div>
-      <div id="buttons-container">
-        {% if current_user.is_admin %}
-        <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ url_for('auth.create_quiz') }}'">Create Quiz</button>
-        {% endif %}
-        <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ url_for('auth.quizzes') }}'">View Quizzes</button>
-        <span id="profile-section">
-          <a href="{{ url_for('auth.profile') }}" style="display: block;">
-            <figure style="margin: 0;">
-              <img src="/static/logo.jpg" alt="Profile Icon">
-            </figure>
-          </a>
-        </span>
+    </div>
+    
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for physics quiz -->
+          <img src="/static/science_quiz_list_images/science_card_2.gif" alt="Physics Quiz Image" class="card-img-top">
+        </div>
       </div>
-    </nav>
-  </header>
-
-  <main>
-    <section id="sidebar-main">
-
-        <div class="row">
-            <div class="col-4 w-full" id="col-4">
-              <div id="list-example" class="list-group">
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-1">Educational Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-2">Food Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-3">Political Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-4">Geographical Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-5">Current Affairs Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-6">Historical Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-7">Health Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-8">Scientific Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-9">Household Item Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-10">General Knowledge Quiz</a>
-              </div>
-            </div>
-
-            </div>
-
-    </section>
-
-
-    <section id="content-section-main">
-      <div id="cards-2-row">
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for scientific quiz -->
-              <img src="https://media.giphy.com/media/3oEjHLzm4BCF8zfPyw/giphy.gif" alt="Scientific Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Test your overall science knowledge with quizzes covering various scientific disciplines.</p>
-          </div>
-        </div>
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for physics quiz -->
-              <img src="https://media.giphy.com/media/3ov9jXXb7UzUr2qkUo/giphy.gif" alt="Physics Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Explore the wonders of physics with quizzes on motion, energy, and the laws that govern the universe.</p>
-          </div>
-        </div>
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for chemistry quiz -->
-              <img src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="Chemistry Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Delve into chemical reactions, elements, and compounds with our engaging chemistry quizzes.</p>
-          </div>
-        </div>
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for biology quiz -->
-              <img src="https://media.giphy.com/media/26xBsXuxQ4WqHFiOY/giphy.gif" alt="Biology Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Challenge your knowledge of living organisms, anatomy, and ecosystems with our biology quizzes.</p>
-          </div>
-        </div>
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for astronomy quiz -->
-              <img src="https://media.giphy.com/media/l0ExnZU6TtFz0zLHa/giphy.gif" alt="Astronomy Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Explore the universe, stars, and celestial bodies with quizzes focused on astronomy.</p>
-          </div>
-        </div>
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for earth science quiz -->
-              <img src="https://media.giphy.com/media/3orieY9MkL37L6B8Ba/giphy.gif" alt="Earth Science Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Learn about the Earth’s structure, weather patterns, and natural phenomena through our earth science quizzes.</p>
-          </div>
-        </div>
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for environmental science -->
-              <img src="https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif" alt="Environmental Science Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Examine climate change, ecosystems, and conservation efforts with our environmental science quizzes.</p>
-          </div>
-        </div>
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for mathematical science -->
-              <img src="https://media.giphy.com/media/3o7TKvGgQGvZD3xCTW/giphy.gif" alt="Mathematical Science Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Put your logic and numerical skills to the test with quizzes on mathematical concepts and problem solving.</p>
-          </div>
-        </div>
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for technology & innovation -->
-              <img src="https://media.giphy.com/media/3o6ZtpxSZbQRRnwCKQ/giphy.gif" alt="Technology & Innovation Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Explore breakthroughs in technology and scientific innovation with our quizzes on modern discoveries.</p>
-          </div>
-        </div>
-        
-        <div class="card swiper-slide" style="width: 18rem;">
-          <div class="image-content">
-            <span class="overlay"></span>
-            <div class="card-image">
-              <!-- Sample GIF for science trivia -->
-              <img src="https://media.giphy.com/media/l0MYB8Ory7Hqefo9a/giphy.gif" alt="Science Trivia Quiz Image" class="card-img-top">
-            </div>
-          </div>
-          <div class="card-content">
-            <p class="card-text">Challenge yourself with fun and engaging science trivia covering a broad range of topics.</p>
-          </div>
-        </div>
-        
+      <div class="card-content">
+        <p class="card-text">Explore the wonders of physics with quizzes on motion, energy, and the laws that govern the universe.</p>
       </div>
-    </section>
-
-    <footer id="footer">
-      <div id="footer-links-container">
-        <span class="links-section">
-          <h4>Popular Templates</h4>
-          <span class="footer-links-container">
-            <a href="#" onclick="alert('This Option will be available Soon!')">Best Quizzes</a>
-            <a href="#" onclick="alert('This Option will be available Soon!')">All Templates</a>
-            <a href="#" onclick="alert('This Option will be available Soon!')">Overview</a>
-          </span>
-        </span>
-        <span class="links-section">
-          <h4>Resources</h4>
-          <span class="footer-links-container">
-            <a href="#" onclick="alert('This Option will be available Soon!')">Blog</a>
-            <a href="#" onclick="alert('This Option will be available Soon!')">Resource Center</a>
-            <a href="#" onclick="alert('This Option will be available Soon!')">Support</a>
-          </span>
-        </span>
-        <span class="links-section">
-          <h4>About</h4>
-          <span class="footer-links-container">
-            <a href="#" onclick="alert('This Option will be available Soon!')">How to Play Quiz</a>
-            <a href="#" onclick="window.location.href='{{ url_for('auth.login') }}'">Log in</a>
-            <a href="#" onclick="window.location.href='{{ url_for('auth.register') }}'">Sign up</a>
-          </span>
-        </span>
+    </div>
+    
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for chemistry quiz -->
+          <img src="/static/science_quiz_list_images/science_card_3.gif" alt="Chemistry Quiz Image" class="card-img-top">
+        </div>
       </div>
-      <span id="footer-social-links-container">
-        <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-linkedin fa-lg"></i></span>
-        <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-youtube fa-lg"></i></span>
-        <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-instagram fa-lg"></i></span>
-        <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-facebook fa-lg"></i></span>
-        <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i class="fa-brands fa-x-twitter fa-lg"></i></span>
-      </span>
-    </footer>
-  </main>
-</body>
-</html>
+      <div class="card-content">
+        <p class="card-text">Delve into chemical reactions, elements, and compounds with our engaging chemistry quizzes.</p>
+      </div>
+    </div>
+    
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for biology quiz -->
+          <img src="/static/science_quiz_list_images/science_card_4.gif" alt="Biology Quiz Image" class="card-img-top">
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-text">Challenge your knowledge of living organisms, anatomy, and ecosystems with our biology quizzes.</p>
+      </div>
+    </div>
+    
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for astronomy quiz -->
+          <img src="/static/science_quiz_list_images/science_card_5.gif" alt="Astronomy Quiz Image" class="card-img-top">
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-text">Explore the universe, stars, and celestial bodies with quizzes focused on astronomy.</p>
+      </div>
+    </div>
+    
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for earth science quiz -->
+          <img src="/static/science_quiz_list_images/science_card_6.gif" alt="Earth Science Quiz Image" class="card-img-top">
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-text">Learn about the Earth’s structure, weather patterns, and natural phenomena through our earth science quizzes.</p>
+      </div>
+    </div>
+    
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for environmental science -->
+          <img src="/static/science_quiz_list_images/science_card_7.gif" alt="Environmental Science Quiz Image" class="card-img-top">
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-text">Examine climate change, ecosystems, and conservation efforts with our environmental science quizzes.</p>
+      </div>
+    </div>
+    
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for mathematical science -->
+          <img src="/static/science_quiz_list_images/science_card_8.gif" alt="Mathematical Science Quiz Image" class="card-img-top">
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-text">Put your logic and numerical skills to the test with quizzes on mathematical concepts and problem solving.</p>
+      </div>
+    </div>
+    
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for technology & innovation -->
+          <img src="/static/science_quiz_list_images/science_card_9.gif" alt="Technology & Innovation Quiz Image" class="card-img-top">
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-text">Explore breakthroughs in technology and scientific innovation with our quizzes on modern discoveries.</p>
+      </div>
+    </div>
+    
+    <div class="card swiper-slide" style="width: 18rem;">
+      <div class="image-content">
+        <span class="overlay"></span>
+        <div class="card-image">
+          <!-- Sample GIF for science trivia -->
+          <img src="/static/science_quiz_list_images/science_card_10.gif" alt="Science Trivia Quiz Image" class="card-img-top">
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-text">Challenge yourself with fun and engaging science trivia covering a broad range of topics.</p>
+      </div>
+    </div>
+    
+  </div>
+{% endblock %}

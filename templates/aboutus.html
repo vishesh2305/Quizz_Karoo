@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Quizz-Karoo</title>
+    <link rel="stylesheet" href="/static/aboutus.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/static/aboutus.css') }}?v=1.0">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+
+</head>
+<body>
+
+
+
+    <header id="header">
+        <nav id="navbar">
+    
+            <div id="logo-container">
+                <figure>
+                    <img src="/static/logo.jpg" alt="Logo_img">
+                </figure>
+            </div>
+    
+            <div id="searchbar-container">
+              <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                  <!-- 'q' is the name we will look up in Flask code -->
+                  <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                  <button class="search-btn" type="submit">Search</button>
+                </form>
+                
+          </div>
+    
+            <div id="buttons-container">
+                {% if current_user.is_admin %}
+                <button type="button" class="btn btn-secondary"
+                    onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
+                {% endif %}
+                <button type="button" class="btn btn-secondary"
+                    onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
+    
+                <!-- Profile Section -->
+                <span id="profile-section">
+                    <a href="{{ url_for('auth.profile') }}" style="display: block;">
+                        <figure style="margin: 0;">
+                            <img src="/static/logo.jpg" alt="Profile Icon">
+                        </figure>
+                    </a>
+                </span>
+            </div>
+    
+        </nav>
+    </header>
+    
+
+
+    <main id="main">
+
+        <section id="sidebar-main">
+            <span id="sidebar-upper">
+              <button type="button" class="btns-sidebar-main">Home</button>
+              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Discover</button>
+              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Library</button>
+              <button type="button" class="btns-sidebar-main" onclick="alert('This Option will be available Soon!')">Groups</button>
+              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Marketplace</button>
+              <a class="btns-sidebar-main" href="#cards-3-row" style="text-decoration: none; color:black;">What's New?</a>
+      
+              {% if current_user.is_admin %}
+              <button type="button" class="btns-sidebar-main"
+                onclick="window.location.href='{{ url_for('auth.create_quiz') }}'">Create Quiz</button>
+              {% endif %}
+              <button type="button" class="btns-sidebar-main"
+                onclick="window.location.href='{{ url_for('auth.quizzes') }}'">Find Quizzes</button>
+      
+      
+              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{url_for('auth.profile')}}'">Profile</button>
+            </span>
+            <span id="sidebar-lower">
+              <button type="button" class="btns-sidebar-main">Help and Support</button>
+            </span>
+          </section>
+
+
+
+
+          <section id="content-section-main">
+
+
+            <div id="web-detail">
+                <h1>What is Quizz-Karoo</h1><br><br>
+                <p>A Quiz Application is an interactive platform designed to challenge and entertain users through a variety of engaging quizzes. At QuizKaro, our app transforms learning into a fun experience by offering quizzes across diverse topics, allowing you to test your knowledge, learn new facts, and engage in friendly competition. Whether you're looking to brush up on trivia or discover new interests, our user-friendly interface makes it easy and enjoyable to explore the world of quizzes. Join us and see how learning can be both exciting and rewarding!</p>
+            </div>
+
+
+
+            <div id="aboutteam">
+
+
+              <div class="h1aboutteam">
+                  <h1>TEAM MEMBERS</h1><br><br>
+              </div>
+
+
+
+              <div id="team">
+                  <div id="teamimage">
+                      <img src='/static/aboutus_vishesh.png' alt="Image">
+                  </div>
+                  <div id="disteam">
+                      <h3>Vishesh (Team Leader)</h3><br>
+                      <li>BORN ON 23/09/2005 AT Sangrur, PUNJAB.</li><br>
+                      <li>Skills : WebDevelopment, Python, Cpp, CyberSecurity, React, MernStack, Public Speaking and more...</li><br>
+                      <li>Currently Doing Engineering in Computer Science with specialization in Artificial Intelligence and Machine Learning</li><br>
+                      <div id="iconss">
+                          <a href="https://www.instagram.com/visheshbhardwaj_?igsh=Z3Jleml4ampkNmN3" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>&nbsp;
+                          
+                          <a href="mailto:vishesh2916.beai24@chitkara.edu.in"><i class="fa-solid fa-envelope fa-2xl"></i></a>&nbsp;
+                          </div>
+                  </div>
+      
+              </div>
+
+
+
+
+
+              <div id="team">
+                  <div id="teamimage">
+                      <img src='/static/aboutus_sumedha.png' alt="Image">
+                  </div>
+                  <div id="disteam">
+                      <h3>Sumedha Kataria</h3><br>
+                      <li>BORN ON 15/07/2006 AT Karnal, PUNJAB.</li><br>
+                      <li>My Skills : || Artificial Intelligence || Web Development</li><br>
+                      <li>Currently Doing Engineering in Computer Science with specialization in Artificial Intelligence and Machine Learning</li><br>
+                      <div id="iconss">
+                          <a href="https://www.instagram.com/sumedha_kataria_?igsh=M3ZreWJ6czlqNWNt" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>&nbsp;
+                        
+                          <a href="mailto:sumedhakataria3464.beai24@chitkara.edu.in"><i class="fa-solid fa-envelope fa-2xl"></i></a>&nbsp;
+                      </div>
+                  </div>
+              </div>
+              <div id="team">
+                  <div id="teamimage">
+                      <img src='/static/aboutus_sameer.png' alt="image">
+              
+                  
+                  </div>
+                  <div id="disteam">
+                      <h3>Sameer Verma</h3><br>
+                      <li>BORN ON 23/09/2005 AT Samana, PUNJAB.</li><br>
+                      <li>My Skills : || Artificial Intelligence || Web Development</li><br>
+                      <li>Currently Doing Engineering in Computer Science with specialization in Artificial Intelligence and Machine Learning</li><br>
+                      <div id="iconss">
+                          <a href="https://www.instagram.com/i.verma__?igsh=MWZtbmdjZ3Z0cjIxZQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>&nbsp;
+                          
+                          <a href="mailto:sameer3442.beai24@chitkara.edu.in"><i class="fa-solid fa-envelope fa-2xl"></i></a>&nbsp;
+                      </div>
+                  </div>
+              </div>
+              <div id="team">
+                  <div id="teamimage">
+                      <img src='/static/aboutus_akshaythakur.png' alt="Image">
+                  </div>
+                  <div id="disteam">
+                      <h3>Akshay Thakur</h3><br>
+                      <li>BORN ON 17/12/2005 AT Hamirpur, Himachal.</li><br>
+                      <li>My Skills : || Artificial Intelligence || Web Development</li><br>
+                      <li>Currently Doing Engineering in Computer Science with specialization in Artificial Intelligence and Machine Learning
+                      </li><br>
+                      <div id="iconss">
+                          <a href="https://www.instagram.com/akshay_thakur_17_?igsh=cGtlbThwMW5sdmo=" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>&nbsp;
+                          
+                          <a href="mailto:akshaythakur3407.beai24@chitkara.edu.in"><i class="fa-solid fa-envelope fa-2xl"></i></a>&nbsp;
+                          </div>
+                  </div>
+      
+              </div>
+          </div>
+
+
+
+
+          
+      <footer id="footer">
+        <div id="footer-links-container">
+          <span class="links-section">
+            <h4>Popular Templates</h4>
+            <span class="footer-links-container">
+              <a href="#" onclick="alert('This Option will be available Soon!')">Best Quizzes</a>
+              <a href="#" onclick="alert('This Option will be available Soon!')">All Templates</a>
+              <a href="#" onclick="alert('This Option will be available Soon!')">Overview</a>
+            </span>
+          </span>
+
+          <span class="links-section">
+            <h4>Resources</h4>
+            <span class="footer-links-container">
+              <a href="#" onclick="alert('This Option will be available Soon!')">Blog</a>
+              <a href="#" onclick="alert('This Option will be available Soon!')">Resource center</a>
+              <a href="#" onclick="alert('This Option will be available Soon!')">Support</a>
+            </span>
+          </span>
+
+          <span class="links-section">
+            <h4>About</h4>
+            <span class="footer-links-container">
+              <a href="#" onclick="alert('This Option will be available Soon!')">How to play Quiz</a>
+              <a href="#" onclick="window.location.href='{{url_for('auth.login')}}'">Log in</a>
+              <a href="#" onclick="window.location.href='{{url_for('auth.register')}}'">Sign up</a>
+            </span>
+          </span>
+        </div>
+
+        <span id="footer-social-links-container">
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-linkedin fa-lg"></i></span>
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-youtube fa-lg"></i></span>
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-instagram fa-lg"></i></span>
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-facebook fa-lg"></i></span>
+          <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
+              class="fa-brands fa-x-twitter fa-lg"></i></span>
+        </span>
+
+      </footer>
+
+          </section>
+
+
+
+
+
+    </main>
+
+
+
+
+
+    
+</body>
+</html>

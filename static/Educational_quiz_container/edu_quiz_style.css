@@ -82,7 +82,7 @@ header{
     cursor: pointer;
     overflow: hidden;
 }
-#profile-section>figure>img{
+#profile-section>a>figure>img{
     height: 100%;
     width: 100%;
 }
@@ -188,7 +188,7 @@ header{
 }
 
 
-.survey-questions{
+.quiz-question{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -203,13 +203,41 @@ header{
     width: 100%;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
-.survey-questions>h2{
+
+.quiz-question>form>h2{
     font-family: "Bebas Neue", serif;
     font-weight: 400;
     font-style: normal;
     letter-spacing: 3px;
 }
-.survey-questions>ul{
+
+
+
+#content-section-main>h2{
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 3px;
+}
+
+.quiz-question>p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 20vh;
+    width: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 10px;
+}
+#quiz-question{
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 3px;
+}
+
+.quiz-question>div>ul{
     list-style: none;
     padding: 0px;
     display: grid;
@@ -217,7 +245,62 @@ header{
     align-items: start;
     justify-content: space-evenly;
 }
-.survey-questions>ul>li{
+.quiz-question>form>div>ul>li{
+    margin: 1em 0em;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#questions-container>ul{
+    list-style: none;
+    padding: 0px;
+    display: grid;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+}
+
+#questions-container>ul>li{
+    margin: 1em 0em;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+.check-answer{
+    background-color: #FFFFFF;
+    border: 1px solid rgb(209,213,219);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #111827;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    padding: 2em;
+}
+.quiz-question>ul{
+    list-style: none;
+    padding: 0px;
+    display: grid;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+}
+.quiz-question>ul>li{
     margin: 1em 0em;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;

@@ -17,9 +17,12 @@ class Quiz(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=True)
+
+    category = db.Column(db.String(100), nullable=True)
+    difficulty = db.Column(db.String(50), nullable=True)
+
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
-
 
     questions = db.relationship('Question', backref='quiz', lazy=True, cascade="all, delete")
 

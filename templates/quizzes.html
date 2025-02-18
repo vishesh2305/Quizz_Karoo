@@ -5,85 +5,170 @@
     <meta charset="UTF-8">
     <title>Quizz-Karoo - All Quizzes</title>
     <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_style.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Educational_quiz_container/edu_quiz_style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/static/Educational_quiz_container/edu_quiz_style.css') }}?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 </head>
 
 <body>
+
     <header id="header">
         <nav id="navbar">
+    
             <div id="logo-container">
                 <figure>
                     <img src="/static/logo.jpg" alt="Logo_img">
                 </figure>
             </div>
-
+    
             <div id="searchbar-container">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="search-btn" type="submit">Search</button>
+              <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                  <!-- 'q' is the name we will look up in Flask code -->
+                  <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                  <button class="search-btn" type="submit">Search</button>
                 </form>
-            </div>
-
+                
+          </div>
+    
             <div id="buttons-container">
+                {% if current_user.is_admin %}
+                <button type="button" class="btn btn-secondary"
+                    onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
+                {% endif %}
+                <button type="button" class="btn btn-secondary"
+                    onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
+    
+                <!-- Profile Section -->
                 <span id="profile-section">
-                    <figure>
-                        <img src="/static/logo.jpg" alt="image">
-                    </figure>
+                    <a href="{{ url_for('auth.profile') }}" style="display: block;">
+                        <figure style="margin: 0;">
+                            <img src="/static/logo.jpg" alt="Profile Icon">
+                        </figure>
+                    </a>
                 </span>
             </div>
+    
         </nav>
     </header>
+    
 
     <main id="main">
         <section id="sidebar-main">
+
             <div class="row">
                 <div class="col-4 w-full" id="col-4">
-                    <div id="list-example" class="list-group">
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">Educational Quiz</a>
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">Food Quiz</a>
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">Political Quiz</a>
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">Geographical Quiz</a>
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">Current Affairs Quiz</a>
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">Historical Quiz</a>
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">Health Quiz</a>
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">Scientific Quiz</a>
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">Household Item Quiz</a>
-                        <a class="list-group-item list-group-item-action btns-sidebar-main" href="#">General Knowledge Quiz</a>
+                    <div class="list-group" id='list-example'>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('educational_quizzes') }}">
+                           Educational Quiz
+                        </a>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('auth.food_quiz') }}">
+                           Food Quiz
+                        </a>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('auth.political_quiz') }}">
+                           Political Quiz
+                        </a>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('auth.geographical_quiz') }}">
+                           Geographical Quiz
+                        </a>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('auth.currentaffairs_quiz') }}">
+                           Current Affairs Quiz
+                        </a>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('auth.historical_quiz') }}">
+                           Historical Quiz
+                        </a>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('auth.health_quiz') }}">
+                           Health Quiz
+                        </a>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('auth.scientific_quiz') }}">
+                           Scientific Quiz
+                        </a>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('auth.household_quiz') }}">
+                           Household Item Quiz
+                        </a>
+                        <a class="list-group-item list-group-item-action btns-sidebar-main"
+                           href="{{ url_for('auth.gk_quiz') }}">
+                           General Knowledge Quiz
+                        </a>
                     </div>
+                    
                 </div>
-            </div>
+    
+                </div>
+    
         </section>
 
         <section id="content-section-main">
             <h1>All Quizzes</h1>
 
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+
+            <div class="quiz-timer-container mb-3 p-3 border rounded bg-light d-flex align-items-center gap-3">
+                <label for="quiz-timer" class="form-label mb-0">Set Timer (minutes):</label>
+                <input type="number" id="quiz-timer" class="form-control w-25" min="1" placeholder="Enter minutes">
+                <button type="button" class="btn btn-outline-primary" onclick="startQuizTimer(this)">Start Timer</button>
+                <div id="timer-display" class="fw-bold text-danger ms-3" style="display: none;"></div>
+            </div>
+            
+
+
+
+
+            <form method="GET" action="{{ url_for('auth.quizzes') }}" class="d-flex mb-3">
+                <!-- Category Filter -->
+                <select class="form-select me-2" name="category" style="max-width: 200px;">
+                    <option value="">All Categories</option>
+                    <option value="Educational">Educational</option>
+                    <option value="Food">Food</option>
+                    <option value="Political">Political</option>
+                    <option value="Geographical">Geographical</option>
+                    <option value="Current Affairs">Current Affairs</option>
+                    <option value="Historical">Historical</option>
+                    <option value="Health">Health</option>
+                    <option value="Scientific">Scientific</option>
+                    <option value="Household">Household</option>
+                    <option value="General Knowledge">General Knowledge</option>
+                    <!-- Add or modify as needed -->
+                </select>
+            
+                <!-- Difficulty Filter -->
+                <select class="form-select me-2" name="difficulty" style="max-width: 200px;">
+                    <option value="">All Difficulties</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+            
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+            
+
+
 
             {% for quiz in quizzes %}
             <h2>{{ quiz.title }}</h2>
-                <div class="survey-questions">
+                <div class="quiz-question">
                     <p>{{ quiz.description }}</p>
-                    <p>Created by User ID: {{ quiz.created_by }}</p>
 
                     <!-- Show result if this quiz was just submitted -->
                     {% if quiz_result_id == quiz.id %}
                         <p><strong>Your Score: {{ quiz_score }} / {{ quiz_total }}</strong></p>
                     {% endif %}
 
-                    <form action="{{ url_for('auth.submit_quiz', quiz_id=quiz.id) }}" method="POST">
+                    <form id="quiz-question" action="{{ url_for('auth.submit_quiz', quiz_id=quiz.id) }}" method="POST">
                         {% for question in quiz.questions %}
-                            <div>
+                            <div id="questions-container">
                                 <p><strong>{{ question.text }}</strong></p>
                                 <ul>
                                     {% for option in question.options %}
@@ -112,5 +197,42 @@
         </section>
     </main>
 </body>
+
+
+<script>
+    function startQuizTimer(button) {
+        const timerInput = button.previousElementSibling;
+        const timerDisplay = button.nextElementSibling;
+        const minutes = parseInt(timerInput.value, 10);
+
+        if (isNaN(minutes) || minutes <= 0) {
+            alert("Please enter a valid number of minutes.");
+            return;
+        }
+
+        let timeRemaining = minutes * 60;
+        timerDisplay.style.display = 'block';
+
+        const interval = setInterval(() => {
+            const minutesLeft = Math.floor(timeRemaining / 60);
+            const secondsLeft = timeRemaining % 60;
+            timerDisplay.textContent = `Time Remaining: ${minutesLeft}:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+
+            if (timeRemaining <= 0) {
+                clearInterval(interval);
+                alert("Time is up! Submitting your quiz.");
+                button.closest('form').submit(); // Auto-submit the form
+            }
+
+            timeRemaining--;
+        }, 1000);
+
+        // Disable input and button after starting the timer
+        timerInput.disabled = true;
+        button.disabled = true;
+    }
+</script>
+
+
 
 </html>

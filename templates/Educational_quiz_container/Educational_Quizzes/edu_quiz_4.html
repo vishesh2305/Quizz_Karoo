@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizz-Karoo - Educational Quizzes</title>
+    <link
+      rel="stylesheet"
+      href="/static/Educational_quiz_container/edu_quiz_style.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="/static/Educational_quiz_container/edu_quiz_style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/static/Educational_quiz_container/edu_quiz_style.css') }}?v=1.0"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header id="header">
+      <nav id="navbar">
+        <div id="logo-container">
+          <figure>
+            <img src="/static/logo.jpg" alt="Logo_img" />
+          </figure>
+        </div>
+
+        <div id="searchbar-container">
+          <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+              <!-- 'q' is the name we will look up in Flask code -->
+              <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+              <button class="search-btn" type="submit">Search</button>
+            </form>
+            
+      </div>
+
+        <div id="buttons-container">
+          <button type="button" class="btn btn-secondary">Create</button>
+          <span id="profile-section">
+            <figure>
+              <img src="/static/logo.jpg" alt="image" />
+            </figure>
+          </span>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="sidebar-main">
+        <div class="row">
+          <div class="col-4 w-full" id="col-4">
+            <div id="list-example" class="list-group">
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-1"
+                >Educational Quiz</a
+              >
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-2"
+                >Food Quiz</a
+              >
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-3"
+                >Political Quiz</a
+              >
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-4"
+                >Geographical Quiz</a
+              >
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-5"
+                >Current Affairs Quiz</a
+              >
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-6"
+                >Historical Quiz</a
+              >
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-7"
+                >Health Quiz</a
+              >
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-8"
+                >Scientific Quiz</a
+              >
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-9"
+                >Household Item Quiz</a
+              >
+              <a
+                class="list-group-item list-group-item-action btns-sidebar-main"
+                href="#list-item-10"
+                >General Knowledge Quiz</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="content-section-main">
+        <div id="quiz-heading">
+          <h1>Language Quiz: Vocabulary and Grammar Challenge</h1>
+          <p>
+            Challenge your language skills with quizzes crafted to enhance your
+            vocabulary and grammar!
+          </p>
+        </div>
+
+        <div id="start-quiz-btn">
+          <span id="start-quiz-text">Do you want to start the quiz?</span>
+          <a class="button-39" role="button" href="#questions-container">Start</a>
+        </div>
+
+        <div id="questions-container">
+          <!-- Question 1 -->
+          <span class="quiz-question" data-correct="option1">
+            <h2>1. Which word is a synonym for "courageous"?</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q1" value="option1" /> Brave
+              </li>
+              <li>
+                <input type="radio" name="q1" value="option2" /> Timid
+              </li>
+              <li>
+                <input type="radio" name="q1" value="option3" /> Shy
+              </li>
+              <li>
+                <input type="radio" name="q1" value="option4" /> Cowardly
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 2 -->
+          <span class="quiz-question" data-correct="option2">
+            <h2>2. Select the correct form of the verb: "She ____ to the store yesterday."</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q2" value="option1" /> go
+              </li>
+              <li>
+                <input type="radio" name="q2" value="option2" /> went
+              </li>
+              <li>
+                <input type="radio" name="q2" value="option3" /> going
+              </li>
+              <li>
+                <input type="radio" name="q2" value="option4" /> goes
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 3 -->
+          <span class="quiz-question" data-correct="option3">
+            <h2>3. Which sentence is punctuated correctly?</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q3" value="option1" /> Lets eat, Grandma!
+              </li>
+              <li>
+                <input type="radio" name="q3" value="option2" /> Let's eat Grandma!
+              </li>
+              <li>
+                <input type="radio" name="q3" value="option3" /> Let's eat, Grandma!
+              </li>
+              <li>
+                <input type="radio" name="q3" value="option4" /> Lets, eat Grandma!
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 4 -->
+          <span class="quiz-question" data-correct="option2">
+            <h2>4. Which word is an antonym of "ancient"?</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q4" value="option1" /> Old
+              </li>
+              <li>
+                <input type="radio" name="q4" value="option2" /> Modern
+              </li>
+              <li>
+                <input type="radio" name="q4" value="option3" /> Archaic
+              </li>
+              <li>
+                <input type="radio" name="q4" value="option4" /> Antique
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 5 -->
+          <span class="quiz-question" data-correct="option2">
+            <h2>5. What is the plural form of "mouse"?</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q5" value="option1" /> Mouses
+              </li>
+              <li>
+                <input type="radio" name="q5" value="option2" /> Mice
+              </li>
+              <li>
+                <input type="radio" name="q5" value="option3" /> Mouse
+              </li>
+              <li>
+                <input type="radio" name="q5" value="option4" /> Meese
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 6 -->
+          <span class="quiz-question" data-correct="option1">
+            <h2>6. Identify the adjective in the sentence: "The quick brown fox jumps over the lazy dog."</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q6" value="option1" /> Quick
+              </li>
+              <li>
+                <input type="radio" name="q6" value="option2" /> Jumps
+              </li>
+              <li>
+                <input type="radio" name="q6" value="option3" /> Over
+              </li>
+              <li>
+                <input type="radio" name="q6" value="option4" /> Dog
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 7 -->
+          <span class="quiz-question" data-correct="option1">
+            <h2>7. Fill in the blank: "Neither the students nor the teacher ____ aware of the change."</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q7" value="option1" /> was
+              </li>
+              <li>
+                <input type="radio" name="q7" value="option2" /> were
+              </li>
+              <li>
+                <input type="radio" name="q7" value="option3" /> are
+              </li>
+              <li>
+                <input type="radio" name="q7" value="option4" /> be
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 8 -->
+          <span class="quiz-question" data-correct="option2">
+            <h2>8. Which sentence is grammatically correct?</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q8" value="option1" /> He don't like coffee.
+              </li>
+              <li>
+                <input type="radio" name="q8" value="option2" /> He doesn't like coffee.
+              </li>
+              <li>
+                <input type="radio" name="q8" value="option3" /> He doesn't likes coffee.
+              </li>
+              <li>
+                <input type="radio" name="q8" value="option4" /> He not likes coffee.
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 9 -->
+          <span class="quiz-question" data-correct="option1">
+            <h2>9. Choose the word that best completes the sentence: "She has a ___ grasp of the subject."</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q9" value="option1" /> Profound
+              </li>
+              <li>
+                <input type="radio" name="q9" value="option2" /> Profoundest
+              </li>
+              <li>
+                <input type="radio" name="q9" value="option3" /> Profunde
+              </li>
+              <li>
+                <input type="radio" name="q9" value="option4" /> Profusely
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 10 -->
+          <span class="quiz-question" data-correct="option3">
+            <h2>10. Which word is spelled correctly?</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q10" value="option1" /> Accomodate
+              </li>
+              <li>
+                <input type="radio" name="q10" value="option2" /> Acommodate
+              </li>
+              <li>
+                <input type="radio" name="q10" value="option3" /> Accommodate
+              </li>
+              <li>
+                <input type="radio" name="q10" value="option4" /> Accomadate
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 11 -->
+          <span class="quiz-question" data-correct="option3">
+            <h2>11. Which of the following is a preposition?</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q11" value="option1" /> Run
+              </li>
+              <li>
+                <input type="radio" name="q11" value="option2" /> Quickly
+              </li>
+              <li>
+                <input type="radio" name="q11" value="option3" /> Under
+              </li>
+              <li>
+                <input type="radio" name="q11" value="option4" /> Happiness
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 12 -->
+          <span class="quiz-question" data-correct="option3">
+            <h2>12. Select the correct comparative form of "good".</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q12" value="option1" /> Gooder
+              </li>
+              <li>
+                <input type="radio" name="q12" value="option2" /> More good
+              </li>
+              <li>
+                <input type="radio" name="q12" value="option3" /> Better
+              </li>
+              <li>
+                <input type="radio" name="q12" value="option4" /> Best
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 13 -->
+          <span class="quiz-question" data-correct="option2">
+            <h2>13. Identify the correct sentence.</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q13" value="option1" /> Its a beautiful day.
+              </li>
+              <li>
+                <input type="radio" name="q13" value="option2" /> It's a beautiful day.
+              </li>
+              <li>
+                <input type="radio" name="q13" value="option3" /> Its' a beautiful day.
+              </li>
+              <li>
+                <input type="radio" name="q13" value="option4" /> It is' a beautiful day.
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 14 -->
+          <span class="quiz-question" data-correct="option2">
+            <h2>14. Fill in the blank with the appropriate article: "___ apple a day keeps the doctor away."</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q14" value="option1" /> A
+              </li>
+              <li>
+                <input type="radio" name="q14" value="option2" /> An
+              </li>
+              <li>
+                <input type="radio" name="q14" value="option3" /> The
+              </li>
+              <li>
+                <input type="radio" name="q14" value="option4" /> No article
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+
+          <!-- Question 15 -->
+          <span class="quiz-question" data-correct="option2">
+            <h2>15. Which word is an example of onomatopoeia?</h2>
+            <ul>
+              <li>
+                <input type="radio" name="q15" value="option1" /> Whisper
+              </li>
+              <li>
+                <input type="radio" name="q15" value="option2" /> Bang
+              </li>
+              <li>
+                <input type="radio" name="q15" value="option3" /> Run
+              </li>
+              <li>
+                <input type="radio" name="q15" value="option4" /> Thought
+              </li>
+            </ul>
+            <button class="check-answer">Check Answer</button>
+            <p class="feedback" style="display: none"></p>
+          </span>
+        </div>
+      </section>
+    </main>
+  </body>
+
+  <script>
+    document.querySelectorAll(".check-answer").forEach((button) => {
+      button.addEventListener("click", function () {
+        const questionContainer = this.parentElement;
+        const correctAnswer = questionContainer.getAttribute("data-correct");
+        const selectedOption = questionContainer.querySelector(
+          'input[type="radio"]:checked'
+        );
+        const feedback = questionContainer.querySelector(".feedback");
+
+        if (selectedOption) {
+          if (selectedOption.value === correctAnswer) {
+            feedback.textContent = "Correct!";
+            feedback.style.color = "green";
+          } else {
+            feedback.textContent = "Wrong. Try again!";
+            feedback.style.color = "red";
+          }
+          feedback.style.display = "block";
+        } else {
+          feedback.textContent = "Please select an answer!";
+          feedback.style.color = "orange";
+          feedback.style.display = "block";
+        }
+      });
+    });
+  </script>
+</html>

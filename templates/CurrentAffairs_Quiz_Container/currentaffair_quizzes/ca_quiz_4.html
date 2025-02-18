@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quizz-Karoo - Political Debates Quiz</title>
+        <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/static/Educational_quiz_container/edu_quiz_style.css') }}?v=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+<body>
+
+    <header id="header">
+        <nav id="navbar">
+            <div id="logo-container">
+                <figure>
+                    <img src="/static/logo.jpg" alt="Logo_img">
+                </figure>
+            </div>
+            <div id="searchbar-container">
+                <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                    <!-- 'q' is the name we will look up in Flask code -->
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                    <button class="search-btn" type="submit">Search</button>
+                  </form>
+                  
+            </div>
+            <div id="buttons-container">
+                <button type="button" class="btn btn-secondary">Create</button>
+                <span id="profile-section">
+                    <figure>
+                        <img src="/static/logo.jpg" alt="image">
+                    </figure>
+                </span>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="sidebar-main">
+
+          <div class="row">
+              <div class="col-4 w-full" id="col-4">
+                  <div class="list-group" id='list-example'>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('educational_quizzes') }}">
+                         Educational Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.food_quiz') }}">
+                         Food Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.political_quiz') }}">
+                         Political Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.geographical_quiz') }}">
+                         Geographical Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.currentaffairs_quiz') }}">
+                         Current Affairs Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.historical_quiz') }}">
+                         Historical Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.health_quiz') }}">
+                         Health Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.scientific_quiz') }}">
+                         Scientific Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.household_quiz') }}">
+                         Household Item Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.gk_quiz') }}">
+                         General Knowledge Quiz
+                      </a>
+                  </div>
+                  
+              </div>
+  
+              </div>
+  
+      </section>
+
+
+        <section id="content-section-main">
+            <div id="quiz-heading">
+                <h1>Political Debates Quiz</h1>
+                <p>Challenge yourself with quizzes on political debates, government policies, and public events.</p>
+            </div>
+
+            <div id="start-quiz-btn">
+                <span id="start-quiz-text">Do you want to start the quiz?</span>
+                <a class="button-39" role="button" href="#questions-container">Start</a>
+            </div>
+
+            <div id="questions-container">
+                <!-- Question 1 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>1. Which recent political debate sparked nationwide discussion?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt1" value="option1">
+                            <label for="q1opt1">Healthcare reform debate</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt2" value="option2">
+                            <label for="q1opt2">Education policy discussion</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt3" value="option3">
+                            <label for="q1opt3">Immigration law controversy</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt4" value="option4">
+                            <label for="q1opt4">Tax reform proposals</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 2 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>2. Which government policy has been the focus of recent debates?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt1" value="option1">
+                            <label for="q2opt1">Environmental regulations</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt2" value="option2">
+                            <label for="q2opt2">Minimum wage laws</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt3" value="option3">
+                            <label for="q2opt3">Data privacy legislation</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt4" value="option4">
+                            <label for="q2opt4">Defense spending</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 3 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>3. Which public event was recently held to discuss governmental policies?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt1" value="option1">
+                            <label for="q3opt1">National town hall meetings</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt2" value="option2">
+                            <label for="q3opt2">Parliamentary debates</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt3" value="option3">
+                            <label for="q3opt3">Political rallies</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt4" value="option4">
+                            <label for="q3opt4">Policy forums</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 4 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>4. Which political debate topic has recently divided public opinion?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt1" value="option1">
+                            <label for="q4opt1">Immigration reform</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt2" value="option2">
+                            <label for="q4opt2">Gun control measures</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt3" value="option3">
+                            <label for="q4opt3">Climate policy</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt4" value="option4">
+                            <label for="q4opt4">Healthcare reform</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 5 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>5. Which government policy change has been widely debated in the media?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt1" value="option1">
+                            <label for="q5opt1">Increase in defense budget</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt2" value="option2">
+                            <label for="q5opt2">Revised tax codes</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt3" value="option3">
+                            <label for="q5opt3">Changes in immigration policy</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt4" value="option4">
+                            <label for="q5opt4">New environmental regulations</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 6 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>6. What factor has most influenced recent public debates on policy?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt1" value="option1">
+                            <label for="q6opt1">Economic inequality</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt2" value="option2">
+                            <label for="q6opt2">Social justice issues</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt3" value="option3">
+                            <label for="q6opt3">Technological disruption</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt4" value="option4">
+                            <label for="q6opt4">Global security concerns</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 7 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>7. Which international public event has recently prompted debates on government policies?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt1" value="option1">
+                            <label for="q7opt1">Global summits on economic recovery</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt2" value="option2">
+                            <label for="q7opt2">International climate conferences</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt3" value="option3">
+                            <label for="q7opt3">Diplomatic peace talks</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt4" value="option4">
+                            <label for="q7opt4">Trade negotiation forums</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 8 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>8. Which political party's recent policy proposal has generated the most debate?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt1" value="option1">
+                            <label for="q8opt1">Party A’s healthcare plan</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt2" value="option2">
+                            <label for="q8opt2">Party B’s tax reform</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt3" value="option3">
+                            <label for="q8opt3">Party C’s education overhaul</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt4" value="option4">
+                            <label for="q8opt4">Party D’s environmental initiative</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 9 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>9. Which current public event is most frequently discussed in political debates?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt1" value="option1">
+                            <label for="q9opt1">Government stimulus packages</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt2" value="option2">
+                            <label for="q9opt2">International trade disputes</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt3" value="option3">
+                            <label for="q9opt3">National security policies</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt4" value="option4">
+                            <label for="q9opt4">Public healthcare reforms</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 10 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>10. Which government institution has been the focal point of recent policy debates?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt1" value="option1">
+                            <label for="q10opt1">The Parliament</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt2" value="option2">
+                            <label for="q10opt2">The Executive Branch</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt3" value="option3">
+                            <label for="q10opt3">The Judiciary</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt4" value="option4">
+                            <label for="q10opt4">Regulatory Agencies</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 11 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>11. What issue has recently been debated in public forums across the country?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt1" value="option1">
+                            <label for="q11opt1">Affordable housing</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt2" value="option2">
+                            <label for="q11opt2">Public education funding</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt3" value="option3">
+                            <label for="q11opt3">Healthcare accessibility</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt4" value="option4">
+                            <label for="q11opt4">Transportation infrastructure</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 12 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>12. Which public protest has recently influenced government policy debates?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt1" value="option1">
+                            <label for="q12opt1">Protests for climate action</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt2" value="option2">
+                            <label for="q12opt2">Labor rights demonstrations</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt3" value="option3">
+                            <label for="q12opt3">Anti-corruption rallies</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt4" value="option4">
+                            <label for="q12opt4">Social justice marches</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 13 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>13. Which media outlet has been most influential in recent political debates?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt1" value="option1">
+                            <label for="q13opt1">A leading television network</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt2" value="option2">
+                            <label for="q13opt2">A prominent online news platform</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt3" value="option3">
+                            <label for="q13opt3">Major print newspapers</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt4" value="option4">
+                            <label for="q13opt4">Social media influencers</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 14 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>14. What recent policy decision has sparked the most public debate?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt1" value="option1">
+                            <label for="q14opt1">A new tax policy</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt2" value="option2">
+                            <label for="q14opt2">Healthcare system overhaul</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt3" value="option3">
+                            <label for="q14opt3">Immigration law changes</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt4" value="option4">
+                            <label for="q14opt4">Education reform policies</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 15 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>15. Which upcoming public event are you most eager to follow?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt1" value="option1">
+                            <label for="q15opt1">National elections</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt2" value="option2">
+                            <label for="q15opt2">Government policy debates</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt3" value="option3">
+                            <label for="q15opt3">International diplomatic meetings</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt4" value="option4">
+                            <label for="q15opt4">Major public protests</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Script for "Check Answer" functionality -->
+    <script>
+        document.querySelectorAll(".check-answer").forEach((button) => {
+          button.addEventListener("click", function () {
+            const questionContainer = this.parentElement;
+            const correctAnswer = questionContainer.getAttribute("data-correct");
+            const selectedOption = questionContainer.querySelector('input[type="radio"]:checked');
+            const feedback = questionContainer.querySelector(".feedback");
+
+            if (selectedOption) {
+              if (selectedOption.value === correctAnswer) {
+                feedback.textContent = "Correct!";
+                feedback.style.color = "green";
+              } else {
+                feedback.textContent = "Wrong. Try again!";
+                feedback.style.color = "red";
+              }
+              feedback.style.display = "block";
+            } else {
+              feedback.textContent = "Please select an answer!";
+              feedback.style.color = "orange";
+              feedback.style.display = "block";
+            }
+          });
+        });
+    </script>
+</body>
+</html>

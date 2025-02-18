@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Results</title>
+  <style>
+    /* Global styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Paragraphs */
+    p {
+      font-size: 1.1em;
+      color: #555;
+    }
+
+    /* List styles */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+
+    /* Link styles */
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Results</h1>
+
+  {% if query %}
+    <p>You searched for: {{ query }}</p>
+  {% endif %}
+
+  {% if quizzes %}
+    <ul>
+      {% for quiz in quizzes %}
+        <li>{{ quiz.title }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No quizzes found.</p>
+  {% endif %}
+  
+  <a href="{{ url_for('auth.quizzes') }}">Back to All Quizzes</a>
+</body>
+</html>

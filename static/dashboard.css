@@ -217,7 +217,7 @@ header{
   background-color: #8722f2;
   border-radius: 25px 25px 0 25px;
 }
-.overlay::before,
+
 .overlay::after{
   content: '';
   position: absolute;

@@ -28,9 +28,12 @@
             </div>
     
             <div id="searchbar-container">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                </form>
+                <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                    <!-- 'q' is the name we will look up in Flask code -->
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                    <button class="search-btn" type="submit">Search</button>
+                  </form>
+                  
             </div>
     
             <div id="buttons-container">

@@ -86,7 +86,6 @@ def dashboard():
     quizzes= Quiz.query.all()
     return render_template("dashboard.html")
 
-
 @auth.route('/create-quiz', methods=['GET', 'POST'])
 @login_required
 def create_quiz():
@@ -97,31 +96,44 @@ def create_quiz():
     if request.method == 'POST':
         title = request.form.get('title')
         description = request.form.get('description')
+        category = request.form.get('category')
+        difficulty = request.form.get('difficulty')
 
-        # Create the Quiz
-        quiz = Quiz(title=title, description=description, created_by=current_user.id)
+        # 1. Create the Quiz itself
+        quiz = Quiz(
+            title=title,
+            description=description,
+            category=category,
+            difficulty=difficulty,
+            created_by=current_user.id
+        )
         db.session.add(quiz)
         db.session.commit()
 
-        # Handle Questions & Options
+        # 2. Capture all 'questions[]' form inputs
         questions = request.form.getlist('questions[]')
 
+        # Loop over each question
         for q_index, question_text in enumerate(questions):
             question = Question(text=question_text, quiz_id=quiz.id)
             db.session.add(question)
-            db.session.commit()
+            db.session.commit()  # commit so the question has an ID for linking options
 
-            # Get options and correct answer for this question
+            # 3. For each question, get the corresponding options and the correct index
             options = request.form.getlist(f'options_{q_index}[]')
-            correct_index = request.form.get(f'correct_{q_index}')  # This is a string
+            correct_index = request.form.get(f'correct_{q_index}')  # e.g. "0" or "1" etc.
 
+            # 4. Create Option objects
             for i, option_text in enumerate(options):
-                is_correct = str(i) == correct_index
-                option = Option(text=option_text, is_correct=is_correct, question_id=question.id)
+                is_correct = (str(i) == correct_index)
+                option = Option(
+                    text=option_text, 
+                    is_correct=is_correct, 
+                    question_id=question.id
+                )
                 db.session.add(option)
 
         db.session.commit()
-
         flash('Quiz created successfully with questions and options!', 'success')
         return redirect(url_for('auth.quizzes'))
 
@@ -130,14 +142,25 @@ def create_quiz():
 
 
 
-
-
-@auth.route('/quizzes')
+@auth.route('/quizzes', methods=['GET'])
 @login_required
 def quizzes():
-    all_quizzes=Quiz.query.all()
-    return render_template('quizzes.html', quizzes=all_quizzes)
+    # Get filters
+    category = request.args.get('category', '').strip()
+    difficulty = request.args.get('difficulty', '').strip()
 
+    # Start with all quizzes
+    query = Quiz.query
+
+    if category:
+        query = query.filter_by(category=category)
+
+    if difficulty:
+        query = query.filter_by(difficulty=difficulty)
+
+    all_quizzes = query.all()
+
+    return render_template('quizzes.html', quizzes=all_quizzes)
 
 
 
@@ -161,8 +184,6 @@ def edit_quiz(quiz_id):
         return redirect(url_for('auth.quizzes'))
 
     return render_template('edit_quiz.html', quiz=quiz)
-
-
 
 
 
@@ -234,6 +255,13 @@ def edu_quiz_list():
 
 
 
+@auth.route('/aboutus')
+def adminPage():
+    return render_template("./aboutus.html")
+
+
+
+
 
 @auth.route('/update-profile', methods=['POST'])
 @login_required
@@ -247,3 +275,137 @@ def update_profile():
 
     return redirect(url_for('auth.profile'))
 
+
+
+
+
+
+@auth.route('/educational_quiz')
+def educational_quiz():
+    return render_template('Educational_quiz_container/edu_quiz_list.html')
+
+@auth.route('/food_quiz')
+def food_quiz():
+    return render_template('Food_Quiz_Container/food_quiz_list.html')
+
+@auth.route('/political_quiz')
+def political_quiz():
+    return render_template('Political_Quiz_Container/political_quiz_list.html')
+
+@auth.route('/geographical_quiz')
+def geographical_quiz():
+    return render_template('Geographical_Quiz_Container/geographical_quiz_list.html')
+
+@auth.route('/currentaffairs_quiz')
+def currentaffairs_quiz():
+    return render_template('CurrentAffairs_Quiz_Container/currentAffairs_quiz_list.html')
+
+@auth.route('/historical_quiz')
+def historical_quiz():
+    return render_template('Historical_Quiz_Container/historical_quiz_list.html')
+
+@auth.route('/health_quiz')
+def health_quiz():
+    return render_template('Health_Quiz_Container/health_quiz_list.html')
+
+@auth.route('/scientific_quiz')
+def scientific_quiz():
+    return render_template('Scientific_Quiz_Container/science_quiz_list.html')
+
+@auth.route('/household_quiz')
+def household_quiz():
+    return render_template('Household_Quiz_Container/household_quiz_list.html')
+
+@auth.route('/gk_quiz')
+def gk_quiz():
+    return render_template('GeneralKnowledge_Quiz_Container/gk_quiz_list.html')
+
+
+
+
+@auth.route('/search', methods=['GET'])
+def search_quizzes():
+    query = request.args.get('q', '').strip()  # 'q' matches the <input name="q" ...>
+
+    if query:
+        # Example: Filter quizzes by title or description
+        # Adjust filter logic based on your data structure
+        quizzes = Quiz.query.filter(Quiz.title.ilike(f"%{query}%")).all()
+    else:
+        # If no search query, you might return all quizzes or an empty list
+        quizzes = Quiz.query.all()
+
+    return render_template('search_results.html', quizzes=quizzes, query=query)
+
+
+
+
+
+
+
+
+
+@auth.route("/ca_quiz_1")
+def ca_quiz_1():
+    return render_template("CurrentAffairs_Quiz_Container/currentaffair_quizzes/ca_quiz_1.html")
+
+@auth.route("/ca_quiz_2")
+def ca_quiz_2():
+    return render_template("CurrentAffairs_Quiz_Container/currentaffair_quizzes/ca_quiz_2.html")
+@auth.route("/ca_quiz_3")
+def ca_quiz_3():
+    return render_template("CurrentAffairs_Quiz_Container/currentaffair_quizzes/ca_quiz_3.html")
+
+@auth.route("/ca_quiz_4")
+def ca_quiz_4():
+    return render_template("CurrentAffairs_Quiz_Container/currentaffair_quizzes/ca_quiz_4.html")
+@auth.route("/ca_quiz_5")
+def ca_quiz_5():
+    return render_template("CurrentAffairs_Quiz_Container/currentaffair_quizzes/ca_quiz_5.html")
+
+@auth.route("/ca_quiz_6")
+def ca_quiz_6():
+    return render_template("CurrentAffairs_Quiz_Container/currentaffair_quizzes/ca_quiz_6.html")
+@auth.route("/ca_quiz_7")
+def ca_quiz_7():
+    return render_template("CurrentAffairs_Quiz_Container/currentaffair_quizzes/ca_quiz_7.html")
+
+
+
+
+
+
+
+
+
+@auth.route("/edu_quiz_1")
+def edu_quiz_1():
+    return render_template("Educational_quiz_container/Educational_Quizzes/edu_quiz_1.html")
+
+@auth.route("/edu_quiz_2")
+def edu_quiz_2():
+    return render_template("Educational_quiz_container/Educational_Quizzes/edu_quiz_2.html")
+
+@auth.route("/edu_quiz_3")
+def edu_quiz_3():
+    return render_template("Educational_quiz_container/Educational_Quizzes/edu_quiz_3.html")
+
+@auth.route("/edu_quiz_4")
+def edu_quiz_4():
+    return render_template("Educational_quiz_container/Educational_Quizzes/edu_quiz_4.html")
+
+@auth.route("/edu_quiz_5")
+def edu_quiz_5():
+    return render_template("Educational_quiz_container/Educational_Quizzes/edu_quiz_5.html")
+
+@auth.route("/edu_quiz_6")
+def edu_quiz_6():
+    return render_template("Educational_quiz_container/Educational_Quizzes/edu_quiz_6.html")
+
+@auth.route("/edu_quiz_7")
+def edu_quiz_7():
+    return render_template("Educational_quiz_container/Educational_Quizzes/edu_quiz_7.html")
+
+@auth.route("/edu_quiz_8")
+def edu_quiz_8():
+    return render_template("Educational_quiz_container/Educational_Quizzes/edu_quiz_8.html")

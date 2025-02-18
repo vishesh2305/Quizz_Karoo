@@ -28,10 +28,13 @@
         </div>
 
         <div id="searchbar-container">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+              <!-- 'q' is the name we will look up in Flask code -->
+              <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+              <button class="search-btn" type="submit">Search</button>
             </form>
-        </div>
+            
+      </div>
 
         <div id="buttons-container">
             {% if current_user.is_admin %}
@@ -64,6 +67,7 @@
         <button type="button" class="btns-sidebar-main" onclick="alert('This Option will be available Soon!')">Groups</button>
         <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Marketplace</button>
         <a class="btns-sidebar-main" href="#cards-3-row" style="text-decoration: none; color:black;">What's New?</a>
+        <a class="btns-sidebar-main" style="text-decoration: none; color:black; cursor:pointer" onclick="window.location.href='{{url_for('auth.adminPage')}}'">About Us</a>
 
         {% if current_user.is_admin %}
         <button type="button" class="btns-sidebar-main"
@@ -76,7 +80,7 @@
         <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{url_for('auth.profile')}}'">Profile</button>
       </span>
       <span id="sidebar-lower">
-        <button type="button" class="btns-sidebar-main">Help and Support</button>
+        <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{url_for('auth.adminPage')}}'">Help and Support</button>
       </span>
     </section>
 

@@ -25,10 +25,13 @@
         </div>
 
         <div id="searchbar-container">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+              <!-- 'q' is the name we will look up in Flask code -->
+              <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+              <button class="search-btn" type="submit">Search</button>
             </form>
-        </div>
+            
+      </div>
 
         <div id="buttons-container">
             {% if current_user.is_admin %}
@@ -54,27 +57,62 @@
 
 
     <main id="main">
-        <section id="sidebar-main">
 
-            <div class="row">
-                <div class="col-4 w-full" id="col-4">
-                  <div id="list-example" class="list-group">
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-1">Educational Quiz</a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-2">Food Quiz</a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-3">Political Quiz</a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-4">Geographical Quiz</a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-5">Current Affairs Quiz</a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-6">Historical Quiz</a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-7">Health Quiz</a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-8">Scientific Quiz</a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-9">Household Item Quiz</a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-10">General Knowledge Quiz</a>
-                  </div>
+
+      <section id="sidebar-main">
+
+        <div class="row">
+            <div class="col-4 w-full" id="col-4">
+                <div class="list-group" id='list-example'>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('educational_quizzes') }}">
+                       Educational Quiz
+                    </a>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('auth.food_quiz') }}">
+                       Food Quiz
+                    </a>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('auth.political_quiz') }}">
+                       Political Quiz
+                    </a>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('auth.geographical_quiz') }}">
+                       Geographical Quiz
+                    </a>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('auth.currentaffairs_quiz') }}">
+                       Current Affairs Quiz
+                    </a>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('auth.historical_quiz') }}">
+                       Historical Quiz
+                    </a>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('auth.health_quiz') }}">
+                       Health Quiz
+                    </a>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('auth.scientific_quiz') }}">
+                       Scientific Quiz
+                    </a>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('auth.household_quiz') }}">
+                       Household Item Quiz
+                    </a>
+                    <a class="list-group-item list-group-item-action btns-sidebar-main"
+                       href="{{ url_for('auth.gk_quiz') }}">
+                       General Knowledge Quiz
+                    </a>
                 </div>
+                
+            </div>
 
-                </div>
+            </div>
 
-        </section>
+    </section>
+
+      
 
 
         <section id="content-section-main">

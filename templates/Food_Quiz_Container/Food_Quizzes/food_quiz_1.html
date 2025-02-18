@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quizz-Karoo - Food Quiz</title>
+        <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/static/Educational_quiz_container/edu_quiz_style.css') }}?v=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+<body>
+
+    <header id="header">
+        <nav id="navbar">
+            <div id="logo-container">
+                <figure>
+                    <img src="/static/logo.jpg" alt="Logo_img">
+                </figure>
+            </div>
+    
+            <div id="searchbar-container">
+                <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                    <!-- 'q' is the name we will look up in Flask code -->
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                    <button class="search-btn" type="submit">Search</button>
+                  </form>
+                  
+            </div>
+    
+            <div id="buttons-container">
+                <button type="button" class="btn btn-secondary">Create</button>
+                <span id="profile-section">
+                    <figure>
+                        <img src="/static/logo.jpg" alt="image">
+                    </figure>
+                </span>
+            </div>
+        </nav>
+    </header>
+    
+    <main id="main">
+        <section id="sidebar-main">
+
+          <div class="row">
+              <div class="col-4 w-full" id="col-4">
+                  <div class="list-group" id='list-example'>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('educational_quizzes') }}">
+                         Educational Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.food_quiz') }}">
+                         Food Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.political_quiz') }}">
+                         Political Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.geographical_quiz') }}">
+                         Geographical Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.currentaffairs_quiz') }}">
+                         Current Affairs Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.historical_quiz') }}">
+                         Historical Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.health_quiz') }}">
+                         Health Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.scientific_quiz') }}">
+                         Scientific Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.household_quiz') }}">
+                         Household Item Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.gk_quiz') }}">
+                         General Knowledge Quiz
+                      </a>
+                  </div>
+                  
+              </div>
+  
+              </div>
+  
+      </section>
+
+    
+        <section id="content-section-main">
+            <div id="quiz-heading">
+                <h1>Food Quiz</h1>
+                <p>Savor the world of flavors with our comprehensive food quizzes exploring cuisines, ingredients, and cooking techniques.</p>
+            </div>
+    
+            <div id="start-quiz-btn">
+                <span id="start-quiz-text">Do you want to start the quiz?</span>
+                <a class="button-39" role="button" href="#questions-container">Start</a>
+            </div>
+    
+            <div id="questions-container">
+                <!-- Question 1 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>1. Which cuisine is famous for its bold use of spices like turmeric, cumin, and coriander?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt1" value="option1">
+                            <label for="q1opt1">Indian</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt2" value="option2">
+                            <label for="q1opt2">Italian</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt3" value="option3">
+                            <label for="q1opt3">French</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt4" value="option4">
+                            <label for="q1opt4">Japanese</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 2 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>2. What is the primary ingredient in traditional guacamole?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt1" value="option1">
+                            <label for="q2opt1">Avocado</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt2" value="option2">
+                            <label for="q2opt2">Tomato</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt3" value="option3">
+                            <label for="q2opt3">Cucumber</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt4" value="option4">
+                            <label for="q2opt4">Potato</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 3 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>3. Which cooking technique involves submerging food in hot fat?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt1" value="option1">
+                            <label for="q3opt1">Deep frying</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt2" value="option2">
+                            <label for="q3opt2">Boiling</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt3" value="option3">
+                            <label for="q3opt3">Steaming</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt4" value="option4">
+                            <label for="q3opt4">Grilling</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 4 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>4. Which herb is a key ingredient in classic pesto sauce?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt1" value="option1">
+                            <label for="q4opt1">Basil</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt2" value="option2">
+                            <label for="q4opt2">Parsley</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt3" value="option3">
+                            <label for="q4opt3">Rosemary</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt4" value="option4">
+                            <label for="q4opt4">Cilantro</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 5 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>5. Which cuisine is renowned for sushi and ramen?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt1" value="option1">
+                            <label for="q5opt1">Japanese</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt2" value="option2">
+                            <label for="q5opt2">Chinese</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt3" value="option3">
+                            <label for="q5opt3">Thai</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt4" value="option4">
+                            <label for="q5opt4">Korean</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 6 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>6. Which type of rice is traditionally used to make risotto?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt1" value="option1">
+                            <label for="q6opt1">Arborio rice</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt2" value="option2">
+                            <label for="q6opt2">Quinoa</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt3" value="option3">
+                            <label for="q6opt3">Barley</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt4" value="option4">
+                            <label for="q6opt4">Couscous</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 7 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>7. What is the name of the classic French beef stew made with red wine?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt1" value="option1">
+                            <label for="q7opt1">Beef Bourguignon</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt2" value="option2">
+                            <label for="q7opt2">Coq au Vin</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt3" value="option3">
+                            <label for="q7opt3">Ratatouille</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt4" value="option4">
+                            <label for="q7opt4">Cassoulet</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 8 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>8. Which legume is essential for making traditional hummus?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt1" value="option1">
+                            <label for="q8opt1">Chickpeas</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt2" value="option2">
+                            <label for="q8opt2">Lentils</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt3" value="option3">
+                            <label for="q8opt3">Black beans</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt4" value="option4">
+                            <label for="q8opt4">Peas</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 9 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>9. What cooking method uses dry heat in an enclosed space, typically an oven?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt1" value="option1">
+                            <label for="q9opt1">Baking</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt2" value="option2">
+                            <label for="q9opt2">Boiling</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt3" value="option3">
+                            <label for="q9opt3">Stewing</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt4" value="option4">
+                            <label for="q9opt4">Poaching</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 10 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>10. Which spice is often referred to as the "king of spices"?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt1" value="option1">
+                            <label for="q10opt1">Black pepper</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt2" value="option2">
+                            <label for="q10opt2">Cinnamon</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt3" value="option3">
+                            <label for="q10opt3">Nutmeg</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt4" value="option4">
+                            <label for="q10opt4">Saffron</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 11 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>11. Which tomato-based sauce is a staple in Italian cooking?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt1" value="option1">
+                            <label for="q11opt1">Marinara</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt2" value="option2">
+                            <label for="q11opt2">Alfredo</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt3" value="option3">
+                            <label for="q11opt3">Pesto</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt4" value="option4">
+                            <label for="q11opt4">Carbonara</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 12 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>12. Which dairy product is essential for making traditional Greek tzatziki?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt1" value="option1">
+                            <label for="q12opt1">Greek yogurt</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt2" value="option2">
+                            <label for="q12opt2">Feta cheese</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt3" value="option3">
+                            <label for="q12opt3">Kefir</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt4" value="option4">
+                            <label for="q12opt4">Cream cheese</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 13 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>13. Which type of pasta is shaped like small rice grains and often used in soups?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt1" value="option1">
+                            <label for="q13opt1">Orzo</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt2" value="option2">
+                            <label for="q13opt2">Farfalle</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt3" value="option3">
+                            <label for="q13opt3">Penne</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt4" value="option4">
+                            <label for="q13opt4">Spaghetti</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 14 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>14. Which cooking technique involves slowly cooking food in liquid over low heat?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt1" value="option1">
+                            <label for="q14opt1">Simmering</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt2" value="option2">
+                            <label for="q14opt2">Sautéing</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt3" value="option3">
+                            <label for="q14opt3">Stir-frying</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt4" value="option4">
+                            <label for="q14opt4">Blanching</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+    
+                <!-- Question 15 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>15. What is the name of the spicy, fermented Korean side dish made from cabbage?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt1" value="option1">
+                            <label for="q15opt1">Kimchi</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt2" value="option2">
+                            <label for="q15opt2">Sauerkraut</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt3" value="option3">
+                            <label for="q15opt3">Pickled radish</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt4" value="option4">
+                            <label for="q15opt4">Miso</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none"></p>
+                </span>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        document.querySelectorAll(".check-answer").forEach((button) => {
+          button.addEventListener("click", function () {
+            const questionContainer = this.parentElement;
+            const correctAnswer = questionContainer.getAttribute("data-correct");
+            const selectedOption = questionContainer.querySelector('input[type="radio"]:checked');
+            const feedback = questionContainer.querySelector(".feedback");
+    
+            if (selectedOption) {
+              if (selectedOption.value === correctAnswer) {
+                feedback.textContent = "Correct!";
+                feedback.style.color = "green";
+              } else {
+                feedback.textContent = "Wrong. Try again!";
+                feedback.style.color = "red";
+              }
+              feedback.style.display = "block";
+            } else {
+              feedback.textContent = "Please select an answer!";
+              feedback.style.color = "orange";
+              feedback.style.display = "block";
+            }
+          });
+        });
+    </script>
+    
+    
+</body>
+</html>

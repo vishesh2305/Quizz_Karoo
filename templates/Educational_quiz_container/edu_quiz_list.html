@@ -1,245 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Quizz-Karoo - Educational Quizzes</title>
-        <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_list.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="{{ url_for('static', filename='/static/dashboard.css') }}?v=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    </head>
-<body>
-    
+{% extends "base.html" %}
+{% block title %}Quizz-Karoo - Educational Quizzes{% endblock %}
 
-  <header id="header">
-    <nav id="navbar">
-
-        <div id="logo-container" onclick="window.location.href='{{'auth.dashboard'}}'">
-            <figure>
-                <img src="/static/logo.jpg" alt="Logo_img">
-            </figure>
+{% block content %}
+  <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_list.css">
+  <div id="cards-2-row">
+    <!-- Card 1 - Math Quiz -->
+    <a href="{{ url_for('auth.edu_quiz_1') }}" style="text-decoration: none; color: inherit;">
+      <div class="card swiper-slide" style="width: 18rem;">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="card-image">
+            <img src="/static/cube_giphy.gif" alt="Quiz Image" class="card-img-top">
+          </div>
         </div>
-
-        <div id="searchbar-container">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            </form>
+        <div class="card-content">
+          <p class="card-text">Test your math skills with our interactive quizzes designed to challenge your numerical prowess.</p>
         </div>
-
-        <div id="buttons-container">
-            {% if current_user.is_admin %}
-            <button type="button" class="btn btn-secondary"
-                onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
-            {% endif %}
-            <button type="button" class="btn btn-secondary"
-                onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
-
-            <!-- Profile Section -->
-            <span id="profile-section">
-                <a href="{{ url_for('auth.profile') }}" style="display: block;">
-                    <figure style="margin: 0;">
-                        <img src="/static/logo.jpg" alt="Profile Icon">
-                    </figure>
-                </a>
-            </span>
+      </div>
+    </a>
+  
+    <!-- Card 2 - Science Quiz -->
+    <a href="{{ url_for('auth.edu_quiz_2') }}" style="text-decoration: none; color: inherit;">
+      <div class="card swiper-slide" style="width: 18rem;">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="card-image">
+            <img src="/static/edu_quiz_list_images/science_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
+          </div>
         </div>
-
-    </nav>
-</header>
-
-
-    <main>
-
-
-      <section id="sidebar-main">
-
-        <div class="row">
-            <div class="col-4 w-full" id="col-4">
-              <div id="list-example" class="list-group">
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-1">Educational Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-2">Food Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-3">Political Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-4">Geographical Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-5">Current Affairs Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-6">Historical Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-7">Health Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-8">Scientific Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-9">Household Item Quiz</a>
-                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-10">General Knowledge Quiz</a>
-              </div>
-            </div>
-
-            </div>
-
-    </section>
-
-
-
-        
-        <section id="content-section-main">
-
-
-                 <div id="cards-2-row">
-
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/cube_giphy.gif" alt="Quiz Image" class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Test your math skills with our interactive quizzes designed to challenge your numerical prowess.</p>
-                          </div>
-                        </div>
-                
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/edu_quiz_list_images/science_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Explore the wonders of science with quizzes that spark curiosity and encourage discovery.</p>
-                          </div>
-                        </div>
-                
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/edu_quiz_list_images/historical_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Dive into history with engaging quizzes that bring the past to life.</p>
-                          </div>
-                        </div>
-                
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/edu_quiz_list_images/language_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Challenge your language skills with quizzes crafted to enhance vocabulary and grammar.</p>
-                          </div>
-                        </div>
-                        
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/edu_quiz_list_images/geographical_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Explore geography with quizzes that test your knowledge of world maps and cultures.</p>
-                          </div>
-                        </div>
-                        
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/edu_quiz_list_images/generalKnowledge_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Boost your general knowledge with quizzes that cover a range of fascinating topics.</p>
-                          </div>
-                        </div>
-                        
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/edu_quiz_list_images/criticialThinking_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Sharpen your critical thinking with puzzles and quizzes designed for every learner.</p>
-                          </div>
-                        </div>
-                        
-                        <div class="card swiper-slide" style="width: 18rem;">
-                          <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                              <img src="/static/edu_quiz_list_images/funLearning_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <p class="card-text">Find the perfect quiz for you and embark on a journey of fun, interactive learning.</p>
-                          </div>
-                        </div>
-
-                  </div>
-                
-
-
-                 </div>
-
-
-
-
-                 <footer id="footer">
-                  <div id="footer-links-container">
-                    <span class="links-section">
-                      <h4>Popular Templates</h4>
-                      <span class="footer-links-container">
-                        <a href="#" onclick="alert('This Option will be available Soon!')">Best Quizzes</a>
-                        <a href="#" onclick="alert('This Option will be available Soon!')">All Templates</a>
-                        <a href="#" onclick="alert('This Option will be available Soon!')">Overview</a>
-                      </span>
-                    </span>
-          
-                    <span class="links-section">
-                      <h4>Resources</h4>
-                      <span class="footer-links-container">
-                        <a href="#" onclick="alert('This Option will be available Soon!')">Blog</a>
-                        <a href="#" onclick="alert('This Option will be available Soon!')">Resource center</a>
-                        <a href="#" onclick="alert('This Option will be available Soon!')">Support</a>
-                      </span>
-                    </span>
-          
-                    <span class="links-section">
-                      <h4>About</h4>
-                      <span class="footer-links-container">
-                        <a href="#" onclick="alert('This Option will be available Soon!')">How to play Quiz</a>
-                        <a href="#" onclick="window.location.href='{{url_for('auth.login')}}'">Log in</a>
-                        <a href="#" onclick="window.location.href='{{url_for('auth.register')}}'">Sign up</a>
-                      </span>
-                    </span>
-                  </div>
-          
-                  <span id="footer-social-links-container">
-                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
-                        class="fa-brands fa-linkedin fa-lg"></i></span>
-                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
-                        class="fa-brands fa-youtube fa-lg"></i></span>
-                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
-                        class="fa-brands fa-instagram fa-lg"></i></span>
-                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
-                        class="fa-brands fa-facebook fa-lg"></i></span>
-                    <span class="footer-social-links" onclick="alert('Currently Unavailable!')"><i
-                        class="fa-brands fa-x-twitter fa-lg"></i></span>
-                  </span>
-          
-                </footer>
-
-        </section>
-
-
-    </main>
-
-
-</body>
-</html>
+        <div class="card-content">
+          <p class="card-text">Explore the wonders of science with quizzes that spark curiosity and encourage discovery.</p>
+        </div>
+      </div>
+    </a>
+  
+    <!-- Card 3 - History Quiz -->
+    <a href="{{ url_for('auth.edu_quiz_3') }}" style="text-decoration: none; color: inherit;">
+      <div class="card swiper-slide" style="width: 18rem;">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="card-image">
+            <img src="/static/edu_quiz_list_images/historical_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="card-text">Dive into history with engaging quizzes that bring the past to life.</p>
+        </div>
+      </div>
+    </a>
+  
+    <!-- Card 4 - Language Quiz -->
+    <a href="{{ url_for('auth.edu_quiz_4') }}" style="text-decoration: none; color: inherit;">
+      <div class="card swiper-slide" style="width: 18rem;">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="card-image">
+            <img src="/static/edu_quiz_list_images/language_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="card-text">Challenge your language skills with quizzes crafted to enhance vocabulary and grammar.</p>
+        </div>
+      </div>
+    </a>
+  
+    <!-- Card 5 - Geography Quiz -->
+    <a href="{{ url_for('auth.edu_quiz_5') }}" style="text-decoration: none; color: inherit;">
+      <div class="card swiper-slide" style="width: 18rem;">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="card-image">
+            <img src="/static/edu_quiz_list_images/geographical_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="card-text">Explore geography with quizzes that test your knowledge of world maps and cultures.</p>
+        </div>
+      </div>
+    </a>
+  
+    <!-- Card 6 - General Knowledge Quiz -->
+    <a href="{{ url_for('auth.edu_quiz_6') }}" style="text-decoration: none; color: inherit;">
+      <div class="card swiper-slide" style="width: 18rem;">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="card-image">
+            <img src="/static/edu_quiz_list_images/generalKnowledge_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="card-text">Boost your general knowledge with quizzes that cover a range of fascinating topics.</p>
+        </div>
+      </div>
+    </a>
+  
+    <!-- Card 7 - Critical Thinking Quiz -->
+    <a href="{{ url_for('auth.edu_quiz_7') }}" style="text-decoration: none; color: inherit;">
+      <div class="card swiper-slide" style="width: 18rem;">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="card-image">
+            <img src="/static/edu_quiz_list_images/criticialThinking_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="card-text">Sharpen your critical thinking with puzzles and quizzes designed for every learner.</p>
+        </div>
+      </div>
+    </a>
+  
+    <!-- Card 8 - Fun Interactive Learning Quiz -->
+    <a href="{{ url_for('auth.edu_quiz_8') }}" style="text-decoration: none; color: inherit;">
+      <div class="card swiper-slide" style="width: 18rem;">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="card-image">
+            <img src="/static/edu_quiz_list_images/funLearning_quiz_gif.gif" alt="Quiz Image" class="card-img-top">
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="card-text">Find the perfect quiz for you and embark on a journey of fun, interactive learning!</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  
+{% endblock %}

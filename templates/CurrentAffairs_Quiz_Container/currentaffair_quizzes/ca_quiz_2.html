@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quizz-Karoo - Current Affairs Quiz</title>
+        <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/static/Educational_quiz_container/edu_quiz_style.css') }}?v=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+<body>
+
+    <header id="header">
+        <nav id="navbar">
+            <div id="logo-container">
+                <figure>
+                    <img src="/static/logo.jpg" alt="Logo_img">
+                </figure>
+            </div>
+            <div id="searchbar-container">
+                <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                    <!-- 'q' is the name we will look up in Flask code -->
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                    <button class="search-btn" type="submit">Search</button>
+                  </form>
+                  
+            </div>
+            <div id="buttons-container">
+                <button type="button" class="btn btn-secondary">Create</button>
+                <span id="profile-section">
+                    <figure>
+                        <img src="/static/logo.jpg" alt="image">
+                    </figure>
+                </span>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="sidebar-main">
+
+          <div class="row">
+              <div class="col-4 w-full" id="col-4">
+                  <div class="list-group" id='list-example'>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('educational_quizzes') }}">
+                         Educational Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.food_quiz') }}">
+                         Food Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.political_quiz') }}">
+                         Political Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.geographical_quiz') }}">
+                         Geographical Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.currentaffairs_quiz') }}">
+                         Current Affairs Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.historical_quiz') }}">
+                         Historical Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.health_quiz') }}">
+                         Health Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.scientific_quiz') }}">
+                         Scientific Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.household_quiz') }}">
+                         Household Item Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.gk_quiz') }}">
+                         General Knowledge Quiz
+                      </a>
+                  </div>
+                  
+              </div>
+  
+              </div>
+  
+      </section>
+
+
+        <section id="content-section-main">
+            <div id="quiz-heading">
+                <h1>Current Affairs Quiz</h1>
+                <p>Test your knowledge of today’s headlines and major news stories from around the world.</p>
+            </div>
+
+            <div id="start-quiz-btn">
+                <span id="start-quiz-text">Do you want to start the quiz?</span>
+                <a class="button-39" role="button" href="#questions-container">Start</a>
+            </div>
+
+            <div id="questions-container">
+
+                <!-- Question 1 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>1. Which breaking news headline has dominated global media today?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt1" value="option1">
+                            <label for="q1opt1">A major political scandal emerges</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt2" value="option2">
+                            <label for="q1opt2">Record-breaking climate event reported</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt3" value="option3">
+                            <label for="q1opt3">Tech giant unveils revolutionary product</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1" id="q1opt4" value="option4">
+                            <label for="q1opt4">Unexpected economic downturn shocks markets</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 2 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>2. Which international event is trending in today's headlines?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt1" value="option1">
+                            <label for="q2opt1">Global climate change summit</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt2" value="option2">
+                            <label for="q2opt2">Historic diplomatic meeting</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt3" value="option3">
+                            <label for="q2opt3">Breakthrough in space exploration</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2" id="q2opt4" value="option4">
+                            <label for="q2opt4">Surprise victory in international sports</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 3 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>3. What headline best describes recent political developments?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt1" value="option1">
+                            <label for="q3opt1">Government faces massive protests</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt2" value="option2">
+                            <label for="q3opt2">New policy reforms gain international praise</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt3" value="option3">
+                            <label for="q3opt3">Political leadership reshuffle amid crisis</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3" id="q3opt4" value="option4">
+                            <label for="q3opt4">Unprecedented bipartisan agreement reached</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 4 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>4. Which news topic has most affected the stock markets today?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt1" value="option1">
+                            <label for="q4opt1">Federal interest rate announcement</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt2" value="option2">
+                            <label for="q4opt2">Major corporate merger</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt3" value="option3">
+                            <label for="q4opt3">Unexpected economic data release</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4" id="q4opt4" value="option4">
+                            <label for="q4opt4">Escalation in trade tensions</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 5 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>5. Which major global event has recently made headlines?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt1" value="option1">
+                            <label for="q5opt1">Ongoing conflict in a key region</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt2" value="option2">
+                            <label for="q5opt2">Breakthrough in renewable energy</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt3" value="option3">
+                            <label for="q5opt3">Massive international protest movement</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5" id="q5opt4" value="option4">
+                            <label for="q5opt4">Landmark international treaty signed</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 6 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>6. Which technological innovation was featured prominently in today's news?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt1" value="option1">
+                            <label for="q6opt1">Breakthrough in artificial intelligence</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt2" value="option2">
+                            <label for="q6opt2">Expansion of 5G networks</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt3" value="option3">
+                            <label for="q6opt3">Launch of a new smartphone</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6" id="q6opt4" value="option4">
+                            <label for="q6opt4">Major cybersecurity breach</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 7 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>7. Which environmental issue is currently dominating headlines?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt1" value="option1">
+                            <label for="q7opt1">Severe weather disruptions</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt2" value="option2">
+                            <label for="q7opt2">Rising sea levels</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt3" value="option3">
+                            <label for="q7opt3">Outcomes of an international climate summit</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q7" id="q7opt4" value="option4">
+                            <label for="q7opt4">Deforestation crisis</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 8 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>8. Which headline best reflects a major health development?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt1" value="option1">
+                            <label for="q8opt1">Breakthrough in vaccine research</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt2" value="option2">
+                            <label for="q8opt2">Update on a global health crisis</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt3" value="option3">
+                            <label for="q8opt3">Approval of a new treatment</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q8" id="q8opt4" value="option4">
+                            <label for="q8opt4">Expansion of global health initiatives</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 9 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>9. Which social media trend has recently influenced global news?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt1" value="option1">
+                            <label for="q9opt1">A viral video sparking debate</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt2" value="option2">
+                            <label for="q9opt2">Influencer scandal</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt3" value="option3">
+                            <label for="q9opt3">Social justice movement surge</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q9" id="q9opt4" value="option4">
+                            <label for="q9opt4">Major policy change on a platform</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 10 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>10. What type of international event is most frequently featured in headlines today?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt1" value="option1">
+                            <label for="q10opt1">Diplomatic summits</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt2" value="option2">
+                            <label for="q10opt2">Trade negotiations</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt3" value="option3">
+                            <label for="q10opt3">Cultural exchange events</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q10" id="q10opt4" value="option4">
+                            <label for="q10opt4">Global sports tournaments</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 11 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>11. Which economic headline is making waves today?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt1" value="option1">
+                            <label for="q11opt1">Stock market reaches new highs</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt2" value="option2">
+                            <label for="q11opt2">Unemployment rates drop significantly</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt3" value="option3">
+                            <label for="q11opt3">Inflation sparks consumer concerns</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q11" id="q11opt4" value="option4">
+                            <label for="q11opt4">Landmark trade agreement signed</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 12 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>12. How significant is the issue of cybersecurity in today’s headlines?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt1" value="option1">
+                            <label for="q12opt1">Extremely significant</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt2" value="option2">
+                            <label for="q12opt2">Moderately significant</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt3" value="option3">
+                            <label for="q12opt3">Slightly significant</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q12" id="q12opt4" value="option4">
+                            <label for="q12opt4">Not significant at all</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 13 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>13. Which cultural event has recently made headlines?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt1" value="option1">
+                            <label for="q13opt1">International film festivals</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt2" value="option2">
+                            <label for="q13opt2">Global art exhibitions</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt3" value="option3">
+                            <label for="q13opt3">World music concerts</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q13" id="q13opt4" value="option4">
+                            <label for="q13opt4">Cultural heritage events</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 14 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>14. What is your perspective on current trends in global education reforms?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt1" value="option1">
+                            <label for="q14opt1">Essential for progress</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt2" value="option2">
+                            <label for="q14opt2">Require major improvements</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt3" value="option3">
+                            <label for="q14opt3">Overhyped by media</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q14" id="q14opt4" value="option4">
+                            <label for="q14opt4">No strong opinion</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+                <!-- Question 15 -->
+                <span class="quiz-question" data-correct="option1">
+                    <h2>15. Which upcoming international event are you most excited about?</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt1" value="option1">
+                            <label for="q15opt1">Global Economic Summit</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt2" value="option2">
+                            <label for="q15opt2">World Health Conference</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt3" value="option3">
+                            <label for="q15opt3">International Climate Forum</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q15" id="q15opt4" value="option4">
+                            <label for="q15opt4">Tech Innovation Expo</label>
+                        </li>
+                    </ul>
+                    <button class="check-answer">Check Answer</button>
+                    <p class="feedback" style="display: none;"></p>
+                </span>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Add this script at the bottom so it doesn't change styling or layout -->
+    <script>
+        document.querySelectorAll(".check-answer").forEach((button) => {
+          button.addEventListener("click", function () {
+            const questionContainer = this.parentElement;
+            const correctAnswer = questionContainer.getAttribute("data-correct");
+            const selectedOption = questionContainer.querySelector('input[type="radio"]:checked');
+            const feedback = questionContainer.querySelector(".feedback");
+
+            if (selectedOption) {
+              if (selectedOption.value === correctAnswer) {
+                feedback.textContent = "Correct!";
+                feedback.style.color = "green";
+              } else {
+                feedback.textContent = "Wrong. Try again!";
+                feedback.style.color = "red";
+              }
+              feedback.style.display = "block";
+            } else {
+              feedback.textContent = "Please select an answer!";
+              feedback.style.color = "orange";
+              feedback.style.display = "block";
+            }
+          });
+        });
+    </script>
+</body>
+</html>

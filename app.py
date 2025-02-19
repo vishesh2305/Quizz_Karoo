@@ -1,12 +1,21 @@
-from flask import Flask, redirect, url_for, render_template
+from flask import Flask, redirect, url_for, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
+from flask_login import LoginManager, login_required, current_user
 from extensions import db
 from routes import auth
-from models import User
+from models import User, Quiz, Question, Option
+from dotenv import load_dotenv
+import os
+import google.generativeai as genai
+from flask import jsonify
+
+
+load_dotenv()
 
 app = Flask(__name__)
+
+app.config['GEMINI_API_KEY'] = os.getenv('GEMINI_API_KEY')
 
 
 from config import Config
@@ -37,10 +46,82 @@ def load_user(user_id):
 
 
 
+def generate_quiz(topic=""):
+    genai.configure(api_key=app.config['GEMINI_API_KEY'])
+
+    prompt = f"""
+    Generate a JSON object representing a multiple-choice quiz based on the topic '{topic}'. If the topic is empty, choose any general topic.
+    The quiz should have:
+    - title: A short quiz title.
+    - description: A brief description.
+    - category: Choose from ['Educational', 'Food', 'Political', 'Geographical', 'Current Affairs', 'Historical', 'Health', 'Scientific', 'Household', 'General Knowledge'].
+    - difficulty: Choose from ['Easy', 'Medium', 'Hard'].
+    - questions: A list of exactly 2 questions. Each question should have:
+        - text: The question text.
+        - options: A list of 4 options.
+        - correct_option_index: Index (0, 1, 2, or 3) indicating the correct option.
+    Respond with ONLY the JSON object. No explanations or preamble.
+    """
+
+    response = genai.GenerativeModel('gemini-pro').generate_content(prompt)
+
+    import json
+    try:
+        response_text = response.text.strip().strip("```json").strip("```")
+        quiz_data = json.loads(response_text)
+        return quiz_data
+    except json.JSONDecodeError as e:
+        print("JSON Parsing Failed:", e)
+        print("Response from Gemini was:", response.text)
+        return None
 
 
 
 
+
+@app.route('/load_more_quizzes', methods=['GET'])
+def load_more_quizzes():
+    quiz_content = generate_quiz()
+    return jsonify({'quizzes': [quiz_content]})
+
+
+
+
+@app.route('/generate_quiz_and_store', methods=['POST'])
+@login_required
+def generate_quiz_and_store():
+
+    query_topic = request.json.get('topic', '')
+
+    quiz_data = generate_quiz(topic=query_topic)
+
+    if not quiz_data:
+        return jsonify({'error': 'Failed to generate quiz'}), 500
+
+    quiz = Quiz(
+        title=quiz_data['title'],
+        description=quiz_data['description'],
+        category=quiz_data['category'],
+        difficulty=quiz_data['difficulty'],
+        created_by=current_user.id
+    )
+
+    db.session.add(quiz)
+    db.session.commit()
+
+    for q in quiz_data['questions']:
+        question = Question(text=q['text'], quiz_id=quiz.id)
+        db.session.add(question)
+        db.session.commit()
+
+        for i, option_text in enumerate(q['options']):
+            is_correct = i == q['correct_option_index']
+            option = Option(text=option_text, is_correct=is_correct, question_id=question.id)
+            db.session.add(option)
+
+    db.session.commit()
+
+    return jsonify({'message': 'Quiz generated and stored successfully!', 'quiz_id': quiz.id})
 
 
 

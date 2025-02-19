@@ -26,20 +26,20 @@
     <header id="header">
         <nav id="navbar">
     
-            <div id="logo-container">
+            <div id="logo-container" onclick="window.location.href='{{url_for('auth.dashboard')}}'">
                 <figure>
                     <img src="/static/logo.jpg" alt="Logo_img">
                 </figure>
             </div>
     
             <div id="searchbar-container">
-              <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
-                  <!-- 'q' is the name we will look up in Flask code -->
-                  <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
-                  <button class="search-btn" type="submit">Search</button>
-                </form>
-                
-          </div>
+                <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                    <!-- 'q' is the name we will look up in Flask code -->
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                    <button class="search-btn" type="submit">Search</button>
+                  </form>
+                  
+            </div>
     
             <div id="buttons-container">
                 {% if current_user.is_admin %}
@@ -68,7 +68,7 @@
 
         <section id="sidebar-main">
             <span id="sidebar-upper">
-              <button type="button" class="btns-sidebar-main">Home</button>
+              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{url_for('auth.dashboard')}}'">Home</button>
               <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Discover</button>
               <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Library</button>
               <button type="button" class="btns-sidebar-main" onclick="alert('This Option will be available Soon!')">Groups</button>

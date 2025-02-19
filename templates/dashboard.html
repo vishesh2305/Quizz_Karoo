@@ -21,20 +21,20 @@
   <header id="header">
     <nav id="navbar">
 
-        <div id="logo-container">
+        <div id="logo-container" onclick="window.location.href='{{url_for('auth.dashboard')}}'">
             <figure>
                 <img src="/static/logo.jpg" alt="Logo_img">
             </figure>
         </div>
 
         <div id="searchbar-container">
-          <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
-              <!-- 'q' is the name we will look up in Flask code -->
-              <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
-              <button class="search-btn" type="submit">Search</button>
-            </form>
-            
-      </div>
+            <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                <!-- 'q' is the name we will look up in Flask code -->
+                <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                <button class="search-btn" type="submit">Search</button>
+              </form>
+              
+        </div>
 
         <div id="buttons-container">
             {% if current_user.is_admin %}
@@ -61,13 +61,12 @@
   <main id="main">
     <section id="sidebar-main">
       <span id="sidebar-upper">
-        <button type="button" class="btns-sidebar-main">Home</button>
+        <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{url_for('auth.dashboard')}}'">Home</button>
         <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Discover</button>
         <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Library</button>
         <button type="button" class="btns-sidebar-main" onclick="alert('This Option will be available Soon!')">Groups</button>
         <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Marketplace</button>
         <a class="btns-sidebar-main" href="#cards-3-row" style="text-decoration: none; color:black;">What's New?</a>
-        <a class="btns-sidebar-main" style="text-decoration: none; color:black; cursor:pointer" onclick="window.location.href='{{url_for('auth.adminPage')}}'">About Us</a>
 
         {% if current_user.is_admin %}
         <button type="button" class="btns-sidebar-main"
@@ -80,7 +79,7 @@
         <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{url_for('auth.profile')}}'">Profile</button>
       </span>
       <span id="sidebar-lower">
-        <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{url_for('auth.adminPage')}}'">Help and Support</button>
+        <button type="button" class="btns-sidebar-main">Help and Support</button>
       </span>
     </section>
 
@@ -120,8 +119,8 @@
         <div class="card w-25">
           <div class="card-body">
             <h5 class="card-title">Ai Tools</h5>
-            <p class="card-text">Use Ai Tools for Quiz. Chat with Our Chatbot.</p>
-            <button class="search-btn p-2" type="submit" onclick="alert('This Option will be available Soon!')">Use Now!</button>
+            <p class="card-text">Use Ai Tools for Quiz. Create Your Own Quiz and Play.</p>
+            <button class="search-btn p-2" type="submit" onclick="window.location.href='{{url_for('auth.quizzes')}}'">Use Now!</button>
           </div>
         </div>
 

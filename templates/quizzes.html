@@ -15,24 +15,23 @@
 </head>
 
 <body>
-
     <header id="header">
         <nav id="navbar">
     
-            <div id="logo-container">
+            <div id="logo-container" onclick="window.location.href='{{url_for('auth.dashboard')}}'">
                 <figure>
                     <img src="/static/logo.jpg" alt="Logo_img">
                 </figure>
             </div>
     
             <div id="searchbar-container">
-              <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
-                  <!-- 'q' is the name we will look up in Flask code -->
-                  <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
-                  <button class="search-btn" type="submit">Search</button>
-                </form>
-                
-          </div>
+                <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                    <!-- 'q' is the name we will look up in Flask code -->
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                    <button class="search-btn" type="submit">Search</button>
+                  </form>
+                  
+            </div>
     
             <div id="buttons-container">
                 {% if current_user.is_admin %}
@@ -231,6 +230,33 @@
         timerInput.disabled = true;
         button.disabled = true;
     }
+
+
+    
+    let isLoading = false;
+
+    async function generateQuizAndLoad() {
+        if (isLoading) return;
+
+        isLoading = true;
+        const response = await fetch('/generate_quiz_and_store', { method: 'POST' });
+        const data = await response.json();
+
+        if (response.ok) {
+            window.location.reload(); // Reload to show the new quiz
+        } else {
+            console.error(data.error || 'Failed to generate quiz');
+        }
+        isLoading = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200 && !isLoading) {
+            generateQuizAndLoad();
+        }
+    });
+    
+
 </script>
 
 

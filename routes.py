@@ -212,31 +212,37 @@ def submit_quiz(quiz_id):
     quiz = Quiz.query.get_or_404(quiz_id)
     questions = quiz.questions
     score = 0
+    results = []
 
-    # Process each question
     for question in questions:
         selected_option_id = request.form.get(f'question_{question.id}')
+        selected_option = Option.query.get(int(selected_option_id)) if selected_option_id else None
+        correct_option = next((option for option in question.options if option.is_correct), None)
 
-        # If no option is selected for a question, skip it
-        if not selected_option_id:
-            continue
+        # Track result per question
+        results.append({
+            'question': question.text,
+            'selected_option': selected_option.text if selected_option else "Not Answered",
+            'correct_option': correct_option.text
+        })
 
-        selected_option = Option.query.get(int(selected_option_id))
-
-        # Check if the selected option is correct
+        # Calculate score
         if selected_option and selected_option.is_correct:
             score += 1
 
-    # Fetch all quizzes for displaying the page
-    quizzes = Quiz.query.all()
-
     return render_template(
-        'quizzes.html',
-        quizzes=quizzes,
-        quiz_result_id=quiz.id,
-        quiz_score=score,
-        quiz_total=len(questions)
+        'view_quiz.html',
+        quiz=quiz,
+        score=score,
+        total=len(questions),
+        results=results,
+        show_results=True  # This flag will be used in the template
     )
+
+
+
+
+
 
 
 
@@ -322,17 +328,13 @@ def gk_quiz():
 
 
 
-
 @auth.route('/search', methods=['GET'])
 def search_quizzes():
-    query = request.args.get('q', '').strip()  # 'q' matches the <input name="q" ...>
+    query = request.args.get('q', '').strip()
 
     if query:
-        # Example: Filter quizzes by title or description
-        # Adjust filter logic based on your data structure
         quizzes = Quiz.query.filter(Quiz.title.ilike(f"%{query}%")).all()
     else:
-        # If no search query, you might return all quizzes or an empty list
         quizzes = Quiz.query.all()
 
     return render_template('search_results.html', quizzes=quizzes, query=query)
@@ -409,3 +411,12 @@ def edu_quiz_7():
 @auth.route("/edu_quiz_8")
 def edu_quiz_8():
     return render_template("Educational_quiz_container/Educational_Quizzes/edu_quiz_8.html")
+
+
+
+
+@auth.route('/quiz/<int:quiz_id>', methods=['GET'])
+@login_required
+def view_quiz(quiz_id):
+    quiz = Quiz.query.get_or_404(quiz_id)
+    return render_template('view_quiz.html', quiz=quiz)

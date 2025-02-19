@@ -41,19 +41,52 @@
 
     /* Link styles */
     a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 15px;
-      background-color: #007BFF;
-      color: #fff;
+      border: 1px solid rgb(135, 34, 242);
+      background-color: white;
+      padding: 1em 1em;
+      border-radius: 8px;
       text-decoration: none;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+    }
+    #generate-quiz-btn{
+      border: 1px solid rgb(135, 34, 242);
+      background-color: white;
+      padding: 1em 1em;
+      border-radius: 8px;
+
+    }
+    #generate-quiz-btn:hover{
+      background-color: #8722f2;
+      transition: 100ms linear;
+      color: white;
     }
 
     a:hover {
-      background-color: #0056b3;
-    }
+      background-color: #8722f2;
+      transition: 100ms linear;
+      color: white;   
+     }
+      #search-result-li{
+        background-color: white;
+        overflow: hidden;
+        width: max-content;
+        10em
+      }
+      #search-result-li:hover{
+        background-color: #8722f2;
+        transition: 100ms linear;
+        color: white;   
+      }
+      #search-result-a{
+        border: 0px;
+        background-color: white;
+        border-radius: 0px;
+        width: 100%;
+      }
+      #search-result-a:hover{
+        background-color: #8722f2;
+        transition: 100ms linear;
+        color: white;   
+      }
   </style>
 </head>
 <body>
@@ -64,15 +97,45 @@
   {% endif %}
 
   {% if quizzes %}
-    <ul>
-      {% for quiz in quizzes %}
-        <li>{{ quiz.title }}</li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No quizzes found.</p>
-  {% endif %}
+  <ul>
+    {% for quiz in quizzes %}
+      <li id="search-result-li">
+        <a id="search-result-a" href="{{ url_for('auth.view_quiz', quiz_id=quiz.id) }}">{{ quiz.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  
+{% else %}
+  <p>No quizzes found for "{{ query }}". Would you like to generate a new quiz on this topic?</p>
+  <button id="generate-quiz-btn">Generate Quiz on "{{ query }}"</button>
+{% endif %}
+
   
   <a href="{{ url_for('auth.quizzes') }}">Back to All Quizzes</a>
 </body>
+
+<script>
+  document.getElementById('generate-quiz-btn')?.addEventListener('click', async () => {
+    const topic = "{{ query }}";
+    try {
+      const response = await fetch('/generate_quiz_and_store', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic })
+      });
+  
+      const data = await response.json();
+      if (data.quiz_id) {
+        alert("Quiz generated successfully!");
+        window.location.href = `/auth/quiz/${data.quiz_id}`; // Redirect to the specific quiz
+      } else {
+        alert("Failed to generate quiz: " + (data.error || "Unknown error"));
+      }
+    } catch (error) {
+      console.error('Quiz Generation Error:', error);
+    }
+  });
+  </script>
+
+
 </html>

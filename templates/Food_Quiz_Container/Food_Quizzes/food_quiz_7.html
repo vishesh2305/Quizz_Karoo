@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Quizz-Karoo - Culinary Knowledge Quiz</title>
+        <title>Quizz-Karoo - Art of Cooking Quiz</title>
         <link rel="stylesheet" href="/static/Educational_quiz_container/edu_quiz_style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
@@ -27,14 +27,14 @@
                 <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
                     <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
                     <button class="search-btn" type="submit">Search</button>
-                  </form>
+                </form>
             </div>
     
             <div id="buttons-container">
                 <button type="button" class="btn btn-secondary">Create</button>
                 <span id="profile-section">
                     <figure>
-                        <img src="/static/logo.jpg" alt="image">
+                        <img src="/static/logo.jpg" alt="Profile Image">
                     </figure>
                 </span>
             </div>
@@ -45,45 +45,35 @@
         <section id="sidebar-main">
           <div class="row">
               <div class="col-4 w-full" id="col-4">
-                  <div class="list-group" id='list-example'>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('educational_quizzes') }}">
+                  <div class="list-group" id="list-example">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('educational_quizzes') }}">
                          Educational Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('auth.food_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.food_quiz') }}">
                          Food Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('auth.political_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.political_quiz') }}">
                          Political Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('auth.geographical_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.geographical_quiz') }}">
                          Geographical Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('auth.currentaffairs_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.currentaffairs_quiz') }}">
                          Current Affairs Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('auth.historical_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.historical_quiz') }}">
                          Historical Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('auth.health_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.health_quiz') }}">
                          Health Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('auth.scientific_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.scientific_quiz') }}">
                          Scientific Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('auth.household_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.household_quiz') }}">
                          Household Item Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main"
-                         href="{{ url_for('auth.gk_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.gk_quiz') }}">
                          General Knowledge Quiz
                       </a>
                   </div>
@@ -93,8 +83,8 @@
 
         <section id="content-section-main">
             <div id="quiz-heading">
-                <h1>Culinary Knowledge Quiz</h1>
-                <p>Test your culinary knowledge with quizzes on global recipes, traditional dishes, and cooking secrets.</p>
+                <h1>Art of Cooking Quiz</h1>
+                <p>Dive into the art of cooking with quizzes on recipes, chef techniques, and creative culinary innovations.</p>
             </div>
     
             <div id="start-quiz-btn">
@@ -105,23 +95,23 @@
             <div id="questions-container">
                 <!-- Question 1 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>1. Which international dish is renowned for its secret blend of spices?</h2>
+                    <h2>1. What is a key ingredient in a classic béchamel sauce?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q1" id="q1opt1" value="option1">
-                            <label for="q1opt1">Curry Laksa</label>
+                            <label for="q1opt1">Milk</label>
                         </li>
                         <li>
                             <input type="radio" name="q1" id="q1opt2" value="option2">
-                            <label for="q1opt2">Beef Stroganoff</label>
+                            <label for="q1opt2">Water</label>
                         </li>
                         <li>
                             <input type="radio" name="q1" id="q1opt3" value="option3">
-                            <label for="q1opt3">Paella</label>
+                            <label for="q1opt3">Cream</label>
                         </li>
                         <li>
                             <input type="radio" name="q1" id="q1opt4" value="option4">
-                            <label for="q1opt4">Moussaka</label>
+                            <label for="q1opt4">Wine</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -130,23 +120,23 @@
     
                 <!-- Question 2 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>2. What is the traditional method for preparing French ratatouille?</h2>
+                    <h2>2. Which cooking technique involves searing food at high temperature before finishing in the oven?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q2" id="q2opt1" value="option1">
-                            <label for="q2opt1">Slow-cooking vegetables in olive oil</label>
+                            <label for="q2opt1">Searing</label>
                         </li>
                         <li>
                             <input type="radio" name="q2" id="q2opt2" value="option2">
-                            <label for="q2opt2">Deep frying all ingredients</label>
+                            <label for="q2opt2">Braising</label>
                         </li>
                         <li>
                             <input type="radio" name="q2" id="q2opt3" value="option3">
-                            <label for="q2opt3">Grilling on an open flame</label>
+                            <label for="q2opt3">Steaming</label>
                         </li>
                         <li>
                             <input type="radio" name="q2" id="q2opt4" value="option4">
-                            <label for="q2opt4">Steaming in a bamboo basket</label>
+                            <label for="q2opt4">Poaching</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -155,23 +145,23 @@
     
                 <!-- Question 3 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>3. Which country is the birthplace of sushi?</h2>
+                    <h2>3. Which innovative technique is used to infuse flavors into meats at low temperatures?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q3" id="q3opt1" value="option1">
-                            <label for="q3opt1">Japan</label>
+                            <label for="q3opt1">Sous-vide</label>
                         </li>
                         <li>
                             <input type="radio" name="q3" id="q3opt2" value="option2">
-                            <label for="q3opt2">South Korea</label>
+                            <label for="q3opt2">Grilling</label>
                         </li>
                         <li>
                             <input type="radio" name="q3" id="q3opt3" value="option3">
-                            <label for="q3opt3">China</label>
+                            <label for="q3opt3">Frying</label>
                         </li>
                         <li>
                             <input type="radio" name="q3" id="q3opt4" value="option4">
-                            <label for="q3opt4">Thailand</label>
+                            <label for="q3opt4">Baking</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -180,23 +170,23 @@
     
                 <!-- Question 4 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>4. Which ingredient is essential in making traditional Italian pesto?</h2>
+                    <h2>4. What is a popular method for creating a smoky flavor in vegetarian dishes?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q4" id="q4opt1" value="option1">
-                            <label for="q4opt1">Fresh basil</label>
+                            <label for="q4opt1">Using liquid smoke</label>
                         </li>
                         <li>
                             <input type="radio" name="q4" id="q4opt2" value="option2">
-                            <label for="q4opt2">Cilantro</label>
+                            <label for="q4opt2">Charcoal grilling</label>
                         </li>
                         <li>
                             <input type="radio" name="q4" id="q4opt3" value="option3">
-                            <label for="q4opt3">Parsley</label>
+                            <label for="q4opt3">Smoking with wood chips</label>
                         </li>
                         <li>
                             <input type="radio" name="q4" id="q4opt4" value="option4">
-                            <label for="q4opt4">Mint</label>
+                            <label for="q4opt4">Using smoked paprika</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -205,23 +195,23 @@
     
                 <!-- Question 5 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>5. Which cooking technique involves slow-cooking food in a sealed container?</h2>
+                    <h2>5. Which classic French dish is known for its slow-cooked, layered flavors?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q5" id="q5opt1" value="option1">
-                            <label for="q5opt1">Braising</label>
+                            <label for="q5opt1">Ratatouille</label>
                         </li>
                         <li>
                             <input type="radio" name="q5" id="q5opt2" value="option2">
-                            <label for="q5opt2">Sautéing</label>
+                            <label for="q5opt2">Coq au Vin</label>
                         </li>
                         <li>
                             <input type="radio" name="q5" id="q5opt3" value="option3">
-                            <label for="q5opt3">Roasting</label>
+                            <label for="q5opt3">Bouillabaisse</label>
                         </li>
                         <li>
                             <input type="radio" name="q5" id="q5opt4" value="option4">
-                            <label for="q5opt4">Poaching</label>
+                            <label for="q5opt4">Quiche Lorraine</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -230,23 +220,23 @@
     
                 <!-- Question 6 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>6. What is often considered the secret to a perfect soufflé?</h2>
+                    <h2>6. Which chef technique involves carefully layering flavors in multiple steps?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q6" id="q6opt1" value="option1">
-                            <label for="q6opt1">Gentle folding of ingredients</label>
+                            <label for="q6opt1">Mise en place</label>
                         </li>
                         <li>
                             <input type="radio" name="q6" id="q6opt2" value="option2">
-                            <label for="q6opt2">High-temperature baking</label>
+                            <label for="q6opt2">De-glazing</label>
                         </li>
                         <li>
                             <input type="radio" name="q6" id="q6opt3" value="option3">
-                            <label for="q6opt3">Using double yolks</label>
+                            <label for="q6opt3">Reduction</label>
                         </li>
                         <li>
                             <input type="radio" name="q6" id="q6opt4" value="option4">
-                            <label for="q6opt4">Overbeating the egg whites</label>
+                            <label for="q6opt4">Blanching</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -255,23 +245,23 @@
     
                 <!-- Question 7 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>7. Which traditional dish is a staple in Indian cuisine?</h2>
+                    <h2>7. Which creative culinary innovation involves molecular techniques to transform ingredients?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q7" id="q7opt1" value="option1">
-                            <label for="q7opt1">Biryani</label>
+                            <label for="q7opt1">Molecular gastronomy</label>
                         </li>
                         <li>
                             <input type="radio" name="q7" id="q7opt2" value="option2">
-                            <label for="q7opt2">Ratatouille</label>
+                            <label for="q7opt2">Fusion cuisine</label>
                         </li>
                         <li>
                             <input type="radio" name="q7" id="q7opt3" value="option3">
-                            <label for="q7opt3">Paella</label>
+                            <label for="q7opt3">Farm-to-table</label>
                         </li>
                         <li>
                             <input type="radio" name="q7" id="q7opt4" value="option4">
-                            <label for="q7opt4">Moussaka</label>
+                            <label for="q7opt4">Sous-vide cooking</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -280,23 +270,23 @@
     
                 <!-- Question 8 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>8. What is a common secret ingredient in making authentic paella?</h2>
+                    <h2>8. Which ingredient is often used to add a tangy finish to modern sauces?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q8" id="q8opt1" value="option1">
-                            <label for="q8opt1">Saffron</label>
+                            <label for="q8opt1">Lemon juice</label>
                         </li>
                         <li>
                             <input type="radio" name="q8" id="q8opt2" value="option2">
-                            <label for="q8opt2">Paprika</label>
+                            <label for="q8opt2">Soy sauce</label>
                         </li>
                         <li>
                             <input type="radio" name="q8" id="q8opt3" value="option3">
-                            <label for="q8opt3">Oregano</label>
+                            <label for="q8opt3">Maple syrup</label>
                         </li>
                         <li>
                             <input type="radio" name="q8" id="q8opt4" value="option4">
-                            <label for="q8opt4">Rosemary</label>
+                            <label for="q8opt4">Vinegar</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -305,23 +295,23 @@
     
                 <!-- Question 9 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>9. Which recipe is known for its centuries-old culinary tradition in Japan?</h2>
+                    <h2>9. Which technique is used to blend ingredients into a smooth puree?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q9" id="q9opt1" value="option1">
-                            <label for="q9opt1">Tempura</label>
+                            <label for="q9opt1">Blending</label>
                         </li>
                         <li>
                             <input type="radio" name="q9" id="q9opt2" value="option2">
-                            <label for="q9opt2">Ramen</label>
+                            <label for="q9opt2">Whisking</label>
                         </li>
                         <li>
                             <input type="radio" name="q9" id="q9opt3" value="option3">
-                            <label for="q9opt3">Okonomiyaki</label>
+                            <label for="q9opt3">Chopping</label>
                         </li>
                         <li>
                             <input type="radio" name="q9" id="q9opt4" value="option4">
-                            <label for="q9opt4">Sukiyaki</label>
+                            <label for="q9opt4">Grating</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -330,148 +320,23 @@
     
                 <!-- Question 10 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>10. Which spice is often referred to as the "king of spices"?</h2>
+                    <h2>10. Which creative twist on a traditional dish is an example of culinary innovation?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q10" id="q10opt1" value="option1">
-                            <label for="q10opt1">Black Pepper</label>
+                            <label for="q10opt1">Deconstructed dessert</label>
                         </li>
                         <li>
                             <input type="radio" name="q10" id="q10opt2" value="option2">
-                            <label for="q10opt2">Cinnamon</label>
+                            <label for="q10opt2">Classic spaghetti</label>
                         </li>
                         <li>
                             <input type="radio" name="q10" id="q10opt3" value="option3">
-                            <label for="q10opt3">Nutmeg</label>
+                            <label for="q10opt3">Traditional stew</label>
                         </li>
                         <li>
                             <input type="radio" name="q10" id="q10opt4" value="option4">
-                            <label for="q10opt4">Cardamom</label>
-                        </li>
-                    </ul>
-                    <button class="check-answer">Check Answer</button>
-                    <p class="feedback" style="display: none"></p>
-                </span>
-    
-                <!-- Question 11 -->
-                <span class="quiz-question" data-correct="option1">
-                    <h2>11. Which global cuisine is famous for its use of fermented sauces?</h2>
-                    <ul>
-                        <li>
-                            <input type="radio" name="q11" id="q11opt1" value="option1">
-                            <label for="q11opt1">Korean</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q11" id="q11opt2" value="option2">
-                            <label for="q11opt2">Italian</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q11" id="q11opt3" value="option3">
-                            <label for="q11opt3">Mexican</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q11" id="q11opt4" value="option4">
-                            <label for="q11opt4">French</label>
-                        </li>
-                    </ul>
-                    <button class="check-answer">Check Answer</button>
-                    <p class="feedback" style="display: none"></p>
-                </span>
-    
-                <!-- Question 12 -->
-                <span class="quiz-question" data-correct="option1">
-                    <h2>12. What is the secret to achieving a perfect sear on meat?</h2>
-                    <ul>
-                        <li>
-                            <input type="radio" name="q12" id="q12opt1" value="option1">
-                            <label for="q12opt1">Preheating the pan and patting the meat dry</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q12" id="q12opt2" value="option2">
-                            <label for="q12opt2">Using cold oil and meat</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q12" id="q12opt3" value="option3">
-                            <label for="q12opt3">Cooking at low temperature for a long time</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q12" id="q12opt4" value="option4">
-                            <label for="q12opt4">Covering the meat during cooking</label>
-                        </li>
-                    </ul>
-                    <button class="check-answer">Check Answer</button>
-                    <p class="feedback" style="display: none"></p>
-                </span>
-    
-                <!-- Question 13 -->
-                <span class="quiz-question" data-correct="option1">
-                    <h2>13. Which traditional dish is commonly prepared in a tagine pot?</h2>
-                    <ul>
-                        <li>
-                            <input type="radio" name="q13" id="q13opt1" value="option1">
-                            <label for="q13opt1">Moroccan Chicken Tagine</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q13" id="q13opt2" value="option2">
-                            <label for="q13opt2">Italian Risotto</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q13" id="q13opt3" value="option3">
-                            <label for="q13opt3">French Bouillabaisse</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q13" id="q13opt4" value="option4">
-                            <label for="q13opt4">Japanese Sukiyaki</label>
-                        </li>
-                    </ul>
-                    <button class="check-answer">Check Answer</button>
-                    <p class="feedback" style="display: none"></p>
-                </span>
-    
-                <!-- Question 14 -->
-                <span class="quiz-question" data-correct="option1">
-                    <h2>14. Which culinary herb is often hailed as the "king of herbs"?</h2>
-                    <ul>
-                        <li>
-                            <input type="radio" name="q14" id="q14opt1" value="option1">
-                            <label for="q14opt1">Rosemary</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q14" id="q14opt2" value="option2">
-                            <label for="q14opt2">Thyme</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q14" id="q14opt3" value="option3">
-                            <label for="q14opt3">Basil</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q14" id="q14opt4" value="option4">
-                            <label for="q14opt4">Oregano</label>
-                        </li>
-                    </ul>
-                    <button class="check-answer">Check Answer</button>
-                    <p class="feedback" style="display: none"></p>
-                </span>
-    
-                <!-- Question 15 -->
-                <span class="quiz-question" data-correct="option1">
-                    <h2>15. What is the secret behind creating a well-balanced curry?</h2>
-                    <ul>
-                        <li>
-                            <input type="radio" name="q15" id="q15opt1" value="option1">
-                            <label for="q15opt1">Layering spices and slow simmering</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q15" id="q15opt2" value="option2">
-                            <label for="q15opt2">Using a single spice blend</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q15" id="q15opt3" value="option3">
-                            <label for="q15opt3">Quick frying at high heat</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="q15" id="q15opt4" value="option4">
-                            <label for="q15opt4">Serving it cold</label>
+                            <label for="q10opt4">Homestyle bread</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>

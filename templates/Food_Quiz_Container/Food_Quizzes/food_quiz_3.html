@@ -25,7 +25,6 @@
     
             <div id="searchbar-container">
                 <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
-                    <!-- 'q' is the name we will look up in Flask code -->
                     <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
                     <button class="search-btn" type="submit">Search</button>
                 </form>
@@ -46,35 +45,45 @@
         <section id="sidebar-main">
           <div class="row">
               <div class="col-4 w-full" id="col-4">
-                  <div class="list-group" id="list-example">
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('educational_quizzes') }}">
+                  <div class="list-group" id='list-example'>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('educational_quizzes') }}">
                          Educational Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.food_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.food_quiz') }}">
                          Food Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.political_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.political_quiz') }}">
                          Political Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.geographical_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.geographical_quiz') }}">
                          Geographical Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.currentaffairs_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.currentaffairs_quiz') }}">
                          Current Affairs Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.historical_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.historical_quiz') }}">
                          Historical Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.health_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.health_quiz') }}">
                          Health Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.scientific_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.scientific_quiz') }}">
                          Scientific Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.household_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.household_quiz') }}">
                          Household Item Quiz
                       </a>
-                      <a class="list-group-item list-group-item-action btns-sidebar-main" href="{{ url_for('auth.gk_quiz') }}">
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.gk_quiz') }}">
                          General Knowledge Quiz
                       </a>
                   </div>
@@ -96,19 +105,19 @@
             <div id="questions-container">
                 <!-- Question 1 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>1. Which ancient civilization is credited with inventing one of the first forms of bread?</h2>
+                    <h2>1. Which ancient civilization is credited with inventing bread?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q1" id="q1opt1" value="option1">
-                            <label for="q1opt1">Ancient Egyptians</label>
+                            <label for="q1opt1">Egyptians</label>
                         </li>
                         <li>
                             <input type="radio" name="q1" id="q1opt2" value="option2">
-                            <label for="q1opt2">Ancient Greeks</label>
+                            <label for="q1opt2">Mesopotamians</label>
                         </li>
                         <li>
                             <input type="radio" name="q1" id="q1opt3" value="option3">
-                            <label for="q1opt3">Mesopotamians</label>
+                            <label for="q1opt3">Greeks</label>
                         </li>
                         <li>
                             <input type="radio" name="q1" id="q1opt4" value="option4">
@@ -121,23 +130,23 @@
     
                 <!-- Question 2 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>2. Which historic trade route helped spread spices and culinary techniques across continents?</h2>
+                    <h2>2. What ingredient was highly prized in ancient Rome?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q2" id="q2opt1" value="option1">
-                            <label for="q2opt1">The Silk Road</label>
+                            <label for="q2opt1">Garum (fermented fish sauce)</label>
                         </li>
                         <li>
                             <input type="radio" name="q2" id="q2opt2" value="option2">
-                            <label for="q2opt2">The Amber Road</label>
+                            <label for="q2opt2">Olive oil</label>
                         </li>
                         <li>
                             <input type="radio" name="q2" id="q2opt3" value="option3">
-                            <label for="q2opt3">The Incense Route</label>
+                            <label for="q2opt3">Wheat</label>
                         </li>
                         <li>
                             <input type="radio" name="q2" id="q2opt4" value="option4">
-                            <label for="q2opt4">The Spice Route</label>
+                            <label for="q2opt4">Honey</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -146,23 +155,23 @@
     
                 <!-- Question 3 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>3. What was the name of the fermented fish sauce used extensively in ancient Roman cooking?</h2>
+                    <h2>3. Which spice was known as "black gold" in medieval trade?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q3" id="q3opt1" value="option1">
-                            <label for="q3opt1">Garum</label>
+                            <label for="q3opt1">Pepper</label>
                         </li>
                         <li>
                             <input type="radio" name="q3" id="q3opt2" value="option2">
-                            <label for="q3opt2">Soy Sauce</label>
+                            <label for="q3opt2">Cinnamon</label>
                         </li>
                         <li>
                             <input type="radio" name="q3" id="q3opt3" value="option3">
-                            <label for="q3opt3">Fish Sauce</label>
+                            <label for="q3opt3">Saffron</label>
                         </li>
                         <li>
                             <input type="radio" name="q3" id="q3opt4" value="option4">
-                            <label for="q3opt4">Miso</label>
+                            <label for="q3opt4">Nutmeg</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -171,23 +180,23 @@
     
                 <!-- Question 4 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>4. Which one of these dishes, popular in medieval times, was a precursor to modern stews?</h2>
+                    <h2>4. Which dish is considered one of the oldest known recipes?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q4" id="q4opt1" value="option1">
-                            <label for="q4opt1">Pottage</label>
+                            <label for="q4opt1">Porridge</label>
                         </li>
                         <li>
                             <input type="radio" name="q4" id="q4opt2" value="option2">
-                            <label for="q4opt2">Bouillabaisse</label>
+                            <label for="q4opt2">Stewed Meat</label>
                         </li>
                         <li>
                             <input type="radio" name="q4" id="q4opt3" value="option3">
-                            <label for="q4opt3">Chowder</label>
+                            <label for="q4opt3">Bread</label>
                         </li>
                         <li>
                             <input type="radio" name="q4" id="q4opt4" value="option4">
-                            <label for="q4opt4">Gumbo</label>
+                            <label for="q4opt4">Beer</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -196,23 +205,23 @@
     
                 <!-- Question 5 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>5. Which New World crop transformed European cuisine after its introduction from the Americas?</h2>
+                    <h2>5. Which culture is renowned for its ancient wine-making tradition?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q5" id="q5opt1" value="option1">
-                            <label for="q5opt1">Tomato</label>
+                            <label for="q5opt1">Georgian</label>
                         </li>
                         <li>
                             <input type="radio" name="q5" id="q5opt2" value="option2">
-                            <label for="q5opt2">Potato</label>
+                            <label for="q5opt2">French</label>
                         </li>
                         <li>
                             <input type="radio" name="q5" id="q5opt3" value="option3">
-                            <label for="q5opt3">Corn</label>
+                            <label for="q5opt3">Italian</label>
                         </li>
                         <li>
                             <input type="radio" name="q5" id="q5opt4" value="option4">
-                            <label for="q5opt4">Chili Pepper</label>
+                            <label for="q5opt4">Spanish</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -221,23 +230,23 @@
     
                 <!-- Question 6 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>6. Which ancient civilization is well known for its early wine production and cultivation techniques?</h2>
+                    <h2>6. What preserved food method was used in ancient times to store fish?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q6" id="q6opt1" value="option1">
-                            <label for="q6opt1">Ancient Greeks</label>
+                            <label for="q6opt1">Salting</label>
                         </li>
                         <li>
                             <input type="radio" name="q6" id="q6opt2" value="option2">
-                            <label for="q6opt2">Ancient Egyptians</label>
+                            <label for="q6opt2">Smoking</label>
                         </li>
                         <li>
                             <input type="radio" name="q6" id="q6opt3" value="option3">
-                            <label for="q6opt3">Babylonians</label>
+                            <label for="q6opt3">Fermenting</label>
                         </li>
                         <li>
                             <input type="radio" name="q6" id="q6opt4" value="option4">
-                            <label for="q6opt4">Persians</label>
+                            <label for="q6opt4">Drying</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -246,23 +255,23 @@
     
                 <!-- Question 7 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>7. Which modern fast-food item traces its origins back to American street vendors in the 19th century?</h2>
+                    <h2>7. Which modern culinary trend has its roots in ancient fermentation techniques?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q7" id="q7opt1" value="option1">
-                            <label for="q7opt1">Hamburger</label>
+                            <label for="q7opt1">Kombucha</label>
                         </li>
                         <li>
                             <input type="radio" name="q7" id="q7opt2" value="option2">
-                            <label for="q7opt2">Hot Dog</label>
+                            <label for="q7opt2">Molecular Gastronomy</label>
                         </li>
                         <li>
                             <input type="radio" name="q7" id="q7opt3" value="option3">
-                            <label for="q7opt3">Fried Chicken</label>
+                            <label for="q7opt3">Fusion Cuisine</label>
                         </li>
                         <li>
                             <input type="radio" name="q7" id="q7opt4" value="option4">
-                            <label for="q7opt4">Pizza</label>
+                            <label for="q7opt4">Veganism</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -271,23 +280,23 @@
     
                 <!-- Question 8 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>8. Which traditional Japanese dish, with roots in ancient fermentation techniques, is made from soybeans?</h2>
+                    <h2>8. What staple food was a major part of the Aztec diet?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q8" id="q8opt1" value="option1">
-                            <label for="q8opt1">Natto</label>
+                            <label for="q8opt1">Corn</label>
                         </li>
                         <li>
                             <input type="radio" name="q8" id="q8opt2" value="option2">
-                            <label for="q8opt2">Tofu</label>
+                            <label for="q8opt2">Rice</label>
                         </li>
                         <li>
                             <input type="radio" name="q8" id="q8opt3" value="option3">
-                            <label for="q8opt3">Miso</label>
+                            <label for="q8opt3">Wheat</label>
                         </li>
                         <li>
                             <input type="radio" name="q8" id="q8opt4" value="option4">
-                            <label for="q8opt4">Soba</label>
+                            <label for="q8opt4">Barley</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -296,23 +305,23 @@
     
                 <!-- Question 9 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>9. Which culinary innovation is considered one of the first examples of fusion cuisine, blending ingredients from different cultures?</h2>
+                    <h2>9. Which culinary tool was invented in ancient China?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q9" id="q9opt1" value="option1">
-                            <label for="q9opt1">Spice blends on the Silk Road</label>
+                            <label for="q9opt1">Chopsticks</label>
                         </li>
                         <li>
                             <input type="radio" name="q9" id="q9opt2" value="option2">
-                            <label for="q9opt2">Medieval European stews</label>
+                            <label for="q9opt2">Wok</label>
                         </li>
                         <li>
                             <input type="radio" name="q9" id="q9opt3" value="option3">
-                            <label for="q9opt3">Renaissance feasts</label>
+                            <label for="q9opt3">Cleaver</label>
                         </li>
                         <li>
                             <input type="radio" name="q9" id="q9opt4" value="option4">
-                            <label for="q9opt4">Colonial era recipes</label>
+                            <label for="q9opt4">Steamer</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -321,23 +330,23 @@
     
                 <!-- Question 10 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>10. Which trade network was instrumental in introducing citrus fruits to the Mediterranean region?</h2>
+                    <h2>10. Which ancient text includes some of the earliest recorded recipes?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q10" id="q10opt1" value="option1">
-                            <label for="q10opt1">Arab Spice Trade</label>
+                            <label for="q10opt1">Apicius</label>
                         </li>
                         <li>
                             <input type="radio" name="q10" id="q10opt2" value="option2">
-                            <label for="q10opt2">Roman Road Network</label>
+                            <label for="q10opt2">The Epic of Gilgamesh</label>
                         </li>
                         <li>
                             <input type="radio" name="q10" id="q10opt3" value="option3">
-                            <label for="q10opt3">Viking Routes</label>
+                            <label for="q10opt3">The Bible</label>
                         </li>
                         <li>
                             <input type="radio" name="q10" id="q10opt4" value="option4">
-                            <label for="q10opt4">Medieval Pilgrim Paths</label>
+                            <label for="q10opt4">The Quran</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -346,23 +355,23 @@
     
                 <!-- Question 11 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>11. Which dessert, popular today, can trace its origins back to recipes from ancient Rome?</h2>
+                    <h2>11. Which preservation technique was essential before modern refrigeration?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q11" id="q11opt1" value="option1">
-                            <label for="q11opt1">Cheesecake</label>
+                            <label for="q11opt1">Smoking</label>
                         </li>
                         <li>
                             <input type="radio" name="q11" id="q11opt2" value="option2">
-                            <label for="q11opt2">Tiramisu</label>
+                            <label for="q11opt2">Canning</label>
                         </li>
                         <li>
                             <input type="radio" name="q11" id="q11opt3" value="option3">
-                            <label for="q11opt3">Panna Cotta</label>
+                            <label for="q11opt3">Freezing</label>
                         </li>
                         <li>
                             <input type="radio" name="q11" id="q11opt4" value="option4">
-                            <label for="q11opt4">Gelato</label>
+                            <label for="q11opt4">Pickling</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -371,23 +380,23 @@
     
                 <!-- Question 12 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>12. Which ancient food preservation technique, still used today, involves exposing food to smoke?</h2>
+                    <h2>12. Which civilization is known for introducing the concept of a formal dining structure?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q12" id="q12opt1" value="option1">
-                            <label for="q12opt1">Smoking</label>
+                            <label for="q12opt1">Romans</label>
                         </li>
                         <li>
                             <input type="radio" name="q12" id="q12opt2" value="option2">
-                            <label for="q12opt2">Salting</label>
+                            <label for="q12opt2">Chinese</label>
                         </li>
                         <li>
                             <input type="radio" name="q12" id="q12opt3" value="option3">
-                            <label for="q12opt3">Pickling</label>
+                            <label for="q12opt3">French</label>
                         </li>
                         <li>
                             <input type="radio" name="q12" id="q12opt4" value="option4">
-                            <label for="q12opt4">Fermenting</label>
+                            <label for="q12opt4">British</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -396,23 +405,23 @@
     
                 <!-- Question 13 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>13. Which ancient grain, consumed for centuries, is experiencing a modern revival in healthy diets?</h2>
+                    <h2>13. What food item was famously traded along the Silk Road?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q13" id="q13opt1" value="option1">
-                            <label for="q13opt1">Quinoa</label>
+                            <label for="q13opt1">Spices</label>
                         </li>
                         <li>
                             <input type="radio" name="q13" id="q13opt2" value="option2">
-                            <label for="q13opt2">Barley</label>
+                            <label for="q13opt2">Tea</label>
                         </li>
                         <li>
                             <input type="radio" name="q13" id="q13opt3" value="option3">
-                            <label for="q13opt3">Millet</label>
+                            <label for="q13opt3">Silk</label>
                         </li>
                         <li>
                             <input type="radio" name="q13" id="q13opt4" value="option4">
-                            <label for="q13opt4">Sorghum</label>
+                            <label for="q13opt4">Porcelain</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -421,23 +430,23 @@
     
                 <!-- Question 14 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>14. Which ancient cooking vessel, still used in parts of the world today, is considered the precursor to the modern oven?</h2>
+                    <h2>14. Which ancient culture is credited with creating one of the first cookbooks?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q14" id="q14opt1" value="option1">
-                            <label for="q14opt1">Tandoor</label>
+                            <label for="q14opt1">Ancient Egypt</label>
                         </li>
                         <li>
                             <input type="radio" name="q14" id="q14opt2" value="option2">
-                            <label for="q14opt2">Clay Pot</label>
+                            <label for="q14opt2">Ancient Greece</label>
                         </li>
                         <li>
                             <input type="radio" name="q14" id="q14opt3" value="option3">
-                            <label for="q14opt3">Dutch Oven</label>
+                            <label for="q14opt3">Ancient Rome</label>
                         </li>
                         <li>
                             <input type="radio" name="q14" id="q14opt4" value="option4">
-                            <label for="q14opt4">Tagine</label>
+                            <label for="q14opt4">Ancient India</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>
@@ -446,23 +455,23 @@
     
                 <!-- Question 15 -->
                 <span class="quiz-question" data-correct="option1">
-                    <h2>15. Which modern culinary trend reflects the global influence on food history in the 21st century?</h2>
+                    <h2>15. How has modern cuisine influenced historical food traditions?</h2>
                     <ul>
                         <li>
                             <input type="radio" name="q15" id="q15opt1" value="option1">
-                            <label for="q15opt1">Farm-to-table movement</label>
+                            <label for="q15opt1">Fusion dishes blending old and new techniques</label>
                         </li>
                         <li>
                             <input type="radio" name="q15" id="q15opt2" value="option2">
-                            <label for="q15opt2">Molecular gastronomy</label>
+                            <label for="q15opt2">Strict adherence to ancient recipes</label>
                         </li>
                         <li>
                             <input type="radio" name="q15" id="q15opt3" value="option3">
-                            <label for="q15opt3">Fusion cuisine</label>
+                            <label for="q15opt3">Complete replacement of traditional methods</label>
                         </li>
                         <li>
                             <input type="radio" name="q15" id="q15opt4" value="option4">
-                            <label for="q15opt4">Artisanal revival</label>
+                            <label for="q15opt4">No influence at all</label>
                         </li>
                     </ul>
                     <button class="check-answer">Check Answer</button>

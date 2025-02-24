@@ -36,31 +36,42 @@
   <body>
     <header id="header">
       <nav id="navbar">
-        <div id="logo-container">
-          <figure>
-            <img src="/static/logo.jpg" alt="Logo_img" />
-          </figure>
+  
+          <div id="logo-container" onclick="window.location.href='{{url_for('auth.dashboard')}}'">
+              <figure>
+                  <img src="/static/logo.jpg" alt="Logo_img">
+              </figure>
+          </div>
+  
+          <div id="searchbar-container">
+            <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                <!-- 'q' is the name we will look up in Flask code -->
+                <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                <button class="search-btn" type="submit">Search</button>
+              </form>
+              
         </div>
-
-        <div id="searchbar-container">
-          <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
-              <!-- 'q' is the name we will look up in Flask code -->
-              <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
-              <button class="search-btn" type="submit">Search</button>
-            </form>
-            
-      </div>
-
-        <div id="buttons-container">
-          <button type="button" class="btn btn-secondary">Create</button>
-          <span id="profile-section">
-            <figure>
-              <img src="/static/logo.jpg" alt="image" />
-            </figure>
-          </span>
-        </div>
+  
+          <div id="buttons-container">
+              {% if current_user.is_admin %}
+              <button type="button" class="btn btn-secondary"
+                  onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
+              {% endif %}
+              <button type="button" class="btn btn-secondary"
+                  onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
+  
+              <!-- Profile Section -->
+              <span id="profile-section">
+                  <a href="{{ url_for('auth.profile') }}" style="display: block;">
+                      <figure style="margin: 0;">
+                          <img src="/static/logo.jpg" alt="Profile Icon">
+                      </figure>
+                  </a>
+              </span>
+          </div>
+  
       </nav>
-    </header>
+  </header>
 
     <main id="main">
       <section id="sidebar-main">

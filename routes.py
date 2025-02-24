@@ -55,7 +55,6 @@ def login():
 
             flash("You have been logged in!", "success")
 
-            # Redirect to next page (if any) or dashboard
             next_page = request.args.get("next")
             return redirect(next_page) if next_page else redirect(url_for("auth.dashboard"))
         else:
@@ -149,7 +148,6 @@ def quizzes():
     category = request.args.get('category', '').strip()
     difficulty = request.args.get('difficulty', '').strip()
 
-    # Start with all quizzes
     query = Quiz.query
 
     if category:
@@ -171,7 +169,6 @@ def quizzes():
 def edit_quiz(quiz_id):
     quiz = Quiz.query.get_or_404(quiz_id)
 
-    # Optional: Only let admins edit quizzes (Optional, if you want to restrict this)
     if not current_user.is_admin:
         flash("You are not authorized to edit quizzes.", "danger")
         return redirect(url_for('auth.quizzes'))
@@ -193,7 +190,6 @@ def edit_quiz(quiz_id):
 def delete_quiz(quiz_id):
     quiz = Quiz.query.get_or_404(quiz_id)
 
-    # Optional: Only let admins delete quizzes
     if not current_user.is_admin:
         flash("You are not authorized to delete quizzes.", "danger")
         return redirect(url_for('auth.quizzes'))
@@ -262,7 +258,7 @@ def edu_quiz_list():
 
 
 @auth.route('/aboutus')
-def adminPage():
+def aboutus():
     return render_template("./aboutus.html")
 
 
@@ -420,3 +416,40 @@ def edu_quiz_8():
 def view_quiz(quiz_id):
     quiz = Quiz.query.get_or_404(quiz_id)
     return render_template('view_quiz.html', quiz=quiz)
+
+
+
+
+
+
+
+@auth.route('/api/quiz/<int:quiz_id>', methods=['GET'])
+@login_required
+def get_quiz_json(quiz_id):
+    quiz = Quiz.query.get_or_404(quiz_id)
+
+    quiz_data = {
+        'id': quiz.id,
+        'title': quiz.title,
+        'description': quiz.description,
+        'questions': []
+    }
+
+    for question in quiz.questions:
+        question_data = {
+            'id': question.id,
+            'text': question.text,
+            'options': []
+        }
+
+        for option in question.options:
+            option_data = {
+                'id': option.id,
+                'text': option.text,
+                'is_correct': option.is_correct
+            }
+            question_data['options'].append(option_data)
+
+        quiz_data['questions'].append(question_data)
+
+    return jsonify(quiz_data)

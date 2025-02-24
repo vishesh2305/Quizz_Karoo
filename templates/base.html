@@ -18,71 +18,100 @@
 
     <!-- HEADER -->
 
+
     <header id="header">
-        <nav id="navbar">
-    
-            <div id="logo-container" onclick="window.location.href='{{'auth.dashboard'}}'">
-                <figure>
-                    <img src="/static/logo.jpg" alt="Logo_img">
-                </figure>
-            </div>
-    
-            <div id="searchbar-container">
-                <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
-                    <!-- 'q' is the name we will look up in Flask code -->
-                    <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
-                    <button class="search-btn" type="submit">Search</button>
-                  </form>
-                  
-            </div>
-    
-            <div id="buttons-container">
-                {% if current_user.is_admin %}
-                <button type="button" class="btn btn-secondary"
-                    onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
-                {% endif %}
-                <button type="button" class="btn btn-secondary"
-                    onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
-    
-                <!-- Profile Section -->
-                <span id="profile-section">
-                    <a href="{{ url_for('auth.profile') }}" style="display: block;">
-                        <figure style="margin: 0;">
-                            <img src="/static/logo.jpg" alt="Profile Icon">
-                        </figure>
-                    </a>
-                </span>
-            </div>
-    
-        </nav>
-    </header>
+      <nav id="navbar">
+  
+          <div id="logo-container" onclick="window.location.href='{{url_for('auth.dashboard')}}'">
+              <figure>
+                  <img src="/static/logo.jpg" alt="Logo_img">
+              </figure>
+          </div>
+  
+          <div id="searchbar-container">
+            <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+                <!-- 'q' is the name we will look up in Flask code -->
+                <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+                <button class="search-btn" type="submit">Search</button>
+              </form>
+              
+        </div>
+  
+          <div id="buttons-container">
+              {% if current_user.is_admin %}
+              <button type="button" class="btn btn-secondary"
+                  onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
+              {% endif %}
+              <button type="button" class="btn btn-secondary"
+                  onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
+  
+              <!-- Profile Section -->
+              <span id="profile-section">
+                  <a href="{{ url_for('auth.profile') }}" style="display: block;">
+                      <figure style="margin: 0;">
+                          <img src="/static/logo.jpg" alt="Profile Icon">
+                      </figure>
+                  </a>
+              </span>
+          </div>
+  
+      </nav>
+  </header>
 
     <main>
         <!-- SIDEBAR -->
         <section id="sidebar-main">
-            <span id="sidebar-upper">
-              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{url_for('auth.dashboard')}}'">Home</button>
-              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Discover</button>
-              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Library</button>
-              <button type="button" class="btns-sidebar-main" onclick="alert('This Option will be available Soon!')">Groups</button>
-              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{ url_for('auth.edu_quiz_list') }}'">Marketplace</button>
-              <a class="btns-sidebar-main" href="#cards-3-row" style="text-decoration: none; color:black;">What's New?</a>
-      
-              {% if current_user.is_admin %}
-              <button type="button" class="btns-sidebar-main"
-                onclick="window.location.href='{{ url_for('auth.create_quiz') }}'">Create Quiz</button>
-              {% endif %}
-              <button type="button" class="btns-sidebar-main"
-                onclick="window.location.href='{{ url_for('auth.quizzes') }}'">Find Quizzes</button>
-      
-      
-              <button type="button" class="btns-sidebar-main" onclick="window.location.href='{{url_for('auth.profile')}}'">Profile</button>
-            </span>
-            <span id="sidebar-lower">
-              <button type="button" class="btns-sidebar-main">Help and Support</button>
-            </span>
-          </section>
 
+          <div class="row">
+              <div class="col-4 w-full" id="col-4">
+                  <div class="list-group" id='list-example'>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('educational_quizzes') }}">
+                         Educational Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.food_quiz') }}">
+                         Food Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.political_quiz') }}">
+                         Political Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.geographical_quiz') }}">
+                         Geographical Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.currentaffairs_quiz') }}">
+                         Current Affairs Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.historical_quiz') }}">
+                         Historical Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.health_quiz') }}">
+                         Health Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.scientific_quiz') }}">
+                         Scientific Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.household_quiz') }}">
+                         Household Item Quiz
+                      </a>
+                      <a class="list-group-item list-group-item-action btns-sidebar-main"
+                         href="{{ url_for('auth.gk_quiz') }}">
+                         General Knowledge Quiz
+                      </a>
+                  </div>
+                  
+              </div>
+  
+              </div>
+  
+      </section>
         <!-- CONTENT -->
         <section id="content-section-main">
             {% block content %}

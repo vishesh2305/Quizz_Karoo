@@ -62,51 +62,21 @@
       <section id="sidebar-main">
 
         <div class="row">
-            <div class="col-4 w-full" id="col-4">
-                <div class="list-group" id='list-example'>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('educational_quizzes') }}">
-                       Educational Quiz
-                    </a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('auth.food_quiz') }}">
-                       Food Quiz
-                    </a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('auth.political_quiz') }}">
-                       Political Quiz
-                    </a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('auth.geographical_quiz') }}">
-                       Geographical Quiz
-                    </a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('auth.currentaffairs_quiz') }}">
-                       Current Affairs Quiz
-                    </a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('auth.historical_quiz') }}">
-                       Historical Quiz
-                    </a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('auth.health_quiz') }}">
-                       Health Quiz
-                    </a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('auth.scientific_quiz') }}">
-                       Scientific Quiz
-                    </a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('auth.household_quiz') }}">
-                       Household Item Quiz
-                    </a>
-                    <a class="list-group-item list-group-item-action btns-sidebar-main"
-                       href="{{ url_for('auth.gk_quiz') }}">
-                       General Knowledge Quiz
-                    </a>
-                </div>
-                
+          <div class="col-4 w-full" id="col-4">
+            <div class="list-group" id='list-example'>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-1">Educational Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-2">Food Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-3">Political Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-4">Geographical Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-5">Current Affairs Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-6">Historical Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-7">Health Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-8">Scientific Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-9">Household Item Quiz</a>
+                <a class="list-group-item list-group-item-action btns-sidebar-main" href="#list-item-10">General Knowledge Quiz</a>
             </div>
+        </div>
+        
 
             </div>
 
@@ -119,7 +89,7 @@
             <div class="col-8 w-full">
                 <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0" id="content-container">
                   
-                    <div id="list-item-1" class="main-first-section">
+                    <div id="list-item-1" class="main-first-section content-block" data-url="{{url_for('educational_quizzes')}}">
                         <span id="main-gif-video-first-section">
                           <img id="main-gif-image-first-section" src="/static/educational_pic_for_cards.png" alt="">
                         </span>
@@ -133,7 +103,7 @@
 
 
 
-                        <div id="list-item-2" class="main-first-section">                      
+                        <div id="list-item-2" class="main-first-section content-block" data-url="{{url_for('auth.food_quiz')}}">                      
                             <span id="main-gif-first-section-text">
                               <h1>A Culinary Conundrum: Embark on the Ultimate Food Quiz Journey</h1>
                               <p>Savor the rich flavors of the culinary world as you challenge your palate with intriguing food trivia and explore global cuisines one bite at a time.</p>
@@ -145,7 +115,7 @@
 
 
 
-                            <div id="list-item-3" class="main-first-section">
+                            <div id="list-item-3" class="main-first-section content-block" data-url="{{url_for('auth.political_quiz')}}">
                                 <span id="main-gif-video-first-section">
                                   <img id="main-gif-image-first-section" src="/static/politics_quiz_img.png" alt="">
                                 </span>
@@ -157,7 +127,7 @@
                                 </div>
 
 
-                                <div id="list-item-4" class="main-first-section">                      
+                                <div id="list-item-4" class="main-first-section content-block" data-url="{{url_for('auth.geographical_quiz')}}">                      
                                     <span id="main-gif-first-section-text">
                                       <h1>Mapping the Globe: A Deep Dive into Earth's Geography</h1>
                                       <p>Navigate through mountains, rivers, deserts, and cities with every question. Test your ability to pinpoint locations and explore the dynamic tapestry of our world.</p>
@@ -169,7 +139,7 @@
 
 
                                     
-                            <div id="list-item-5" class="main-first-section">
+                            <div id="list-item-5" class="main-first-section content-block" data-url="{{url_for('auth.currentaffairs_quiz')}}">
                                 <span id="main-gif-video-first-section">
                                   <img id="main-gif-image-first-section" src="/static/current_affairs_img.png" alt="">
                                 </span>
@@ -183,7 +153,7 @@
 
 
                                 
-                                <div id="list-item-6" class="main-first-section">                      
+                                <div id="list-item-6" class="main-first-section content-block" data-url="{{url_for('auth.historical_quiz')}}">                      
                                     <span id="main-gif-first-section-text">
                                       <h1>History Uncovered: A Deep Dive into the Past's Greatest Moments
                                       </h1>
@@ -194,7 +164,7 @@
                                     </span>
                                     </div>
 
-                                    <div id="list-item-7" class="main-first-section">
+                                    <div id="list-item-7" class="main-first-section content-block" data-url="{{url_for('auth.health_quiz')}}">
                                         <span id="main-gif-video-first-section">
                                           <img id="main-gif-image-first-section" src="/static/health_quiz.png" alt="">
                                         </span>
@@ -205,7 +175,7 @@
                                         </span>
                                         </div>
 
-                                        <div id="list-item-8" class="main-first-section">                      
+                                        <div id="list-item-8" class="main-first-section content-block" data-url="{{url_for('auth.scientific_quiz')}}">                      
                                             <span id="main-gif-first-section-text">
                                               <h1>Science Spectrum: A Comprehensive Expedition Through Knowledge and Innovation
                                               </h1>
@@ -219,7 +189,7 @@
 
 
 
-                                            <div id="list-item-9" class="main-first-section">
+                                            <div id="list-item-9" class="main-first-section content-block" data-url="{{url_for('auth.household_quiz')}}">
                                                 <span id="main-gif-video-first-section">
                                                   <img id="main-gif-image-first-section" src="/static/use-cases-online-quiz-make-quizzes-more-interactive-engaging.webp" alt="">
                                                 </span>
@@ -231,7 +201,7 @@
                                                 </div>
 
                                                 
-                                        <div id="list-item-10" class="main-first-section">                      
+                                        <div id="list-item-10" class="main-first-section content-block" data-url="{{url_for('auth.gk_quiz')}}">                      
                                             <span id="main-gif-first-section-text">
                                               <h1>Unlock the Vault of Curiosity: The Comprehensive General Knowledge Quest
                                               </h1>
@@ -250,6 +220,21 @@
               </div>
         </section>
     </main>
+
+
+
+
+
+    <script>
+      document.querySelectorAll('.content-block').forEach(function (block) {
+          block.addEventListener('click', function () {
+              const url = block.getAttribute('data-url');
+              if (url) {
+                  window.location.href = url;
+              }
+          });
+      });
+  </script>
     
 
 

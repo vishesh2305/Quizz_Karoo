@@ -398,3 +398,8 @@ header{
 .button-39:focus-visible {
   box-shadow: none;
 }
+
+
+#quiz-question-option{
+    list-style-type: none;
+}

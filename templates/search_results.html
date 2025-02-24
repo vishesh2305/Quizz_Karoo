@@ -1,31 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link
+  href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
+  rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Search Results</title>
   <style>
-    /* Global styles */
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f7f7f7;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.6;
+    .bebas-neue-regular {
+      font-family: "Bebas Neue", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    *{
+        padding: 0px;
+        margin: 0px;
+        text-decoration: none;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    
+    
+    body{
+        width: 100vw;
+    }
+    ::-webkit-scrollbar{
+        display: none;
     }
 
-    /* Header */
+
+
+    
+header{
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  position: fixed;
+  background-color: white;
+  z-index: 2;
+}
+#navbar{
+  width: 100%;
+  height: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 2px rgba(0, 0,0,0.3);
+  padding: 0em 2em;
+}
+#logo-container{
+  margin: 0em 1.5em;
+  border-radius: 50%;
+  height: 4em;
+  width: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+#logo-container>figure>img{
+  height: 100%;
+  width: 100%;
+}
+
+
+#searchbar-container{
+  width: 40%;
+}
+
+.search-btn{
+  border: 1px solid rgb(135, 34, 242);
+  background-color: white;
+  padding: 0em 1em;
+  border-radius: 8px;
+}
+.search-btn:hover{
+  background-color: #8722f2;
+  transition: 100ms linear;
+  color: white;
+}
+
+
+#buttons-container{
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#profile-section{
+  margin: 0em 1.5em;
+  border-radius: 50%;
+  height: 4em;
+  width: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+#profile-section>a>figure>img{
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
+#main{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 5em;
+  padding: 2em;
+  z-index: 0;
+}
+
+
+
+
     h1 {
       text-align: center;
       color: #333;
       margin-bottom: 20px;
     }
 
-    /* Paragraphs */
     p {
       font-size: 1.1em;
       color: #555;
     }
 
-    /* List styles */
     ul {
       list-style: none;
       padding: 0;
@@ -39,22 +152,39 @@
       border-radius: 4px;
     }
 
-    /* Link styles */
     a {
       border: 1px solid rgb(135, 34, 242);
       background-color: white;
       padding: 1em 1em;
       border-radius: 8px;
       text-decoration: none;
+      color: black;
     }
     #generate-quiz-btn{
       border: 1px solid rgb(135, 34, 242);
       background-color: white;
       padding: 1em 1em;
       border-radius: 8px;
+      margin: 2em;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 600;
 
     }
     #generate-quiz-btn:hover{
+      background-color: #8722f2;
+      transition: 100ms linear;
+      color: white;
+    }
+    #back_to_all_quiz_btn{
+      border: 1px solid rgb(135, 34, 242);
+      background-color: white;
+      padding: 1em 1em;
+      border-radius: 8px;
+      margin: 2em;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 600;
+    }
+    #back_to_all_quiz_btn:hover{
       background-color: #8722f2;
       transition: 100ms linear;
       color: white;
@@ -69,7 +199,6 @@
         background-color: white;
         overflow: hidden;
         width: max-content;
-        10em
       }
       #search-result-li:hover{
         background-color: #8722f2;
@@ -90,6 +219,51 @@
   </style>
 </head>
 <body>
+
+
+  <header id="header">
+    <nav id="navbar">
+
+        <div id="logo-container" onclick="window.location.href='{{url_for('auth.dashboard')}}'">
+            <figure>
+                <img src="/static/logo.jpg" alt="Logo_img">
+            </figure>
+        </div>
+
+        <div id="searchbar-container">
+          <form class="d-flex" role="search" method="GET" action="{{ url_for('auth.search_quizzes') }}">
+              <!-- 'q' is the name we will look up in Flask code -->
+              <input class="form-control me-2" type="search" name="q" placeholder="Search for quizzes..." aria-label="Search">
+              <button class="search-btn" type="submit">Search</button>
+            </form>
+            
+      </div>
+
+        <div id="buttons-container">
+            {% if current_user.is_admin %}
+            <button type="button" class="btn btn-secondary"
+                onclick="window.location.href='{{url_for('auth.create_quiz')}}'">Create Quiz</button>
+            {% endif %}
+            <button type="button" class="btn btn-secondary"
+                onclick="window.location.href='{{url_for('auth.quizzes')}}'">View Quizzes</button>
+
+            <!-- Profile Section -->
+            <span id="profile-section">
+                <a href="{{ url_for('auth.profile') }}" style="display: block;">
+                    <figure style="margin: 0;">
+                        <img src="/static/logo.jpg" alt="Profile Icon">
+                    </figure>
+                </a>
+            </span>
+        </div>
+
+    </nav>
+</header>
+
+
+<main id="main">
+
+
   <h1>Search Results</h1>
 
   {% if query %}
@@ -111,7 +285,11 @@
 {% endif %}
 
   
-  <a href="{{ url_for('auth.quizzes') }}">Back to All Quizzes</a>
+  <a href="{{ url_for('auth.quizzes') }}" id="back_to_all_quiz_btn">Back to All Quizzes</a>
+
+
+</main>
+
 </body>
 
 <script>

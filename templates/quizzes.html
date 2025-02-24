@@ -115,6 +115,15 @@
 
         <section id="content-section-main">
             <h1>All Quizzes</h1>
+            <div id="quiz-timer-container">
+                <div id="quiz-timer" style="font-size: 20px; font-weight: bold; color: red;">
+                    Time Left: <span id="timer">{{ time_limit // 60 }}:00</span> minutes
+                </div>
+            
+                <button id="start-timer-btn" class="btn btn-primary">Start Timer</button>
+                <button id="increase-time-btn" class="btn btn-success" disabled>+1 Minute</button>
+            </div>
+            
 
             <div id="quiz-list">
                 {% for quiz in quizzes %}
@@ -131,7 +140,13 @@
                     </form>
                     {% endif %}
 
-                    <form action="{{ url_for('auth.submit_quiz', quiz_id=quiz.id) }}" method="POST">
+
+                    
+                    
+
+
+
+                    <form action="{{ url_for('auth.submit_quiz', quiz_id=quiz.id) }}" method="POST" id="quiz-form">
                         {% for question in quiz.questions %}
                         <div>
                             <p><strong>{{ question.text }}</strong></p>
@@ -227,6 +242,52 @@
             generateQuizAndAppend();
         }
     });
+
+
+
+    let totalTime = parseInt("{{ time_limit | default(600) }}", 10); // Fix: Ensure it's a number
+        let timerElement = document.getElementById("timer");
+        let startBtn = document.getElementById("start-timer-btn");
+        let increaseTimeBtn = document.getElementById("increase-time-btn");
+        let countdown;
+        let timerRunning = false;
+
+        function updateTimerDisplay(seconds) {
+            let minutes = Math.floor(seconds / 60);
+            let remainingSeconds = seconds % 60;
+            timerElement.textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+
+        function startTimer() {
+            if (timerRunning) return;
+
+            timerRunning = true;
+            startBtn.disabled = true;
+            increaseTimeBtn.disabled = false;
+
+            countdown = setInterval(function () {
+                if (totalTime <= 0) {
+                    clearInterval(countdown);
+                    alert("Time's up! Submitting your quiz.");
+                    document.getElementById("quiz-form").submit();
+                } else {
+                    totalTime--;
+                    updateTimerDisplay(totalTime);
+                }
+            }, 1000);
+
+            updateTimerDisplay(totalTime);
+        }
+
+        function increaseTime() {
+            totalTime += 60; // Add 1 minute
+            updateTimerDisplay(totalTime);
+        }
+
+        startBtn.addEventListener("click", startTimer);
+        increaseTimeBtn.addEventListener("click", increaseTime);
+
+        updateTimerDisplay(totalTime);
 
 
 

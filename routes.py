@@ -144,7 +144,6 @@ def create_quiz():
 @auth.route('/quizzes', methods=['GET'])
 @login_required
 def quizzes():
-    # Get filters
     category = request.args.get('category', '').strip()
     difficulty = request.args.get('difficulty', '').strip()
 
@@ -158,7 +157,12 @@ def quizzes():
 
     all_quizzes = query.all()
 
-    return render_template('quizzes.html', quizzes=all_quizzes)
+    # Ensure each quiz has a default time limit (if missing)
+    for quiz in all_quizzes:
+        if not hasattr(quiz, 'time_limit'):
+            quiz.time_limit = 600  # Default to 10 minutes
+
+    return render_template('quizzes.html', quizzes=all_quizzes, time_limit=600)  # Pass time_limit to template
 
 
 
@@ -415,7 +419,7 @@ def edu_quiz_8():
 @login_required
 def view_quiz(quiz_id):
     quiz = Quiz.query.get_or_404(quiz_id)
-    return render_template('view_quiz.html', quiz=quiz)
+    return render_template('view_quiz.html', quiz=quiz, time_limit=quiz.time_limit)
 
 
 

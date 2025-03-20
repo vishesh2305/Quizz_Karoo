@@ -4,6 +4,8 @@
     text-decoration: none;
 }
 
+@media (min-width:1000px) {
+
 body{
     width: 100vw;
     display: flex;
@@ -87,6 +89,13 @@ header{
     height: 100%;
     width: 100%;
 }
+
+
+
+.search-btn-small-screen{
+    display: none;
+    
+    }
 
 
 
@@ -210,3 +219,266 @@ header{
     color: rgb(82, 82, 82);
   }
   
+
+  .dropdown{
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 999px) {
+
+
+
+
+    
+html{
+    overflow-x: hidden;
+  
+  
+  }
+    
+  body{
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar{
+    display: none;
+  }
+  
+  
+  header{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+    position: fixed;
+    background-color: white;
+    z-index: 2;
+  }
+  #navbar{
+    width: 100%;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0px 2px rgba(0, 0,0,0.3);
+    padding: 0em 2em;
+  
+  }
+  #logo-container{
+    /* margin: 0em 1.5em; */
+    /* border-radius: 50%; */
+    height: 90%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  #logo-container>figure{
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  
+  }
+  #logo-container>figure>img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 10px;
+    object-fit: contain;
+  }
+  
+  
+  #searchbar-container{
+    width: 60%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    border-radius: 8px;
+  }
+  
+  .search-btn{
+    border: 1px solid rgb(135, 34, 242);
+    background-color: white;
+    display: none; /* Hidden for small Screens */
+  }
+  .search-btn:hover{
+    background-color: #8722f2;
+    transition: 100ms linear;
+    color: white;
+  }
+  
+  
+  
+  .search-btn-small-screen{
+    border: 0px;
+    background-color: white;
+    color: #8722f2;
+    border-radius: 50%;
+    padding: 0.5em;
+  
+  }
+  
+  
+  
+  #buttons-container{
+    display: none;
+  
+  }
+  #profile-section{
+    margin: 0em 1.5em;
+    border-radius: 50%;
+    height: 4em;
+    width: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+  
+  }
+  
+  #profile-section>a>figure>img{
+    height: 100%;
+    width: 100%;
+  }
+  
+  
+  /* #dropdown-profile-btn{
+    overflow: hidden;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    z-index: 0;
+    background: url(/static/logo.jpg);
+  }
+  #dropdown-profile-btn>a{
+    height: 100%;
+    width: 100%;  
+    border-radius: 50%;
+  }
+  #dropdown-profile-btn>a>figure>img{
+    height: 100%;
+    width: 100%;
+    
+  } */
+  
+  
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    border: none;
+    outline: none;
+  }
+  
+  .dropdown-toggle {
+    background: none;
+    padding: 0;
+    border: none;
+  }
+  
+  .dropdown-toggle img {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .dropdown-toggle::after {
+    display: none; 
+  }
+  
+  .dropdown-menu {
+    width: max-content;
+    height: max-content; 
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+
+  main{
+    position: relative;
+    top: 5em;
+    padding-bottom: 5em;
+  }
+
+  #sidebar-main{
+    display: none;
+  }
+
+
+  #content-section-main{
+    width: 100vw;
+    height: max-content;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#content-main{
+    width: 90%;
+}
+
+
+.main-first-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: max-content;
+    width: 100%;
+    margin-top: 5em;
+    cursor: pointer;
+  }
+  #main-gif-video-first-section{
+    height: max-content;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  #main-gif-image-first-section{
+    height: 100%;
+    width: 100%; 
+  
+  }
+  #main-gif-first-section-text{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+
+  }
+  #main-gif-first-section-text>h1{
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 2px;
+  
+  }
+  #main-gif-first-section-text>p{
+    font-family: "Bebas Neue";
+    letter-spacing: 2px;
+    color: rgb(82, 82, 82);
+  }
+  
+
+
+}

@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
     <header>
         <nav class="navbar ">
             <div class="container-fluid" id="logo-container">
@@ -74,7 +76,7 @@
                     {% endfor %}
                 {% endfor %}
 
-                <span id="other-methods-container">
+                <div id="other-methods-container">
                     <p>Or sign up with:</p>
                     <span id="signup-method-blocks-container">
                         <a class="signup-links" href="{{ url_for('auth.login') }}" title="Signup with Google">
@@ -94,7 +96,7 @@
                             <label>Apple</label>
                         </a>
                     </span>
-                </span>
+                </div>
             </div>
         </section>
     </main>

@@ -419,7 +419,7 @@ def edu_quiz_8():
 @login_required
 def view_quiz(quiz_id):
     quiz = Quiz.query.get_or_404(quiz_id)
-    return render_template('view_quiz.html', quiz=quiz, time_limit=quiz.time_limit)
+    return render_template('view_quiz.html', quiz=quiz)
 
 
 
